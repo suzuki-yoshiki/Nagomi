@@ -4,7 +4,7 @@
 /* universal */
 
 body {
-  padding-top: 60px;
+  padding-top: 65px;
 }
 
 section {
@@ -55,15 +55,40 @@ p {
 #logo {
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
+  font-family: 'Hiragino Maru Gothic Pro','ヒラギノ丸ゴ Pro W4', sans-serif;
+  text-shadow: 0 0 15px #FF6694;
+  font-size: 2.8em;
+  color: #3399FF;
+  letter-spacing: 1px;
   padding-top: 9px;
   font-weight: bold;
 }
 
 #logo:hover {
-  color: #fff;
+  color: #3366FF;
   text-decoration: none;
 }
+
+.navbar-right li {
+  font-size: 17px;
+  letter-spacing: -1px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  margin-left: 25px;
+  margin-top: 25px;
+}
+
+.navbar-right a {
+  color: #000;  
+}
+.navbar-right a:hover {
+  text-decoration: none;
+  color: #c0c0c0;
+}
+
+.youtube-red{color: #Ff0000}
+.fa-home{color:#8d4e4e}
+.fa-broom{color:#550000}
+.line-green{color: #00B900}
+.fa-shipping-fast{color: #3366FF}

@@ -1,10 +1,17 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top navbar-dark" style="background:rgba(0,255,255,0.1);">
   <div class="container">
-    <%= link_to "Attendance App", '#', id: "logo" %>
+  <link href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" rel="stylesheet">
+    <%= link_to "Nagomi", root_path, id: "logo" %>
     <nav>
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Top", root_path %></li>
-        <li><%= link_to "Log in", '#' %></li>
+      <ul class="navbar-right">
+        <li><i class="fa fa-home fa-lg" aria-hidden="true"></i> <%= link_to "トップ", root_path %>  </li>
+        <li><i class="fas fa-broom fa-lg"></i> <%= link_to "サービス一覧", '#'%> </li>
+        <li><i class="fab fa-youtube fa-lg youtube-red"></i> <%= link_to "作業風景", '#'%>    </li>
+        <li><i class="fab fa-line fa-lg line-green"></i> <%= link_to "電話予約状況", '#' %>
+        </li>
+        <li><i class="fas fa-shipping-fast fa-lg"></i> <%= link_to "サービス一エリア", '#'%>
+        </li>
+        <li><%= link_to "ログイン", '#' %></li>
       </ul>
     </nav>
   </div>
