@@ -12,3 +12,10 @@ User.create!(name: "Sample-1 User",
              password: "password",
              password_confirmation: "password",
              admin: false)
+
+#サンプルユーザー             
+Staff.create!(name: "Sample-1 User",
+              email: "sample-1@email.com",
+              password: "password",
+              password_confirmation: "password",
+              admin: false)
