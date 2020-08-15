@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_13_045037) do
+ActiveRecord::Schema.define(version: 2020_08_13_085031) do
+
+  create_table "resrvations", force: :cascade do |t|
+    t.date "worked_on"
+    t.time "line_time"
+    t.string "reservation_line_flag"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.text "reservation_work"
+    t.string "reservation_mark"
+    t.string "client_name_flag"
+    t.integer "user_id"
+    t.integer "staff_id"
+    t.integer "work_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "staffs", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -51,23 +67,6 @@ ActiveRecord::Schema.define(version: 2020_08_13_045037) do
     t.integer "reservation_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
-ActiveRecord::Schema.define(version: 2020_08_13_085031) do
-
-  create_table "resrvations", force: :cascade do |t|
-    t.date "worked_on"
-    t.time "line_time"
-    t.string "reservation_line_flag"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.text "reservation_work"
-    t.string "reservation_mark"
-    t.string "client_name_flag"
-    t.integer "user_id"
-    t.integer "staff_id"
-    t.integer "work_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "works", force: :cascade do |t|
