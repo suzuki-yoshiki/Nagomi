@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'static_pages#top'
   # get 'users/index'
   # get 'users/show'
   # get 'users/edit'

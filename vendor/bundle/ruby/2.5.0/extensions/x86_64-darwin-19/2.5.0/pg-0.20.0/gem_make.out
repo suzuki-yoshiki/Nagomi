@@ -1,5 +1,9 @@
 current directory: /Users/katouyuimasaru/workspace/Nagomi/Nagomi/vendor/bundle/ruby/2.5.0/gems/pg-0.20.0/ext
+<<<<<<< HEAD
+/Users/katouyuimasaru/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20200814-36745-ryarel.rb extconf.rb
+=======
 /Users/katouyuimasaru/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20200814-20463-10r7lb.rb extconf.rb
+>>>>>>> develop
 checking for pg_config... yes
 Using config values from /usr/local/bin/pg_config
 checking for libpq-fe.h... yes
@@ -148,4 +152,8 @@ linking shared-object pg_ext.bundle
 
 current directory: /Users/katouyuimasaru/workspace/Nagomi/Nagomi/vendor/bundle/ruby/2.5.0/gems/pg-0.20.0/ext
 make "DESTDIR=" install
+<<<<<<< HEAD
+/usr/bin/install -c -m 0755 pg_ext.bundle ./.gem.20200814-36745-rgtgd2
+=======
 /usr/bin/install -c -m 0755 pg_ext.bundle ./.gem.20200814-20463-zeb27b
+>>>>>>> develop
