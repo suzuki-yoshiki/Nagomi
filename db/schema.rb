@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_14_095441) do
+ActiveRecord::Schema.define(version: 2020_08_22_234902) do
+
+  create_table "phone_reservations", force: :cascade do |t|
+    t.date "worked_on"
+    t.time "line_time"
+    t.string "reservation_line_flag"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.text "reservation_work"
+    t.string "reservation_mark"
+    t.string "client_name_flag"
+    t.integer "user_id"
+    t.integer "staff_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "resrvations", force: :cascade do |t|
     t.date "worked_on"
@@ -82,6 +97,20 @@ ActiveRecord::Schema.define(version: 2020_08_14_095441) do
     t.string "title"
     t.string "body"
     t.string "youtube_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "work_reservations", force: :cascade do |t|
+    t.date "worked_on"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.text "reservation_work"
+    t.string "reservation_mark"
+    t.string "client_name_flag"
+    t.integer "user_id"
+    t.integer "staff_id"
+    t.integer "work_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
