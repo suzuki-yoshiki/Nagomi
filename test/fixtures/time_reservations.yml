@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  line_time: 1
+  time_line_flag: MyString
+  time_work: MyText
+  time_mark: MyString
+  client_name_flag: MyString
+  staff: one
+  user_id: 1
+  staff_id: 1
+
+two:
+  line_time: 1
+  time_line_flag: MyString
+  time_work: MyText
+  time_mark: MyString
+  client_name_flag: MyString
+  staff: two
+  user_id: 1
+  staff_id: 1
