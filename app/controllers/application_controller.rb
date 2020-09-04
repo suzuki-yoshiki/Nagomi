@@ -6,4 +6,12 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name]) # 新規登録時(sign_up時)にnameというキーのパラメーターを追加で許可する
   end
+
+  def after_sign_in_path_for(resource) #deviseでログイン後のリダイレクト先を指定
+    if current_user.admin?
+     work_reservation_path(resource) #adminの場合管理者ページへ
+    else
+     root_path(resource) #その他ユーザーは最初のページへ。後ほど社員の場合も作る必要があるのかも？
+    end
+  end
 end
