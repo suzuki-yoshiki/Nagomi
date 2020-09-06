@@ -6,6 +6,7 @@ class WorkReservationsController < ApplicationController
   end
 
   def show
+    @phone_reservations = PhoneReservation.all
   end
 
   def edit
