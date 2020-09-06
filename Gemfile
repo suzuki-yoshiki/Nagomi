@@ -8,6 +8,7 @@ gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'devise'
+gem 'simple_calendar', '~> 2.0' #カレンダー作成に使用
 gem 'jquery-rails'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
