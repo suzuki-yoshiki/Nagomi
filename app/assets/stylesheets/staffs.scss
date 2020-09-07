@@ -1,4 +1,30 @@
-/* スタッフ一覧ページ */
+/* ユーザー情報テーブル */
+
+.staff-table {
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* 入力フォーム */
+
+.label-signup {
+  margin-top: 5px;
+}
+
+.btn-signup {
+  margin-top: 10px;
+}
+
+.label-staff--edit {
+  margin-top: 5px;
+}
+
+.btn-staff--edit {
+  margin-top: 10px;
+}
+
+
+/* ユーザー一覧ページ */
 
 #table-staffs {
   td {

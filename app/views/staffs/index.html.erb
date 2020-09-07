@@ -1,5 +1,6 @@
 <% provide(:title, 'All Staffs') %>
 <h1>スタッフ一覧</h1>
+<h1>スタッフ一覧</h1>
 <div class="col-md-10 col-md-offset-1">
   <table class="table table-condensed table-hover" id="table-staffs">
     <thead>
@@ -19,8 +20,20 @@
         <td><%= staff.name %></td>
         <td><%= staff.kana %></td>
         <td><%= staff.sex %></td>
-        <td><%= staff.address %></td>
+        <td><%= staff.email %></td>
         <td><%= staff.phone_number %></td>
+        <td>
+          <% if current_user.admin? && !current_user?(staff) %>
+            <%= link_to "削除", staff, method: :delete,
+                data: { confirm: "削除してよろしいですか？" },
+                class: "btn btn-danger" %>
+          <% end %>
+        </td>
+        <td>
+          <% if current_user.admin? && !current_user?(staff) %>
+            <%= link_to "編集", edit_staff_path(staff), class: "btn btn-primary" %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </table>
