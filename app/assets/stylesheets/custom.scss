@@ -3,9 +3,10 @@
 
 /* universal */
 
-body-top {
-  padding-top: 45px;
+body {
+  padding-top: 65px;
 }
+
 #calendar {
   padding-top: 100px;
 }
@@ -88,17 +89,24 @@ ul {
 
 .navbar-right a {
   color: #000;
+  display: inline-block;
+	transition: all .3s ease 0s;
+	text-decoration: none;
 }
 .navbar-right a:hover {
   text-decoration: none;
   color: #808080;
+  cursor: pointer;
+	// transform: scale(1.1);
 }
 
-.youtube-red{color: #Ff0000}
-.fa-home{color:#8d4e4e}
-.fa-broom{color:#550000}
-.line-green{color: #00B900}
-.fa-shipping-fast{color: #3366FF}
+.youtube-red{color: #Ff0000;}
+.fa-home{color:#8d4e4e;}
+.fa-broom{color:#550000;}
+.line-green{color: #00B900;}
+.fa-car-side{color: #5D99FF;}
+.fa-user-circle{color: #808080;}
+.fa-list-alt {color: orange;}
 
 .dropdown-menu li {
   margin-top: 10px;
@@ -106,17 +114,34 @@ ul {
 }
 
 .dropdown-menu li a {
-  font-size: 17px;
+  font-size: 16px;
   letter-spacing: -1px;
   font-weight: bold;
   text-decoration: none;
   display: inline-block;
+  position: relative;
+}
+.dropdown-menu li a::after {
+  position: absolute;
+	content: '';
+	bottom: .2em;
+	left: 0;
+	width: 100%;
+	height: 1px;
+	opacity: 0;
+	background: #2196F3;
+	transition: all .3s ease 0s;
 }
 
 .dropdown-menu li a:hover {
   text-decoration: none;
   background-color: #fff;
   color: #808080;
+  cursor: pointer;
+}
+.dropdown-menu li a:hover::after {
+  bottom: 0;
+	opacity: 1;
 }
 
 //  トップ画面背景画像
