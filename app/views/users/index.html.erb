@@ -1,5 +1,6 @@
 <% provide(:title, 'All Users') %>
 <h1>ユーザー一覧</h1>
+
 <div class="col-md-10 col-md-offset-1">
   <table class="table table-condensed table-hover" id="table-users">
     <thead>
@@ -10,7 +11,6 @@
         <th>性別</th>
         <th>アドレス</th>
         <th>電話番号</th>
-        <h1>ユーザー一覧</h1>
       </tr>
     </thead>
 
@@ -22,6 +22,18 @@
         <td><%= user.sex %></td>
         <td><%= user.address %></td>
         <td><%= user.phone_number %></td>
+        <td>
+          <% if current_user.admin? && !current_user?(user) %>
+            <%= link_to "削除", user, method: :delete,
+                data: { confirm: "削除してよろしいですか？" },
+                class: "btn btn-danger" %>
+          <% end %>
+        </td>
+        <td>
+          <% if current_user.admin? && !current_user?(user) %>
+            <%= link_to "編集", edit_user_path(user), class: "btn btn-primary" %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </table>

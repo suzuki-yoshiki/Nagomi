@@ -1,2 +1,27 @@
-<h1>Staffs#index</h1>
-<p>Find me in app/views/staffs/index.html.erb</p>
+<% provide(:title, 'All Staffs') %>
+<h1>スタッフ一覧</h1>
+<div class="col-md-10 col-md-offset-1">
+  <table class="table table-condensed table-hover" id="table-staffs">
+    <thead>
+      <tr>
+        <th>スタッフ番号</th>
+        <th>名前</th>
+        <th>かな</th>
+        <th>性別</th>
+        <th>アドレス</th>
+        <th>電話番号</th>
+      </tr>
+    </thead>
+
+    <% @staffs.each do |staff| %>
+      <tr>
+        <td><%= staff.staff_number %></td>
+        <td><%= staff.name %></td>
+        <td><%= staff.kana %></td>
+        <td><%= staff.sex %></td>
+        <td><%= staff.address %></td>
+        <td><%= staff.phone_number %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
