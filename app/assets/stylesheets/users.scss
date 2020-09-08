@@ -5,3 +5,45 @@
     vertical-align: middle;
   }  
 }
+
+/* ユーザー詳細ページ */
+
+.show-body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+  background-size: cover;
+  background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%);
+}
+.show-title {
+  margin-top: 50px;
+  width: 350px;
+  margin-left: 400px;
+  font-family: 'Sawarabi Gothic', sans-serif;
+  background: linear-gradient(transparent 70%, #ff99ab 70%);
+}
+.col-md-2 {
+  text-align: center;
+  background-color: rgba(0,0,255,0.02);
+  font-size: large;
+}
+.btn--blue {
+  color: #fff;
+  background-color: #2C7CFF;
+  border-bottom: 5px solid #005FFF;
+  margin-top: 5px;
+}
+.btn--blue:hover {
+  margin-top: 3px;
+  color: #fff;
+  background: #2C7CFF;
+  border-bottom: 2px solid #005FFF;
+  margin-top: 10px;
+}
+.btn--shadow {
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
