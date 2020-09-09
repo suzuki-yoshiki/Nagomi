@@ -157,10 +157,16 @@ ul {
   background-color:#fff;
   padding: 20px;
 }
-.fluid-box-inner{
-  margin: 0 auto;
-  padding: 25px;
-  font-size: 50px;
+
+//  トップ画面アラート表示
+.fluid-box-inner{  
+  font-size: 20px;
+  color: #000;
+}
+.alert {
+  margin: 0px;
+  padding: 10px;
+  background-color: rgba(30,144,255,0.3);
 }
 
 // センター帯
@@ -295,4 +301,17 @@ ul {
   margin-left: 200px;
   color: #fff;
 }
+
+/* debug */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
 

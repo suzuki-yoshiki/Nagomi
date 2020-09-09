@@ -1,3 +1,77 @@
-// Place all the styles related to the staffs controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* ユーザー情報テーブル */
+
+.staff-table {
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* 入力フォーム */
+
+.label-signup {
+  margin-top: 5px;
+}
+
+.btn-signup {
+  margin-top: 10px;
+}
+
+.label-staff--edit {
+  margin-top: 5px;
+}
+
+.btn-staff--edit {
+  margin-top: 10px;
+}
+
+
+/* ユーザー一覧ページ */
+
+#table-staffs {
+  td {
+    vertical-align: middle;
+  }  
+}
+
+/* 社員詳細ページ */
+
+.staff-show-body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+  background-size: cover;
+  background-image: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%);
+  // background-image: linear-gradient(to top, #feada6 0%, #f5efef 100%);
+}
+.staff-show-title {
+  margin-top: 50px;
+  width: 300px;
+  margin-left: 430px;
+  font-family: 'Sawarabi Gothic', sans-serif;
+  background: linear-gradient(transparent 70%, #A4C6FF 70%);
+  
+}
+.col-md-2 {
+  text-align: center;
+  background-color: rgba(0,0,255,0.02);
+  font-size: large;
+}
+.btn--blue {
+  color: #fff;
+  background-color: #2C7CFF;
+  border-bottom: 5px solid #005FFF;
+  margin-top: 5px;
+}
+.btn--blue:hover {
+  margin-top: 3px;
+  color: #fff;
+  background: #2C7CFF;
+  border-bottom: 2px solid #005FFF;
+  margin-top: 10px;
+}
+.btn--shadow {
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+}
