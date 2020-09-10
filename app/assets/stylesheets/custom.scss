@@ -148,19 +148,25 @@ ul {
 
 .fluid-box{
   width: 100vw;
-     position: relative;
-     height: 80vh;
-     background: url(curama.jpg) no-repeat center center;
-     background-size: cover;
-     left: 50%;
-     transform: translateX(-50%);
-     background-color:#fff;
-     padding: 20px;
+  position: relative;
+  height: 80vh;
+  background: url(curama.jpg) no-repeat center center;
+  background-size: cover;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color:#fff;
+  padding: 20px;
 }
-.fluid-box-inner{
-  margin: 0 auto;
-  padding: 25px;
-  font-size: 50px;
+
+//  トップ画面アラート表示
+.fluid-box-inner{  
+  font-size: 20px;
+  color: #000;
+}
+.alert {
+  margin: 0px;
+  padding: 10px;
+  background-color: rgba(30,144,255,0.3);
 }
 
 // センター帯
