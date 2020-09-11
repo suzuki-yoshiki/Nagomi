@@ -1,2 +1,53 @@
-<h1>PhoneReservations#index</h1>
-<p>Find me in app/views/phone_reservations/index.html.erb</p>
+<div class="calendar">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <% if Date.current == @first_day %>
+          <th style="width: 8%" rowspan="2"><p class="week">前の一週間</p></th>
+        <% else %>
+          <th style="width: 8%" rowspan="2"><p class="week"><%= link_to "前の一週間", phone_reservations_path(date: @first_day.ago(7.days)), class: "week-prev" %></p></th>
+        <% end %>
+          <th colspan="14"><%= l(Date.current, format: :long) %></th>
+          <th style="width: 8%" rowspan="2"><p class="week"><%= link_to "次の一週間", phone_reservations_path(date: @first_day.since(7.days)), class: "week-next"%></p></th>
+      </tr>
+      <% @phone_reservations.each do |day| %> 
+        <th class="day-cell">
+          <%= l(day.worked_on, format: :short) %><br>
+          <% if day.worked_on.wday ==6 %>
+            <font color="#00f">(<%= $days_of_the_week[day.worked_on.wday] %>)</font>
+          <% elsif day.worked_on.wday == 0 %>
+            <font color="#f00">(<%= $days_of_the_week[day.worked_on.wday] %>)</font>
+          <% else %>
+            <font color="#000">(<%= $days_of_the_week[day.worked_on.wday] %>)</font>
+          <% end %>  
+        </th>
+      <% end %>
+    </thead>
+    <tbody>
+      <% @day_time.each do |time| %>  
+        <tr>
+          <td><%= time %></td>
+          <td><%= link_to "◎", edit_phone_reservation_time_reservation_path(PhoneReservation.find(1), time), remote: true, class: "mark" %></td>
+          <td><%= link_to "◎", edit_phone_reservation_time_reservation_path(PhoneReservation.find(2), time), remote: true, class: "mark" %></td>
+          <td><%= link_to "◎", edit_phone_reservation_time_reservation_path(PhoneReservation.find(3), time), remote: true, class: "mark" %></td>
+          <td><%= link_to "◎", "#", class: "mark" %></td>
+          <td><%= link_to "◎", "#", class: "mark" %></td>
+          <td><%= link_to "◎", "#", class: "mark" %></td>
+          <td><%= link_to "◎", "#", class: "mark" %></td>
+          <td><%= link_to "◎", "#", class: "mark" %></td>
+          <td><%= link_to "◎", "#", class: "mark" %></td>
+          <td><%= link_to "◎", "#", class: "mark" %></td>
+          <td><%= link_to "◎", "#", class: "mark" %></td>
+          <td><%= link_to "◎", "#", class: "mark" %></td>
+          <td><%= link_to "◎", "#", class: "mark" %></td>
+          <td><%= link_to "◎", "#", class: "mark" %></td>
+          <td><%= time %></td>
+        </tr>
+      <% end %> 
+    </tbody>
+  </table>
+</div>
+
+<!--モーダルウインドウ表示-->
+<div id="edit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+
