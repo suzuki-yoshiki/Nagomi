@@ -19,7 +19,8 @@ class ApplicationController < ActionController::Base
 
   def set_two_weeks
     if params[:date].nil?
-      @first_day = Date.current
+      require 'date'
+      @first_day = Date.today
       @last_day = (@first_day+13.day)
     else
       @first_day = params[:date].to_date
