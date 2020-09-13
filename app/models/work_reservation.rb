@@ -1,3 +1,8 @@
 class WorkReservation < ApplicationRecord
-  validates :resrvation_work, length: { maximum: 500 }
+  belongs_to :user
+  validates :reservation_work, length: { maximum: 500 }
+
+  def start_time  #simple calendarで必要なメソッド
+    self.worked_on
+  end
 end

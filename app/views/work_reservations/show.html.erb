@@ -1,9 +1,19 @@
 <h1>作業予約状況</h1>
+<p align="center"><%= link_to "【電話予約#{@phone_reservation_number}件】", work_reservations_path, :style=>"color:red;" %></p>
 
 <div class= 'calender'>
-            <%= month_calendar phone_reservations: @phone_reservations do |date| %>
-                <%= date.day %>
-
-
+            <%= month_calendar events: @work_reservations do |date, work_reservations| %>
+                <%= date.day %></br>
+                  <% work_reservations.each do |work_reservation| %>
+                    <% if @array.count == 1 %>
+                      <%= link_to "【#{@array.count}件】", edit_reservation_status_user_path(params:{ day: date }), remote: true %>
+                      <i class="fa fa-circle notification-circle" style="color: red;"></i>
+                    <% else %>
+                      <%= link_to "【#{@array.count}件】", edit_reservation_status_user_path(params:{ day: date }), remote: true %>
+                      <i class="fa fa-circle notification-circle" style="color: blue;"></i>
+                    <% end %>
+                  <% end %>
             <% end %>
 </div>
+
+<div id="edit-reservation-status" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

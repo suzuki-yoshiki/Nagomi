@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
- 
+
   def index
     @users = User.all
   end
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       flash[:success] = "ユーザー情報を更新しました。"
       redirect_to users_url
     else
-      render :edit      
+      render :edit
     end
   end
 
@@ -32,11 +32,20 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  def edit_reservation_status
+    @day = Date.parse.strftime(params[:day])
+    @work_reservations = WorkReservation.where.not(worked_on: nil).where(worked_on: @day)
+    @users = User.all
+  end
+
+   def new_work_reservation
+    @user = User.find(params[:id])
+   end
+
   private
 
     def user_params
       params.require(:user).permit(:name, :kana, :sex, :email, :phone_number, :password, :password_confirmation)
     end
-
 
 end
