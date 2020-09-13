@@ -4,7 +4,12 @@ Rails.application.routes.draw do
 
   devise_for :staffs
   devise_for :users  #resourcesの下にdevise_forがあるとdeviseのルーティングが反映されなかったためresourcesよりも上に移動しました。
-  resources :users
+  resources :users do
+    member do
+      get 'edit_reservation_status'
+      patch 'update_reservation_status'
+    end
+  end
   resources :staffs
   resources :phone_reservations
   resources :work_reservations
