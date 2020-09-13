@@ -1,2 +1,64 @@
-<h1>Tools#index</h1>
-<p>Find me in app/views/tools/index.html.erb</p>
+<%
+=begin%>
+ <script>
+  $(function() {
+    setTimeout("$('.alert').fadeOut('slow')", 3000);
+  });
+</script> 
+<%
+=end%>
+
+<div class="index-body">
+  <div class="index-bg"> 
+    <section class="user-index">
+      <div class="container">
+        <h1 class="index-title-post">作業用道具一覧</h1>
+      </div>
+    </section>
+    <div class="row">
+      <div class="col-md-offset-8 col-md-3 form-center-search">
+        
+      </div>
+    </div>
+    <section class="section">
+      <div class="container">
+        <hr class="tool-bar">
+          <% @tools.each do |t| %>
+            <div class="row">
+              <div class="col-md-2">
+                <%
+=begin%>
+ <%= link_to user_maintenance_path(maintenance.user, maintenance) do %>
+                  <div class="grid-item-image"><%= attachment_image_tag maintenance, :image, fallback: "no-image.png", size:'200x200', class: "index-photo"%></div>
+                <% end %> 
+<%
+=end%>
+              </div>
+              <div class="col-md-2">
+                <%= t.tool_name %>
+              </div>
+              <div class="col-md-1">
+                <%= t.price.to_s(:delimited) %> 円
+              </div>
+              <div class="col-md-1">
+                <%= t.tool_count %> 個
+              </div>
+              <div class="col-md-3">
+                <%= t.tool_explanation %>
+              </div>
+              <div class="col-md-1">
+                <%#= l(t.updated_at, format: :half) %>
+              </div>
+              <div class="col-md-1">
+                <%= link_to "編集", "#", class: "btn-gradient-3d-simple" %>
+              </div>
+              <div class="col-md-1 btn--del">
+                <%= link_to "削除", tool_path(@tools), method: :delete, data: {confirm: "削除しますか？"}, class: "btn-gradient-3d-orange" %>
+              </div>
+            </div>
+            <hr class="tool-bar">
+          <% end %>
+      </div>
+    </section>    
+  </div>
+</div>
