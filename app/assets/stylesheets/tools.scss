@@ -2,41 +2,51 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.index-title-post{
+// アラート表示位置
+.fluid-box-index {
+  position: absolute;
+  top: 65px;
+  left: 120px;
+}
+// タイトル
+.index-title-post {
   margin-top: 50px;
   margin-bottom: 30px;
+  width: 320px;
+  margin-left: 400px;
+  font-family: 'Sawarabi Gothic', sans-serif;
+  background: linear-gradient(transparent 70%, #ff99ab 70%);
 }
 
-.col-md-2 {
-  text-align: center;
-  vertical-align: middle;
-}
 .col-md-1 {
   text-align: center;
   vertical-align: middle;
 }
 
-// .tool-bar {
-//   margin-top: px
-// }
+// アイテム名の高さ位置調整
+.tool--item {
+  margin-top: 50px;
+}
 
-// .btn--blue {
-//   color: #fff;
-//   background-color: #2C7CFF;
-//   border-bottom: 5px solid #005FFF;
+// 新規登録ボタン
+.btn-gradient-3d-green {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #fff;
+  background-image: linear-gradient(#32CD32 0%, #ADFF2F 100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #32CD32;
+}
+.btn-gradient-3d-green:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+}
 
-// }
-// .btn--blue:hover {
-//   // margin-top: 3px;
-//   color: #fff;
-//   background: #2C7CFF;
-//   border-bottom: 2px solid #005FFF;
-// }
-// .btn--shadow {
-//   -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
-//   // box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
-// }
-
+// 編集ボタン
 .btn-gradient-3d-simple {
   display: inline-block;
   padding: 0.5em 1em;
@@ -54,6 +64,7 @@
   border-bottom: none;
 }
 
+// 削除ボタン
 .btn-gradient-3d-orange {
   display: inline-block;
   padding: 0.5em 1em;
@@ -64,7 +75,6 @@
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
   border-bottom: solid 3px #c58668;
 }
-
 .btn-gradient-3d-orange:active {
   -webkit-transform: translateY(4px);
   transform: translateY(4px);
@@ -74,9 +84,40 @@
 .btn--del {
   text-align: left;
   padding-left: 0px;
+  margin-top: 50px;
 }
 
+// 水切りライン
 .tool-bar {
   height: 1px;
   background-color: #3366FF;
 }
+
+// 画像
+.index-photo {
+  overflow: hidden;	/*拡大時にはみ出た部分を隠す*/
+	width: 150px;	/*画像の幅*/
+  height: 150px;	/*画像の高さ*/
+  border-radius: 5px;
+  border: 1px solid #808080;
+}
+.index-photo {
+	display: block;
+	transition-duration: 0.5s;	/*変化に掛かる時間*/
+}
+.index-photo:hover {
+	transform: scale(1.2);	/*画像の拡大率*/
+	transition-duration: 0.5s;	/*変化に掛かる時間*/
+}
+
+// 新規作成ボタン
+.new-btn {
+  text-align: right;
+}
+
+// 新規登録タイトル
+.new-title {
+  margin-top: 50px; 
+  font-family: 'Sawarabi Gothic', sans-serif;
+}
+
