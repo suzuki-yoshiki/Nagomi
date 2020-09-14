@@ -19,18 +19,6 @@ ActiveRecord::Schema.define(version: 2020_09_13_025004) do
     t.string "reservation_mark"
     t.string "client_name_flag"
     t.integer "user_id"
-    t.integer "staff_id"
-    t.string "line_time"
-    t.string "line_time_11"
-    t.string "line_time_12"
-    t.string "line_time_13"
-    t.string "line_time_14"
-    t.string "line_time_15"
-    t.string "line_time_16"
-    t.string "line_time_17"
-    t.boolean "line_booked"
-    t.text "time_work"
-    t.string "time_line_flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -53,6 +41,18 @@ ActiveRecord::Schema.define(version: 2020_09_13_025004) do
     t.string "staff_number"
     t.index ["email"], name: "index_staffs_on_email", unique: true
     t.index ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true
+  end
+
+  create_table "time_reservations", force: :cascade do |t|
+    t.integer "line_time"
+    t.string "time_line_flag"
+    t.text "time_work"
+    t.string "time_mark"
+    t.string "client_name_flag"
+    t.integer "user_id"
+    t.integer "staff_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tools", force: :cascade do |t|
@@ -101,11 +101,12 @@ ActiveRecord::Schema.define(version: 2020_09_13_025004) do
     t.text "reservation_work"
     t.string "reservation_mark"
     t.string "client_name_flag"
-    t.integer "user_id"
     t.integer "staff_id"
     t.integer "work_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_work_reservations_on_user_id"
   end
 
   create_table "works", force: :cascade do |t|
