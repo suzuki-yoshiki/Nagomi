@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_11_071034) do
+ActiveRecord::Schema.define(version: 2020_09_13_025004) do
 
   create_table "phone_reservations", force: :cascade do |t|
     t.date "worked_on"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2020_09_11_071034) do
     t.integer "tool_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price"
   end
 
   create_table "users", force: :cascade do |t|
