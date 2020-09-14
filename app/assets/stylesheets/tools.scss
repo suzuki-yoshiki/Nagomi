@@ -8,6 +8,36 @@
   top: 65px;
   left: 120px;
 }
+
+// 新規登録画面背景
+.tool-new-body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+  background-size: cover;
+  background-image: -webkit-linear-gradient(#DEDFE3 2%, #AEB3B9 95%), -webkit-radial-gradient(33% 100%, rgba(255, 255, 255, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background-image: linear-gradient(#DEDFE3 2%, #AEB3B9 95%), radial-gradient(33% 100%, rgba(255, 255, 255, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background-blend-mode: screen;
+}
+
+// 編集画面背景
+.tool-edit-body{
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+  background-size: cover;
+  background-color: #DCD9D4;
+  background: -webkit-linear-gradient(top, #E1E6EC 0%, #F0F4F7 100%), -webkit-linear-gradient(top, #E1E6EC 0%, #F0F4F7 100%);
+  background: linear-gradient(to bottom, #E1E6EC 0%, #F0F4F7 100%), linear-gradient(to bottom, #E1E6EC 0%, #F0F4F7 100%);
+  background-blend-mode: normal,color-burn; 
+}
+
 // タイトル
 .index-title-post {
   margin-top: 50px;
@@ -122,9 +152,13 @@
   margin-top: 50px; 
   font-family: 'Sawarabi Gothic', sans-serif;
 }
-
+// 必須
 .must {
   background-color: rgba(255, 69, 0, 0.5);
   border-radius: 2px;
 }
+
+// .deepFocus {
+//   background-image: -webkit-linear-gradient(top, #EBEBEB 0%, #DCDDDF 48%, #C4C5C7 99%);
+//   background-image: linear-gradient(-180deg, #EBEBEB 0%, #DCDDDF 48%, #C4C5C7 99%); }
 

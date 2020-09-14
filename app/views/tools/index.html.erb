@@ -5,54 +5,56 @@
 </script>   
 
 <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
-  <div class="container fluid-box-index">
-    <% flash.each do |message_type, msg| %>
-      <div class="alert alert-<%= message_type %>"><%= msg %></div>
-    <% end %>
-  </div>
-  <section class="user-index">
-    <div class="container">
-      <h1 class="index-title-post">作業用道具一覧</h1>
+  <div class="tool-index-body">
+    <div class="container fluid-box-index">
+      <% flash.each do |message_type, msg| %>
+        <div class="alert alert-<%= message_type %>"><%= msg %></div>
+      <% end %>
     </div>
-  </section>
-    <div class="new-btn">
-      <%= link_to "新規登録", new_tool_path, class: "btn-gradient-3d-green" %>
-    </div>
-    <div class="row">
-      <div class="col-md-offset-8 col-md-3 form-center-search">
+    <section class="user-index">
+      <div class="container">
+        <h1 class="index-title-post">作業用道具一覧</h1>
       </div>
-    </div>
-  <section class="section">
-    <div class="container">
-      <hr class="tool-bar">
-        <% @tools.each do |t| %>
-          <div class="row">
-            <div class="col-md-2">
-              <div class="grid-item-image"><%= attachment_image_tag t, :image, fallback: "no_image.png", class: "index-photo"%></div>
+    </section>
+      <div class="new-btn">
+        <%= link_to "新規登録", new_tool_path, class: "btn-gradient-3d-green" %>
+      </div>
+      <div class="row">
+        <div class="col-md-offset-8 col-md-3 form-center-search">
+        </div>
+      </div>
+    <section class="section">
+      <div class="container">
+        <hr class="tool-bar">
+          <% @tools.each do |t| %>
+            <div class="row">
+              <div class="col-md-2">
+                <div class="grid-item-image"><%= attachment_image_tag t, :image, fallback: "no_image.png", class: "index-photo"%></div>
+              </div>
+              <div class="col-md-2 tool--item">
+                <%= t.tool_name %>
+              </div>
+              <div class="col-md-1 tool--item">
+                <%= t.price.to_s(:delimited) %> 円(個)
+              </div>
+              <div class="col-md-1 tool--item">
+                <%= t.tool_count %> 個
+              </div>
+              <div class="col-md-3 tool--item">
+                <%= t.tool_explanation %>
+              </div>
+              <div class="col-md-1 tool--item">
+                <%= l(t.updated_at, format: :half) %><br>購入
+              </div>
+              <div class="col-md-1 tool--item">
+                <%= link_to "編集", edit_tool_path(t), class: "btn-gradient-3d-simple" %>
+              </div>
+              <div class="col-md-1 btn--del">
+                <%= link_to "削除", tool_path(t), method: :delete, data: {confirm: "削除しますか？"}, class: "btn-gradient-3d-orange" %>
+              </div>
             </div>
-            <div class="col-md-2 tool--item">
-              <%= t.tool_name %>
-            </div>
-            <div class="col-md-1 tool--item">
-              <%= t.price.to_s(:delimited) %> 円(個)
-            </div>
-            <div class="col-md-1 tool--item">
-              <%= t.tool_count %> 個
-            </div>
-            <div class="col-md-3 tool--item">
-              <%= t.tool_explanation %>
-            </div>
-            <div class="col-md-1 tool--item">
-              <%= l(t.updated_at, format: :half) %><br>購入
-            </div>
-            <div class="col-md-1 tool--item">
-              <%= link_to "編集", edit_tool_path(t), class: "btn-gradient-3d-simple" %>
-            </div>
-            <div class="col-md-1 btn--del">
-              <%= link_to "削除", tool_path(t), method: :delete, data: {confirm: "削除しますか？"}, class: "btn-gradient-3d-orange" %>
-            </div>
-          </div>
-          <hr class="tool-bar">
-        <% end %>
-    </div>
-  </section>    
+            <hr class="tool-bar">
+          <% end %>
+      </div>
+    </section>    
+  </div>

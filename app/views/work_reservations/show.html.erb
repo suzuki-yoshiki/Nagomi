@@ -1,9 +1,18 @@
-<h1>作業予約状況</h1>
+<script>
+  $(function() {
+    setTimeout("$('.alert').fadeOut('slow')", 2500);
+  });
+</script>  
+    <div class="container fluid-box-work">
+        <% flash.each do |message_type, msg| %>
+            <div class="alert alert-<%= message_type %>"><%= msg %></div>
+        <% end %>
+    </div>
+        <h1 class="work-title">作業予約状況</h1>
+    <div class= 'calender'>
+                <%= month_calendar phone_reservations: @phone_reservations do |date| %>
+                    <%= date.day %>
 
-<div class= 'calender'>
-            <%= month_calendar phone_reservations: @phone_reservations do |date| %>
-                <%= date.day %>
 
-
-            <% end %>
-</div>
+                <% end %>
+    </div>
