@@ -11,3 +11,14 @@ ja:
           password_confirmation: パスワード再入力
           created_at: 作成日
           updated_at: 更新日
+    models:
+      tool: 道具
+    attributes: 
+        tool:
+          tool_name: 器具材料名
+          price: 価格
+          tool_count: 個数
+          tool_explanation: 説明
+          image: 画像
+          created_at: 作成日
+          updated_at: 購入日

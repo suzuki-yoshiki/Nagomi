@@ -26,6 +26,7 @@
 // アイテム名の高さ位置調整
 .tool--item {
   margin-top: 50px;
+  padding-left: 0px;
 }
 
 // 新規登録ボタン
@@ -100,6 +101,7 @@
   height: 150px;	/*画像の高さ*/
   border-radius: 5px;
   border: 1px solid #808080;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
 }
 .index-photo {
 	display: block;
@@ -119,5 +121,10 @@
 .new-title {
   margin-top: 50px; 
   font-family: 'Sawarabi Gothic', sans-serif;
+}
+
+.must {
+  background-color: rgba(255, 69, 0, 0.5);
+  border-radius: 2px;
 }
 
