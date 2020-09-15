@@ -11,8 +11,8 @@ class VideosController < ApplicationController
   def create
     @video = Video.new(video_params)
     url = params[:video][:youtube_url]
-    url = url.last(11)
-    @video.youtube_url = url
+    url = url.last(11) #Youtubeのurlの下11文字を取得する
+    @video.body = url
     if @video.save
       flash[:success] = '新規作成に成功しました。'
       redirect_to videos_url
@@ -32,8 +32,8 @@ class VideosController < ApplicationController
     @video = Video.find(params[:id])
     @video.update_attributes(video_params)
     url = params[:video][:youtube_url]
-    url = url.last(11)
-    @video.youtube_url = url
+    url = url.last(11) #Youtubeのurlの下11文字を取得する
+    @video.body = url
     if @video.save
       flash[:success] = "#{@video.title}のデータを更新しました。"
       redirect_to videos_url
