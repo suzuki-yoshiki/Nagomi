@@ -26,7 +26,7 @@ class WorkReservationsController < ApplicationController
        flash[:success] = "予約の新規作成に成功しました。"
       redirect_to root_path
    else
-       flash[:danger] = "不正な時間入力がありました、再入力してください。"
+       flash[:danger] = "不正な入力がありました、再入力してください。"
       redirect_to root_path
    end
 
