@@ -1,2 +1,33 @@
-<h1>Works#index</h1>
-<p>Find me in app/views/works/index.html.erb</p>
+<h1>作業内容一覧</h1>
+
+<div align="center">
+  <%= link_to "新規登録", new_work_path, class: "btn btn-success" %>
+</div>
+
+<table class="table table-bordered">
+          <thead>
+          <tr>
+           <th>写真</th>
+           <th>名前</th>
+           <th>内容</th>
+           <th>単価</th>
+           <th></th>
+         </tr>
+         </thead>
+
+
+       <tbody>
+         <% @works.each do |work| %>
+          <tr>
+           <td><%= image_tag work.profile_image_id.url %></td>
+           <td><%= work.content_name %></td>
+           <td><%= work.content %></td>
+           <td><%= work.content_price %>円</td>
+           <td>
+               <%= link_to "編集", edit_work_path(work), class: "btn btn-warning" %>
+               <%= link_to "削除", "/works/#{work.id}", method: :delete, class: "btn btn-danger", data: { confirm: "作業内容を削除してよろしいですか？" } %>
+           </td>
+         </tr>
+         <% end %>
+       </tbody>
+      </table>
