@@ -53,17 +53,19 @@
             <th class="day-cell">1</th>
           </tr>
         </div>
-        <table border>
-          <tr>
-            <% @hours.each do |hour| %>
-              <tr>
-                <% @phone_reservations.each do |day| %>
-                    <td style="font-size : 25px;"><%= link_to valid(hour,day), time_reservations_info_phone_reservation_path(day,time: hour), remote: true %><%= day.id %><%= hour %></td>
-                <% end %>
-              </tr>
-            <% end %>
-          </tr>
-        </table>
+        <td>
+          <table border>
+            <tr>
+              <% @times.each do |time| %>
+                <tr>
+                  <% @ids.each do |id| %>
+                      <td style="font-size : 25px;"><%= link_to "◎", information_page_phone_reservation_path(id,time:time), remote: true %><%= id %><%= time %></td>
+                  <% end %>
+                </tr>
+              <% end %>
+            </tr>
+          </table>
+        </td>
       </div>
 
       <%# end %>

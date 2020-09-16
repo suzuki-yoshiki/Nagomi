@@ -1,4 +1,6 @@
 class PhoneReservationsController < ApplicationController
+
+  
   def index
   end
 

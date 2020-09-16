@@ -14,4 +14,24 @@ class ApplicationController < ActionController::Base
      root_path(resource) #その他ユーザーは最初のページへ。後ほど社員の場合も作る必要があるのかも？
     end
   end
+
+  def set_two_weeks
+    @first_day = Date.today
+    @last_day = @first_day.since(13.days)
+    @two_weeks = [*@first_day..@last_day]
+    @times = [11,12,13,14,15,16,17]
+
+    @two_weeks.each do |day|
+      unless PhoneReservation.where(worked_on: day).present?
+        @times.each do |time|
+          PhoneReservation.create(worked_on: day, line_time: time)
+        end
+      end
+    end
+
+    @phone_reservations = PhoneReservation.where(worked_on: @first_day..@last_day)
+    id = @phone_reservations.first.id
+    last_id = id + 13
+    @ids = [*id..last_id]
+  end
 end
