@@ -3,12 +3,12 @@
     <thead>
       <tr>
         <% if Date.today == @first_day %>
-          <th style="width: 8%" rowspan="2"><p class="week">前の一週間</p></th>
+          <th style="width: 8%" rowspan="2"><p class="week">前の2週間</p></th>
         <% else %>
-          <th style="width: 8%" rowspan="2"><p class="week"><%= link_to "前の一週間", phone_reservations_path(date: @first_day.ago(14.days)), class: "week-prev" %></p></th>
+          <th style="width: 8%" rowspan="2"><p class="week"><%= link_to "前の2週間", phone_reservations_path(date: @first_day.ago(14.days)), class: "week-prev" %></p></th>
         <% end %>
           <th colspan="14"><%= l(Date.today, format: :long) %></th>
-          <th style="width: 8%" rowspan="2"><p class="week"><%= link_to "次の一週間", phone_reservations_path(date: @first_day.since(14.days)), class: "week-next"%></p></th>
+          <th style="width: 8%" rowspan="2"><p class="week"><%= link_to "次の2週間", phone_reservations_path(date: @first_day.since(14.days)), class: "week-next"%></p></th>
       </tr>
       <% @phone_reservations.each do |day| %> 
         <th class="day-cell">
@@ -24,23 +24,12 @@
       <% end %>
     </thead>
     <tbody>
-      <% @day_time.each do |time| %>  
+      <% @day_time.each do |time| %> 
         <tr>
           <td><%= time %></td>
-          <td><%= link_to "◎", edit_phone_reservation_path(PhoneReservation.find(1), time), remote: true, class: "mark" %></td>
-          <td><%= link_to "◎", edit_phone_reservation_path(PhoneReservation.find(2), time), remote: true, class: "mark" %></td>
-          <td><%= link_to "◎", edit_phone_reservation_path(PhoneReservation.find(3), time), remote: true, class: "mark" %></td>
-          <td><%= link_to "◎", "#", class: "mark" %></td>
-          <td><%= link_to "◎", "#", class: "mark" %></td>
-          <td><%= link_to "◎", "#", class: "mark" %></td>
-          <td><%= link_to "◎", "#", class: "mark" %></td>
-          <td><%= link_to "◎", "#", class: "mark" %></td>
-          <td><%= link_to "◎", "#", class: "mark" %></td>
-          <td><%= link_to "◎", "#", class: "mark" %></td>
-          <td><%= link_to "◎", "#", class: "mark" %></td>
-          <td><%= link_to "◎", "#", class: "mark" %></td>
-          <td><%= link_to "◎", "#", class: "mark" %></td>
-          <td><%= link_to "◎", "#", class: "mark" %></td>
+            <% @phone_reservations.each do |day| %>
+              <td><%= link_to "◎", edit_phone_reservation_path(day.id, time), remote: true, class: "mark" %></td>
+            <% end %>  
           <td><%= time %></td>
         </tr>
       <% end %> 

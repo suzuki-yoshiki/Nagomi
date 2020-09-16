@@ -6,7 +6,7 @@
       </button>
        <h2 class="modal-title"><i class="fab fa-line fa-lg line-green"></i> LINE電話予約</h2>
     </div>
-    <%= form_with model: @phone_reservation do |f| %>  
+    <%= form_with model: @phone_reservation, url: phone_reservation_path(@phone_reservation) do |f| %>  
       <div class="modal-body">
         <div class="form-group">
           <div class="days">
@@ -15,7 +15,7 @@
           </div>
           <div class="times">
             <p class="times-time">時間</p>
-            <%#= @time_reservation.line_time %>
+            <%= params[:format] %>
           </div>
         </div>
         <div class="form-group">

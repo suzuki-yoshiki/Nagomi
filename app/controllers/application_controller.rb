@@ -43,4 +43,9 @@ class ApplicationController < ActionController::Base
   def set_day_time
     @day_time = [ "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00" ]
   end
+
+  # def authenticate
+  #   redirect_to new_user_session_url unless user_signed_in?
+  # end
+
 end
