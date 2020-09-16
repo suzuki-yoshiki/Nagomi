@@ -1,7 +1,7 @@
 class PhoneReservationsController < ApplicationController
   before_action :set_two_weeks,only: [:index, :edit]
   before_action :set_day_time,only: [:index, :edit]
-  before_action :authenticate_user!,only: [:edit]
+  # before_action :authenticate_user!,　only: [:edit, :update, :destroy, :new, :create]
 
   def index
     @phone_reservation = PhoneReservation.all
@@ -19,7 +19,7 @@ class PhoneReservationsController < ApplicationController
 
   def edit
     @phone_reservation = PhoneReservation.find(params[:id])
-     
+    
   end
 
   def update

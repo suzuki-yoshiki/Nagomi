@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :staffs
   devise_for :users  #resourcesの下にdevise_forがあるとdeviseのルーティングが反映されなかったためresourcesよりも上に移動しました。
-  resources :users
+  resources :users 
   resources :staffs
   resources :phone_reservations
   resources :work_reservations
