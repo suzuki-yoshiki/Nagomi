@@ -1,3 +1,99 @@
-// Place all the styles related to the phone_reservations controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.calendar {
+  padding-top: 100px;
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+table tr th {
+  text-align: center;
+  vertical-align: middle;
+  width: 50px;
+}
+
+.mark {
+  background-color: rgba(0,0,0,0);
+  font-size: 1.3em;
+  color: red;
+}
+.mark:hover {
+  color: red;
+  text-decoration: none;
+  background-color: #ffe4e1;
+  transition: background-color .4s;
+}
+
+tr td:first-child {
+  background-color: rgba(0,0,0,0.05);
+}
+
+tr td:last-child {
+  background-color: rgba(0,0,0,0.05);
+}
+
+tr td:not(:first-child):not(:last-child):hover{
+  background-color: #ffe4e1;
+  transition: background-color .4s;
+}
+
+.week-prev:hover {
+  text-decoration: none;
+}
+
+.week-next:hover {
+  text-decoration: none;
+}
+
+.modal-title {
+  font-size: 30px;
+}
+
+.modal-footer {
+  text-align: center;
+}
+
+.must {
+  background-color: rgba(255,0,0,0.4);
+  padding: 1px;
+  border-radius: 10%;
+}
+
+.days {
+  font-weight: normal;
+  text-align: center;
+  height: 30px;
+}
+.days-day {
+  margin: 0;
+  font-weight: bold;
+}
+.times {
+  font-weight: normal;
+  text-align: center;
+  margin-top: 20px;
+}
+.times-time {
+  margin: 0;
+  font-weight: bold;
+}
+
+.reservation-btn {
+  background-color: none;
+  background-color: #5D99FF;
+  border-radius: 3px;
+  border: 1px solid #4689FF;
+  height: 32px;
+}
+.reservation-btn:hover {
+  background-color: #75A9FF;
+  border: 1px solid #4689FF;
+}
+.reservation-btn:focus {
+  outline: 0;
+}
+
+.btn-secondary {
+  border: 1px solid #C0C0C0
+}
