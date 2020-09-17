@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
   def set_two_weeks
     @first_day = Date.today
-    @last_day = @first_day.since(13.days)
+    @last_day = @first_day.since(14.days)
     @two_weeks = [*@first_day..@last_day]
     @times = [11,12,13,14,15,16,17]
 

@@ -1,79 +1,50 @@
 <div class="calendar">
   <table class="table table-bordered">
-    <thead>
-      <tr>
-          <th rowspan="2"><%= link_to "前の一週間", "#", class: "week-prev" %></th>
-          <th colspan="14"><%= l(Date.current, format: :long) %></th>
-          <th rowspan="2"><%= link_to "次の一週間", "#", class: "week-next"%></th>
-      </tr>
-      <tr>
-        <th>1</th>
-        <th>1</th>
-        <th>1</th>
-        <th>1</th>
-        <th>1</th>
-        <th>1</th>
-        <th>1</th>
-        <th>1</th>
-        <th>1</th>
-        <th>1</th>
-        <th>1</th>
-        <th>1</th>
-        <th>1</th>
-        <th>1</th>
-      </tr>
-      <%# @phone_reservations.each do |day| %>
-      <div class="row">
-        <div> 
-          <tr>
-            <th class="day-cell">1</th>
-          </tr>
-          <tr>
-            <th class="day-cell">1</th>
-          </tr>
-          <tr>
-            <th class="day-cell">1</th>
-          </tr>
-          <tr>
-            <th class="day-cell">1</th>
-          </tr>
-          <tr>
-            <th class="day-cell">1</th>
-          </tr>
-          <tr>
-            <th class="day-cell">1</th>
-          </tr>
-          <tr>
-            <th class="day-cell">1</th>
-          </tr>
-          <tr>
-            <th class="day-cell">1</th>
-          </tr>
-          <tr>
-            <th class="day-cell">1</th>
-          </tr>
-        </div>
-        <td>
-          <table border>
+    <tr>
+        <th rowspan="2"><%= link_to "前の一週間", "#", class: "week-prev" %></th>
+        <th colspan="14"><%= l(Date.current, format: :long) %></th>
+        <th rowspan="2"><%= link_to "次の一週間", "#", class: "week-next"%></th>
+    </tr>
+    <tr>
+      <% @two_weeks.each do |day| %>
+        <th><%= l day %></th>
+      <% end %>
+    </tr>
+    <tr>
+      <td>
+        <tr><td>11:00</td></tr>
+        <tr><td>12:00</td></tr>
+        <tr><td>13:00</td></tr>
+        <tr><td>14:00</td></tr>
+        <tr><td>15:00</td></tr>
+        <tr><td>16:00</td></tr>
+        <tr><td>17:00</td></tr>
+      </td>
+      <td>
+        <tr>
+          <% @times.each do |time| %>
             <tr>
-              <% @times.each do |time| %>
-                <tr>
-                  <% @ids.each do |id| %>
-                      <td style="font-size : 25px;"><%= link_to "◎", information_page_phone_reservation_path(id,time:time), remote: true %><%= id %><%= time %></td>
-                  <% end %>
-                </tr>
+              <% @ids.each do |id| %>
+                  <td style="font-size : 25px;"><%= link_to "◎", phone_reservation_path(id,time:time) %></td>
               <% end %>
             </tr>
-          </table>
-        </td>
-      </div>
-
-      <%# end %>
-    </thead>
-    <tbody>
-    </tbody>
+          <% end %>
+        </tr>
+      </td>
+      <td>
+        <tr><td>11:00</td></tr>
+        <tr><td>12:00</td></tr>
+        <tr><td>13:00</td></tr>
+        <tr><td>14:00</td></tr>
+        <tr><td>15:00</td></tr>
+        <tr><td>16:00</td></tr>
+        <tr><td>17:00</td></tr>
+      </td>
+    </tr>
   </table>
 </div>
+
+
 
 <!--モーダルウインドウ表示-->
 <div id="edit" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
