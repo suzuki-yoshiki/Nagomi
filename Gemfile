@@ -10,11 +10,14 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'simple_calendar', '~> 2.0' #カレンダー作成に使用
+gem 'rails-i18n' #日本語化に使用
 gem 'jquery-rails'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+gem 'carrierwave', '~> 2.0'
+gem 'mini_magick'
 # Use sqlite3 as the database for Active Record
 # Use Puma as the app server
 gem 'puma', '~> 3.11'

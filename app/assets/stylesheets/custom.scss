@@ -160,13 +160,23 @@ ul {
 
 //  トップ画面アラート表示
 .fluid-box-inner{  
-  font-size: 20px;
+  font-size: 15px;
   color: #000;
 }
 .alert {
   margin: 0px;
   padding: 10px;
-  background-color: rgba(30,144,255,0.3);
+  background-color: rgba(152, 251, 152, 0.3);
+}
+.alert-success {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: #000
+}
+.alert-danger {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: #FF0000
 }
 
 // センター帯

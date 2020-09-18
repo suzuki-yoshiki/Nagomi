@@ -1,0 +1,46 @@
+<div class="modal-dialog modal-lg modal-dialog-center">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h1 class="modal-title">予約状況</h1>
+      <h1><%= @day %></h1>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-3">
+           <% @work_reservations.zip(@users).each do |work_reservation, user| %>
+             <table class="table table-bordered table-condensed">
+               <thead>
+                 <tr>
+                  <th>名前</th>
+                  <th>TEL</th>
+                  <th>住所</th>
+                  <th>作業内容</th>
+                  <th>訪問日</th>
+                  <th></th>
+                 </tr>
+              </thead>
+
+              <tbody>
+                 <tr>
+                  <td><%= user.name %></td>
+                  <td><%= user.phone_number %></td>
+                  <td><%= user.address %></td>
+                  <td><%= work_reservation.reservation_work %></td>
+                  <td><%= work_reservation.worked_on %></td>
+                  <td>
+                      <%= link_to "編集", edit_work_reservation_path(work_reservation), class: "btn btn-warning" %>
+                      <%= link_to "削除", work_reservation, method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
+                  </td>
+                 </tr>
+              </tbody>
+             </table>
+           <% end %>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
