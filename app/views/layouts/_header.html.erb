@@ -7,7 +7,7 @@
         <li><i class="fa fa-home fa-lg" aria-hidden="true"></i> <%= link_to "トップ", root_path %>  </li>
         <% if signed_in? %> <%# ログインしているかどうか %>
           <% if current_user.admin? %> <%# 現ユーザーがadminかどうか %>
-            <li><i class="fab fa-line fa-lg line-green"></i> <%= link_to "電話予約状況", "#" %></li>
+            <li><i class="fab fa-line fa-lg line-green"></i> <%= link_to "電話予約状況", phone_reservations_path %></li>
             <li><i class="fas fa-user-circle fa-lg"></i></i> <%= link_to "お客様情報", users_path %></li>
             <li class="dropdown">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="far fa-list-alt fa-lg"></i> 各種一覧 <b class="caret"></b>
@@ -22,7 +22,7 @@
            <% else %> <%# 現ユーザーがadmin以外の場合  *後ほど社員の場合などさらにelsifで分ける必要があるかも？%>
             <li><i class="fas fa-broom fa-lg"></i> <%= link_to "サービス一覧", '#'%> </li>
             <li><i class="fab fa-youtube fa-lg youtube-red"></i> <%= link_to "作業風景", '#'%>    </li>
-            <li><i class="fab fa-line fa-lg line-green"></i> <%= link_to "電話予約状況", '#' %>    </li>
+            <li><i class="fab fa-line fa-lg line-green"></i> <%= link_to "電話予約状況", phone_reservations_path %>    </li>
             <li><i class="fas fa-car-side fa-lg"></i><%= link_to "サービス一エリア", '#'%>    </li>
            <% end %> <%# 現ユーザーがadminかどうか終了 %>
          <li class="dropdown">
@@ -38,7 +38,7 @@
         <% else %> <%# ログインしていない場合 %>
            <li><i class="fas fa-broom fa-lg"></i> <%= link_to "サービス一覧", '#'%> </li>
            <li><i class="fab fa-youtube fa-lg youtube-red"></i> <%= link_to "作業風景", '#'%>    </li>
-           <li><i class="fab fa-line fa-lg line-green"></i> <%= link_to "電話予約状況", '#' %>    </li>
+           <li><i class="fab fa-line fa-lg line-green"></i> <%= link_to "電話予約状況", phone_reservations_path %>    </li>
            <li><i class="fas fa-car-side fa-lg"></i><%= link_to "サービス一エリア", '#'%>    </li>
          <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">

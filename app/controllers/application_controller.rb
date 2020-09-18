@@ -14,4 +14,38 @@ class ApplicationController < ActionController::Base
      phone_reservation_path(resource) #一般ユーザーは電話予約ののページへ。後ほど社員の場合も作る。
     end
   end
+
+  $days_of_the_week = %w{日 月 火 水 木 金 土}
+
+  def set_two_weeks
+    if params[:date].nil?
+      require 'date'
+      @first_day = Date.today
+      @last_day = (@first_day+13.day)
+    else
+      @first_day = params[:date].to_date
+      @last_day = (@first_day+13.day)
+    end
+    @two_weeks = [*@first_day..@last_day] # 対象の週の日数を代入
+    @phone_reservations = PhoneReservation.where(worked_on: @first_day..@last_day)
+    unless @two_weeks.count == @phone_reservations.count
+      ActiveRecord::Base.transaction do
+        @two_weeks.each { |day| PhoneReservation.create!(worked_on: day) }  
+      end
+       @phone_reservations = PhoneReservation.where(worked_on: @first_day..@last_day)  
+    end
+    
+    rescue ActiveRecord::RecordInvalid
+      flash[:danger] = "ページ情報の取得に失敗しました、再アクセスしてください。"
+      redirect_to root_url
+  end
+
+  def set_day_time
+    @day_time = [ "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00" ]
+  end
+
+  # def authenticate
+  #   redirect_to new_user_session_url unless user_signed_in?
+  # end
+
 end
