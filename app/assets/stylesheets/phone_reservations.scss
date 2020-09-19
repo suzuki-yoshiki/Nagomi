@@ -1,3 +1,7 @@
+// Place all the styles related to the phone_reservations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
 .calendar {
   padding-top: 100px;
 }
@@ -36,6 +40,11 @@ tr td:last-child {
 tr td:not(:first-child):not(:last-child):hover{
   background-color: #ffe4e1;
   transition: background-color .4s;
+}
+
+.week {
+  font-size: small;
+  padding-bottom: 15px;
 }
 
 .week-prev:hover {
@@ -96,8 +105,4 @@ tr td:not(:first-child):not(:last-child):hover{
 
 .btn-secondary {
   border: 1px solid #C0C0C0
-}
-
-.left {
-  float: right;
 }

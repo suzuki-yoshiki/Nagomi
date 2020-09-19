@@ -42,7 +42,6 @@ ja:
       middle: "%Y年%m月"
       short: "%-m/%-d"
     month_names:
-    - 
     - 1月
     - 2月
     - 3月
