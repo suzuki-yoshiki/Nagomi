@@ -3,13 +3,13 @@ Rails.application.routes.draw do
   root 'static_pages#top'
 
   devise_for :staffs
-  devise_for :users  #resourcesの下にdevise_forがあるとdeviseのルーティングが反映されなかったためresourcesよりも上に移動しました。
+  devise_for :users  #resourcesの下にdevise_forがあるとdeviseのルーティングが反映されなかったためresourcesよりも上に移動しました。=======
   resources :users do
     member do
       get 'edit_reservation_status'  #予約状況ページの件数を押すとモーダルに行く
       patch 'update_reservation_status'  #予約の編集
-
       get 'new_work_reservation'  #予約状況新規作成ページ行き
+      get 'show_account'
     end
   end
   resources :staffs

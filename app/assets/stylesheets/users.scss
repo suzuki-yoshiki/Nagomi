@@ -73,3 +73,37 @@
   -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
   box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
 }
+
+// マイアカウント
+.show-account-title {
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+.table > tbody > tr > th.col-md-4 {
+  vertical-align: middle;
+  background-color: #F5F5F5;
+}
+.table > tbody > tr > td.show-account {
+  background-color: #fff;
+}
+.table > tbody > tr > td.show-account {
+  vertical-align: middle;
+}
+.show-account-body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+  background-size: cover;
+  background-color: #E1E6EC;
+  background-image: -webkit-linear-gradient(top, #E1E6EC 2%, #F0F4F7 96%), -webkit-radial-gradient(at 50% 100%, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.5) 200%);
+  background-image: linear-gradient(-180deg, #E1E6EC 2%, #F0F4F7 96%), radial-gradient(at 50% 100%, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.5) 200%);
+  background-blend-mode: normal, color-burn; 
+}
+.account-btn {
+  text-align: center;
+}
+
+
