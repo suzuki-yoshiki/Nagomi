@@ -29,7 +29,10 @@
        <tbody>
          <% @works.each do |work| %>
           <tr>
-           <td><% if work.profile_image_id.url %>     <%= image_tag work.profile_image_id.url %>   <% end %></td>
+           <td><% if work.profile_image_id.url %>
+                <%= image_tag work.profile_image_id.url %>
+               <% end %>
+           </td>
            <td><%= work.content_name %></td>
            <td><%= work.content %></td>
            <td><%= work.content_price %>円</td>
