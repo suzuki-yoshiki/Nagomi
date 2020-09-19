@@ -8,8 +8,8 @@ Rails.application.routes.draw do
     member do
       get 'edit_reservation_status'  #予約状況ページの件数を押すとモーダルに行く
       patch 'update_reservation_status'  #予約の編集
-
       get 'new_work_reservation'  #予約状況新規作成ページ行き
+      get 'show_account'
     end
   end
   resources :staffs
