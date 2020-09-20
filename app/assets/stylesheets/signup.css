@@ -1,7 +1,7 @@
 
 .box {
   width: 350px;
-  height: 450px;
+  height: 500px;
   margin: 60px auto 0;
   border-radius: 4px;
   border: 1px #ddd solid;
@@ -9,6 +9,10 @@
 
 .box-inner {
   padding: 20px 26px;
+}
+
+.box-inner_staff {
+  padding: 50px 26px;
 }
 
 h1 {
