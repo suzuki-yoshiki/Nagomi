@@ -23,11 +23,10 @@
       <div class="box-login">
         <%= f.submit "ログイン" %>
         <div class="legal-text">
-          続行することで、Nagomiの
-          <%= link_to "利用規約", "#" %>
-          および
-          <%= link_to "プライバシー規約", "#" %>
-          に同意するものとみなされます。
+          社員スタッフはこちらからログイン
+          <div class="box-newusr">
+          　<%= link_to "社員スタッフ　ログイン", new_staff_session_path %>
+          </div>
         </div>
         <% if devise_mapping.rememberable? %>
           <div class="remember">
