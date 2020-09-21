@@ -1,12 +1,30 @@
-<h2>Sign up</h2>
+<h2>アカウント登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
 
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control" %>
+
+  <%= f.label :kana, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :kana, class: "form-control" %>
+
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :性別 %> <br />
+    <%= f.radio_button :sex, "男" %>男 <%= f.radio_button :sex, "女" %>女
   </div>
+
+  <%= f.label :email, class: "label-#{yield(:class_text)}" %>
+  <%= f.email_field :email, class: "form-control" %>
+
+  <%= f.label :phone_number, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :phone_number, class: "form-control" %>
+
+  <%= f.label :line_id, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :line_id, class: "form-control" %>
+
+  <%= f.label :address, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :address, class: "form-control" %>
 
   <div class="field">
     <%= f.label :password %>
@@ -22,7 +40,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "作成" %>
   </div>
 <% end %>
 

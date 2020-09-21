@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
       if current_user.admin?
        work_reservation_path(resource) #adminの場合管理者ページへ
       else
-       phone_reservation_path(resource) #その他ユーザーは最初のページへ。後ほど社員の場合も作る必要があるのかも？
+       phone_reservations_path(resource) #その他ユーザーは最初のページへ。後ほど社員の場合も作る必要があるのかも？
       end
     end
   end
