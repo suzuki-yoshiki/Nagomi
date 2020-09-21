@@ -1,0 +1,60 @@
+<div class="modal-dialog modal-md modal-dialog-center">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+       <h2 class="modal-title"><i class="fab fa-line fa-lg line-green"></i> LINE電話予約</h2>
+    </div>
+    <%= form_with model: @phone_reservation, url: phone_reservation_path(@phone_reservation) do |f| %>  
+      <div class="modal-body">
+        <div class="form-group">
+          <div class="days">
+            <p class="days-day">日付</p>
+            <%= l(@phone_reservation.worked_on, format: :long) %>
+          </div>
+          <div class="times">
+            <p class="times-time">時間</p>
+            <%= params[:format] %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :title, "名前" %>
+          <span class="must">必須</span>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :title, "カナ" %>
+          <span class="must">必須</span>
+          <%= f.text_field :kana, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :title, "性別" %>
+          <%= f.radio_button :sex, "男" %>男 <%= f.radio_button :sex, "女" %>女
+        </div>
+        <div class="form-group">
+          <%= f.label :title, "LINE ID" %>
+          <span class="must">必須</span>
+          <%= f.text_field :line_id, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :title, "TEL." %>
+          <span class="must">必須</span>
+          <%= f.text_field :phone_number, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :title, "メールアドレス" %>
+          <%= f.email_field :address, class: "form-control" %>
+        </div>
+        <div class="modal-footer">  
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+          <%= button_tag :type => "submit", class: "reservation-btn" do %>
+            <i class="far fa-calendar-alt">予約する</i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+

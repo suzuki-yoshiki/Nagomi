@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  worked_on: 2020-08-23
+  start_date: 2020-08-23 08:49:02
+  end_date: 2020-08-23 08:49:02
+  reservation_work: MyText
+  reservation_mark: MyString
+  client_name_flag: MyString
+  user_id: 1
+  staff_id: 1
+  work_id: 1
+
+two:
+  worked_on: 2020-08-23
+  start_date: 2020-08-23 08:49:02
+  end_date: 2020-08-23 08:49:02
+  reservation_work: MyText
+  reservation_mark: MyString
+  client_name_flag: MyString
+  user_id: 1
+  staff_id: 1
+  work_id: 1
