@@ -40,6 +40,7 @@
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
               <li><%= link_to "アカウント", show_account_user_path(current_user) %></li>
             </ul>
+             <% end %> 
           </li>
         <% else %> <%# ログインしていない場合 %>
            <li><i class="fas fa-broom fa-lg"></i> <%= link_to "サービス一覧", '#'%> </li>
