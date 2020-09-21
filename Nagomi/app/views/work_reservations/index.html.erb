@@ -1,0 +1,26 @@
+<h1>WorkReservations#index</h1>
+<h1>新規予約作成</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+<div>
+  <table class="table table-bordered" >
+  <thead>
+    <tr>
+      <th>名前</th><br/>
+      <th></th><br/>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td class="text-center"><%= link_to "予約作成", new_work_reservation_user_path(user.id), class: "btn btn-xs btn-info" %></td>
+      </tr>
+    <% end %>
+</tbody>
+</table>
+</div>
+  </div>
+</div>
