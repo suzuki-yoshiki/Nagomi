@@ -36,11 +36,12 @@
               <li class="divider"></li>
              <% if current_staff.present? %> <%# deviseで別々のモデルを使用してるため2種類のdestroy_pathを用意 %>
               <li><%= link_to "ログアウト", destroy_staff_session_path, method: :delete %></li>
+              <li><%= link_to "アカウント", show_account_staff_path(current_staff) %></li>
              <% else %>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
               <li><%= link_to "アカウント", show_account_user_path(current_user) %></li>
             </ul>
-             <% end %> 
+             <% end %>
           </li>
         <% else %> <%# ログインしていない場合 %>
            <li><i class="fas fa-broom fa-lg"></i> <%= link_to "サービス一覧", '#'%> </li>
