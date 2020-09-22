@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_054451) do
     t.string "line_time_15"
     t.string "line_time_16"
     t.string "line_time_17"
-    t.boolean "line_booked"
+    t.boolean "line_booked", default: false
     t.text "time_work"
     t.string "time_line_flag"
     t.datetime "created_at", null: false

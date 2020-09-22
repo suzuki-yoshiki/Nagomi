@@ -1,6 +1,5 @@
 class PhoneReservationsController < ApplicationController
   before_action :set_two_weeks,only: [:index, :edit]
-  before_action :set_day_time,only: [:index, :edit]
   # before_action :authenticate_user!,　only: [:edit, :update, :destroy, :new, :create]
 
   def index
@@ -21,8 +20,8 @@ class PhoneReservationsController < ApplicationController
   end
 
   def edit
-    @phone_reservation = PhoneReservation.find(params[:id])
-    
+    day = PhoneReservation.find(params[:id]).worked_on
+    @phone_reservation = PhoneReservation.find_by(worked_on: day ,line_time: params[:time])
   end
 
   def update
@@ -31,6 +30,7 @@ class PhoneReservationsController < ApplicationController
       flash[:success] = "LINE電話予約が完了しました。"
       redirect_to phone_reservations_url
     else
+      debugger
       render :edit      
     end
   end
@@ -41,7 +41,7 @@ class PhoneReservationsController < ApplicationController
   private
 
   def phone_reservation_params
-    params.require(:phone_reservation).permit(:name, :kana, :sex, :email, :phone_number, :password, :password_confirmation)
+    params.require(:phone_reservation).permit(:line_booked)
   end
   
 

@@ -16,7 +16,7 @@ class CreatePhoneReservations < ActiveRecord::Migration[5.2]
       t.string :line_time_15
       t.string :line_time_16
       t.string :line_time_17
-      t.boolean :line_booked
+      t.boolean :line_booked, default: false
       t.text :time_work
       t.string :time_line_flag
       t.text :time_work
