@@ -1,0 +1,22 @@
+<h1>作業内容作成</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @work, url: works_path, local: true, method: :post) do |f| %>
+
+      <%= f.label :写真, class: "label-#{yield(:class_text)}" %>
+      <%= f.file_field :profile_image_id %>
+
+      <%= f.label :名前, class: "label-#{yield(:class_text)}" %>
+      <%= f.text_field :content_name, class: "form-control" %>
+
+      <%= f.label :内容, class: "label-#{yield(:class_text)}" %>
+      <%= f.text_area :content, class: "form-control" %>
+
+      <%= f.label :単価, class: "label-#{yield(:class_text)}" %>
+      <%= f.number_field :content_price, class: "form-control" %>
+
+      <%= f.submit "作成する", class: "btn btn-primary" %>
+   <% end %>
+  </div>
+</div>

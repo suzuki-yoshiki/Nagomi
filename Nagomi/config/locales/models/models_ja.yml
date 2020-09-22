@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      work: 作業内容
+      tool: 道具
+    attributes:
+        user:
+          id: ID
+          name: 名前
+          email: メールアドレス
+          password: パスワード
+          password_confirmation: パスワード再入力
+          created_at: 作成日
+          updated_at: 更新日
+        tool:
+          tool_name: 器具材料名
+          price: 価格
+          tool_count: 個数
+          tool_explanation: 説明
+          image: 画像
+          created_at: 作成日
+          updated_at: 購入日
+        work:
+          content_name: 名前
+          content: 内容
+          profile_image_id: 写真
+          content_price: 単価
+          created_at: 作成日
+          updated_at: 購入日
+
+
