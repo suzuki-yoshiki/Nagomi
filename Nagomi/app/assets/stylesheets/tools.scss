@@ -1,0 +1,161 @@
+// Place all the styles related to the tools controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// アラート表示位置
+.fluid-box-index {
+  position: absolute;
+  top: 65px;
+  left: 120px;
+}
+
+// 新規登録画面背景
+.tool-new-body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+  background-size: cover;
+  background-image: -webkit-linear-gradient(#DEDFE3 2%, #AEB3B9 95%), -webkit-radial-gradient(33% 100%, rgba(255, 255, 255, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background-image: linear-gradient(#DEDFE3 2%, #AEB3B9 95%), radial-gradient(33% 100%, rgba(255, 255, 255, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background-blend-mode: screen;
+}
+
+// 編集画面背景
+.tool-edit-body{
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  position: fixed;
+  background-size: cover;
+  background-color: #DCD9D4;
+  background: -webkit-linear-gradient(top, #E1E6EC 0%, #F0F4F7 100%), -webkit-linear-gradient(top, #E1E6EC 0%, #F0F4F7 100%);
+  background: linear-gradient(to bottom, #E1E6EC 0%, #F0F4F7 100%), linear-gradient(to bottom, #E1E6EC 0%, #F0F4F7 100%);
+  background-blend-mode: normal,color-burn; 
+}
+
+// タイトル
+.index-title-post {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  width: 320px;
+  margin-left: 400px;
+  font-family: 'Sawarabi Gothic', sans-serif;
+  background: linear-gradient(transparent 70%, #ff99ab 70%);
+}
+
+.col-md-1 {
+  text-align: center;
+  vertical-align: middle;
+}
+
+// アイテム名の高さ位置調整
+.tool--item {
+  margin-top: 50px;
+  padding-left: 0px;
+}
+
+// 新規登録ボタン
+.btn-gradient-3d-green {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #fff;
+  background-image: linear-gradient(#32CD32 0%, #ADFF2F 100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #32CD32;
+}
+.btn-gradient-3d-green:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+}
+
+// 編集ボタン
+.btn-gradient-3d-simple {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #ffffff;
+  background-image: linear-gradient(#6795fd 0%, #67ceff 100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #5e7fca;
+}
+.btn-gradient-3d-simple:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+}
+
+// 削除ボタン
+.btn-gradient-3d-orange {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #ffffff;
+  background-image: linear-gradient(#ff8b5f 0%, #FFC107 100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #c58668;
+}
+.btn-gradient-3d-orange:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+}
+.btn--del {
+  text-align: left;
+  padding-left: 0px;
+  margin-top: 50px;
+}
+
+// 水切りライン
+.tool-bar {
+  height: 1px;
+  background-color: #3366FF;
+}
+
+// 画像
+.index-photo {
+  overflow: hidden;	/*拡大時にはみ出た部分を隠す*/
+	width: 150px;	/*画像の幅*/
+  height: 150px;	/*画像の高さ*/
+  border-radius: 5px;
+  border: 1px solid #808080;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+}
+.index-photo {
+	display: block;
+	transition-duration: 0.5s;	/*変化に掛かる時間*/
+}
+.index-photo:hover {
+	transform: scale(1.2);	/*画像の拡大率*/
+	transition-duration: 0.5s;	/*変化に掛かる時間*/
+}
+
+// 新規作成ボタン
+.new-btn {
+  text-align: right;
+}
+
+// 新規登録タイトル
+.new-title {
+  margin-top: 50px; 
+  font-family: 'Sawarabi Gothic', sans-serif;
+}
+// 必須
+.must {
+  background-color: rgba(255, 69, 0, 0.5);
+  border-radius: 2px;
+}
+
+

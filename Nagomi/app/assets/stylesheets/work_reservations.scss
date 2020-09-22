@@ -1,0 +1,14 @@
+// Place all the styles related to the work_reservations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// フラッシュメッセージ表示位置
+.fluid-box-work {
+  position: absolute;
+  top: 65px;
+  left: 120px;
+}
+// タイトル表示位置
+.work-title {
+  margin-top: 50px;
+}

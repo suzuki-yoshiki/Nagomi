@@ -1,14 +1,25 @@
 class StaffsController < ApplicationController
-  
+
   def index
     @staffs = Staff.all
   end
 
   def new
+    @staff = Staff.new
   end
 
   def show
     @staff = Staff.find(params[:id])
+  end
+
+  def create
+    @staff = Staff.new(staff_params)
+    if @staff.save
+      redirect_to staffs_url
+      flash[:success] = "新規登録に成功しました。"
+    else
+      render :new
+    end
   end
 
   def edit
@@ -21,7 +32,7 @@ class StaffsController < ApplicationController
       flash[:success] = "スタッフ情報を更新しました。"
       redirect_to staffs_url
     else
-      render :edit      
+      render :edit
     end
   end
 
@@ -32,12 +43,14 @@ class StaffsController < ApplicationController
     redirect_to staffs_url
   end
 
-  def create
-  end
+  def show_account
+    @staff = Staff.find(params[:id])
+   end
+
 
   private
 
     def staff_params
-      params.require(:staff).permit(:staff_number, :name, :kana, :sex, :email, :phone_number, :password, :password_confirmation)
+      params.require(:staff).permit(:staff_number, :name, :kana, :sex, :email, :phone_number, :address, :line_id, :password, :password_confirmation)
     end
 end

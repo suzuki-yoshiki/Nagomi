@@ -6,7 +6,10 @@
       <ul class="navbar-right">
         <li><i class="fa fa-home fa-lg" aria-hidden="true"></i> <%= link_to "トップ", root_path %>  </li>
         <% if signed_in? %> <%# ログインしているかどうか %>
-          <% if current_user.admin? %> <%# 現ユーザーがadminかどうか %>
+          <% if current_staff.present? %> <%# スタッフとしてログインしているかどうか %>
+            <li><i class="fab fa-line fa-lg line-green"></i> <%= link_to "電話予約状況", phone_reservations_path %></li>
+            <li><i class="fas fa-user-circle fa-lg"></i></i> <%= link_to "お客様情報", users_path %></li>
+          <% elsif current_user.admin? %> <%# 管理者としてログインいるかどうか %>
             <li><i class="fab fa-line fa-lg line-green"></i> <%= link_to "電話予約状況", phone_reservations_path %></li>
             <li><i class="fas fa-user-circle fa-lg"></i></i> <%= link_to "お客様情報", users_path %></li>
             <li class="dropdown">
@@ -19,21 +22,31 @@
                <li><%= link_to "動画", videos_path %></li>
              </ul>
             </li>
+<<<<<<< HEAD
            <% else %> <%# 現ユーザーがadmin以外の場合  *後ほど社員の場合などさらにelsifで分ける必要があるかも？%>
             <li><i class="fas fa-broom fa-lg"></i> <%= link_to "サービス一覧", user_index_works_path %> </li>
+=======
+           <% else %> <%# 一般ユーザとしてログインしているかどうか %>
+            <li><i class="fas fa-broom fa-lg"></i> <%= link_to "サービス一覧", '#'%> </li>
+>>>>>>> develop
             <li><i class="fab fa-youtube fa-lg youtube-red"></i> <%= link_to "作業風景", '#'%>    </li>
             <li><i class="fab fa-line fa-lg line-green"></i> <%= link_to "電話予約状況", phone_reservations_path %>    </li>
             <li><i class="fas fa-car-side fa-lg"></i><%= link_to "サービス一エリア", '#'%>    </li>
-           <% end %> <%# 現ユーザーがadminかどうか終了 %>
+           <% end %> <%# スタッフ or 管理者 or 一般ユーザとしてログインしているかどうかの判断終了 %>
          <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               ログアウト <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
               <li class="divider"></li>
+             <% if current_staff.present? %> <%# deviseで別々のモデルを使用してるため2種類のdestroy_pathを用意 %>
+              <li><%= link_to "ログアウト", destroy_staff_session_path, method: :delete %></li>
+              <li><%= link_to "アカウント", show_account_staff_path(current_staff) %></li>
+             <% else %>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
               <li><%= link_to "アカウント", show_account_user_path(current_user) %></li>
             </ul>
+             <% end %>
           </li>
         <% else %> <%# ログインしていない場合 %>
            <li><i class="fas fa-broom fa-lg"></i> <%= link_to "サービス一覧", user_index_works_path%> </li>
