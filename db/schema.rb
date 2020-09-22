@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_054451) do
     t.string "client_name_flag"
     t.integer "user_id"
     t.integer "staff_id"
-    t.string "line_time"
+    t.integer "line_time"
     t.string "line_time_11"
     t.string "line_time_12"
     t.string "line_time_13"

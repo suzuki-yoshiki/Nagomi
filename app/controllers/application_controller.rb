@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
       @last_day = (@first_day+13.day)
     end
     @two_weeks = [*@first_day..@last_day] # 対象の週の日数を代入
-    @day_time = [ "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00" ] # 時間の配列を作成
+    @day_time = [ 0,1,2,3,4,5,6 ] # 時間の配列を作成
     @two_weeks.each do |day| # 表示するデータが存在すること保証
       unless PhoneReservation.where(worked_on: day).present?
         @day_time.each do |time|
@@ -57,3 +57,4 @@ class ApplicationController < ActionController::Base
     id14 = id13+ 7
     @ids = [id1,id2,id3,id4,id5,id6,id7,id8,id9,id10,id11,id12,id13,id14] # idの配列を作成
   end
+end

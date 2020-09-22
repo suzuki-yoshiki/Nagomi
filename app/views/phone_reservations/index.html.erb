@@ -41,7 +41,7 @@
       <% @day_time.each do |time| %>
         <tr>
           <% @ids.each do |id| %>
-            <td><%= link_to valid(id,time) , edit_phone_reservation_path(id,time:time), remote: true, class: "mark" %></td>
+            <td><%= link_to valid(id + time) , edit_phone_reservation_path(id + time), remote: true, class: "mark" %></td>
           <% end %>
         </tr>
       <% end %>  

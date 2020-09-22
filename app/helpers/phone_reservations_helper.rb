@@ -1,7 +1,6 @@
 module PhoneReservationsHelper
-  def valide?(id, time)
-    day = PhoneReservation.find(id).worked_on
-    phone_reservation = PhoneReservation.find_by(worked_on: day ,line_time: time)
+  def valide?(id)
+    phone_reservation = PhoneReservation.find(id)
     unless  phone_reservation.line_booked
       true
     else
@@ -9,8 +8,8 @@ module PhoneReservationsHelper
     end
   end
 
-  def valid(id, time)
-    {true => "◎", false => "×"}[valide?(id,time)]
+  def valid(id)
+    {true => "◎", false => "×"}[valide?(id)]
   end
 
 end
