@@ -31,13 +31,13 @@ class WorksController < ApplicationController
 
   def update
     @work = Work.find(params[:id])
-
     if @work.update_attributes(update_work_params)
-
      flash[:success] = "編集しました。"
-
+     redirect_to works_path
+    else
+      flash[:danger] = "不正な入力がありました、再入力してください。"
+      redirect_to works_path
     end
-    redirect_to works_path
   end
 
   def destroy
@@ -50,8 +50,8 @@ class WorksController < ApplicationController
 
   private
 
-  def update_work_params
-    params.require(:work).permit(:profile_image_id, :content_name, :content, :content_price)
-  end
+    def update_work_params
+      params.require(:work).permit(:profile_image_id, :content_name, :content, :content_price)
+    end
 
 end
