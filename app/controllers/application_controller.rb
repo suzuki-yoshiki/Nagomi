@@ -4,18 +4,22 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :kana, :sex, :email, :address, :phone_number, :line_id, :password, :password_confirmation]) # 新規登録時(sign_up時)にnameというキーのパラメーターを追加で許可する
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name]) # 新規登録時(sign_up時)にnameというキーのパラメーターを追加で許可する
   end
 
   def after_sign_in_path_for(resource) #deviseでログイン後のリダイレクト先を指定
-    if current_user.admin?
-     work_reservation_path(resource) #adminの場合管理者ページへ
-    else
-     phone_reservation_path(resource) #一般ユーザーは電話予約ののページへ。後ほど社員の場合も作る。
-    end
-  end
+    case resource
+    when Staff
+      work_reservation_path(resource)
+    when User
+     if current_user.admin?
+      work_reservation_path(resource) #adminの場合管理者ページへ
+     else
+      phone_reservation_path(resource) #その他ユーザーは最初のページへ。後ほど社員の場合も作る必要があるのかも？
+     end
+   end
+ end
 
-  $days_of_the_week = %w{日 月 火 水 木 金 土}
 
   def set_two_weeks
     if params[:date].nil? # 前の週、次の週に対応
@@ -53,4 +57,3 @@ class ApplicationController < ActionController::Base
     id14 = id13+ 7
     @ids = [id1,id2,id3,id4,id5,id6,id7,id8,id9,id10,id11,id12,id13,id14] # idの配列を作成
   end
-end

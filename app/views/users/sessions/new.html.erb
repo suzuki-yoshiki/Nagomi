@@ -1,10 +1,7 @@
-
-
-
 <div class="box">
   <div class="box-inner">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <h1>ログイン</h1>
+      <h1>お客様 ログイン</h1>
       <div class="box-email">
         <%= f.label :email, "メールアドレス" %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -25,7 +22,7 @@
         <div class="legal-text">
           社員スタッフはこちらからログイン
           <div class="box-newusr">
-          　<%= link_to "社員スタッフ　ログイン", new_staff_session_path %>
+          　<%= link_to "社員スタッフはこちらからログイン", new_staff_session_path %>
           </div>
         </div>
         <% if devise_mapping.rememberable? %>

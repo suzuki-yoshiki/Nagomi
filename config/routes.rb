@@ -2,8 +2,17 @@ Rails.application.routes.draw do
 
   root 'static_pages#top'
 
-  devise_for :staffs
-  devise_for :users  #resourcesの下にdevise_forがあるとdeviseのルーティングが反映されなかったためresourcesよりも上に移動しました。=======
+  devise_for :staffs, controllers: {
+    sessions:      'staffs/sessions',
+    passwords:     'staffs/passwords',
+    registrations: 'staffs/registrations'
+  }
+  devise_for :users, controllers: {
+    sessions:      'users/sessions',
+    passwords:     'users/passwords',
+    registrations: 'users/registrations'
+  }
+
   resources :users do
     member do
       get 'edit_reservation_status'  #予約状況ページの件数を押すとモーダルに行く
