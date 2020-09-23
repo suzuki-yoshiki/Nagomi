@@ -8,11 +8,10 @@
   <%= f.label :kana, class: "label-#{yield(:class_text)}" %>
   <%= f.text_field :kana, class: "form-control" %>
 
-  <%= f.label :sex, class: "label-#{yield(:class_text)}" %>
-  <%= f.text_field :sex, class: "form-control" %>
-
-  <%= f.label :sex, class: "label-#{yield(:class_text)}" %>
-  <%= f.text_field :sex, class: "form-control" %>
+  <div class="field">
+    <%= f.label :性別 %> <br />
+    <%= f.radio_button :sex, "男" %>男 <%= f.radio_button :sex, "女" %>女
+  </div>
 
   <%= f.label :email, class: "label-#{yield(:class_text)}" %>
   <%= f.email_field :email, class: "form-control" %>
@@ -20,10 +19,16 @@
   <%= f.label :phone_number, class: "label-#{yield(:class_text)}" %>
   <%= f.text_field :phone_number, class: "form-control" %>
 
+  <%= f.label :line_id, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :line_id, class: "form-control" %>
+
+  <%= f.label :address, class: "label-#{yield(:class_text)}" %>
+  <%= f.text_field :address, class: "form-control" %>
+
   <%= f.label :password, class: "label-#{yield(:class_text)}" %>
   <%= f.password_field :password, class: "form-control" %>
 
-  <%= f.label :password_confirmation, "Confirmation", class: "label-#{yield(:class_text)}" %>
+  <%= f.label :再パスワード, class: "label-#{yield(:class_text)}" %>
   <%= f.password_field :password_confirmation, class: "form-control" %>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-#{yield(:class_text)}" %>

@@ -29,9 +29,17 @@
        <tbody>
          <% @works.each do |work| %>
           <tr>
-           <td><% if work.profile_image_id.url %>
+           <td>
+            <% if work.profile_image_id.present? %>
+              <%= image_tag work.profile_image_id.url %>
+            <% end %>
+               <%
+=begin%>
+ <% if work.profile_image_id.url %>
                 <%= image_tag work.profile_image_id.url %>
-               <% end %>
+               <% end %> 
+<%
+=end%>
            </td>
            <td><%= work.content_name %></td>
            <td><%= work.content %></td>

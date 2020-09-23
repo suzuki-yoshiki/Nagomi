@@ -19,7 +19,7 @@
     <% @staffs.each do |staff| %>
       <tr>
         <td><%= staff.staff_number %></td>
-        <td><%= staff.name %></td>
+        <td><%= link_to "#{staff.name}", staff, class: "btn btn-link" %></td>
         <td><%= staff.kana %></td>
         <td><%= staff.sex %></td>
         <td><%= staff.email %></td>
