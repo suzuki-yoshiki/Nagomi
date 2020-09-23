@@ -29,7 +29,11 @@ Rails.application.routes.draw do
   resources :phone_reservations
   resources :work_reservations
   resources :videos
-  resources :works
+  resources :works do
+    collection do
+      get 'user_index'
+    end
+  end
   resources :tools
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

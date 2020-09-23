@@ -22,8 +22,13 @@
                <li><%= link_to "動画", videos_path %></li>
              </ul>
             </li>
+<<<<<<< HEAD
+           <% else %> <%# 現ユーザーがadmin以外の場合  *後ほど社員の場合などさらにelsifで分ける必要があるかも？%>
+            <li><i class="fas fa-broom fa-lg"></i> <%= link_to "サービス一覧", user_index_works_path %> </li>
+=======
            <% else %> <%# 一般ユーザとしてログインしているかどうか %>
             <li><i class="fas fa-broom fa-lg"></i> <%= link_to "サービス一覧", '#'%> </li>
+>>>>>>> develop
             <li><i class="fab fa-youtube fa-lg youtube-red"></i> <%= link_to "作業風景", '#'%>    </li>
             <li><i class="fab fa-line fa-lg line-green"></i> <%= link_to "電話予約状況", phone_reservations_path %>    </li>
             <li><i class="fas fa-car-side fa-lg"></i><%= link_to "サービス一エリア", '#'%>    </li>
@@ -44,7 +49,7 @@
              <% end %>
           </li>
         <% else %> <%# ログインしていない場合 %>
-           <li><i class="fas fa-broom fa-lg"></i> <%= link_to "サービス一覧", '#'%> </li>
+           <li><i class="fas fa-broom fa-lg"></i> <%= link_to "サービス一覧", user_index_works_path%> </li>
            <li><i class="fab fa-youtube fa-lg youtube-red"></i> <%= link_to "作業風景", '#'%>    </li>
            <li><i class="fab fa-line fa-lg line-green"></i> <%= link_to "電話予約状況", phone_reservations_path %>    </li>
            <li><i class="fas fa-car-side fa-lg"></i><%= link_to "サービス一エリア", '#'%>    </li>
