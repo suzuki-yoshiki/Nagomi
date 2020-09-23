@@ -48,6 +48,10 @@ class WorksController < ApplicationController
     redirect_to works_path
   end
 
+  def user_index
+    
+  end
+
   private
 
     def update_work_params
