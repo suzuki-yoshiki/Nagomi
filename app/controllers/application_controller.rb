@@ -16,14 +16,17 @@ class ApplicationController < ActionController::Base
     when Staff
       work_reservation_path(resource)
     when User
-     if current_user.admin?
-      work_reservation_path(resource) #adminの場合管理者ページへ
-     else
-      phone_reservation_path(resource) #その他ユーザーは最初のページへ。後ほど社員の場合も作る必要があるのかも？
-     end
-   end
- end
+      if current_user.admin?
+        work_reservation_path(resource) #adminの場合管理者ページへ
+      else
+        phone_reservation_path(resource) #その他ユーザーは最初のページへ。後ほど社員の場合も作る必要があるのかも？
+      end
+    end
+  end
 
+  def after_sign_out_path_for(resource)
+    root_path
+  end
 
   def set_two_weeks
     if params[:date].nil? # 前の週、次の週に対応
