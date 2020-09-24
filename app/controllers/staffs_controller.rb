@@ -43,6 +43,10 @@ class StaffsController < ApplicationController
     redirect_to staffs_url
   end
 
+  def show_account
+    @staff = Staff.find(params[:id])
+   end
+
 
   private
 

@@ -3,8 +3,12 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  $days_of_the_week = %w{日 月 火 水 木 金 土}
+
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name]) # 新規登録時(sign_up時)にnameというキーのパラメーターを追加で許可する
+    added_attrs = [ :email, :name, :password, :password_confirmation, :kana, :sex, :address, :phone_number, :line_id ]
+    devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
+    devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
 
   def after_sign_in_path_for(resource) #deviseでログイン後のリダイレクト先を指定
@@ -33,12 +37,11 @@ class ApplicationController < ActionController::Base
     @two_weeks = [*@first_day..@last_day] # 対象の週の日数を代入
     @day_time = [ 0,1,2,3,4,5,6 ] # 時間の配列を作成
     @two_weeks.each do |day| # 表示するデータが存在すること保証
-      unless PhoneReservation.where(worked_on: day).present?
-        @day_time.each do |time|
-          PhoneReservation.create(worked_on: day, line_time: time)
-        end
+    unless PhoneReservation.where(worked_on: day).present?
+      @day_time.each do |time|
+        PhoneReservation.create(worked_on: day, line_time: time)
       end
-    end
+    end    
 
     @phone_reservations = PhoneReservation.where(worked_on: @first_day) # 一番最初のデータを取得
     id1 = @phone_reservations.first.id
