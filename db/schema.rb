@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_09_14_054451) do
     t.date "worked_on"
     t.string "reservation_line_flag"
     t.text "reservation_work"
-    t.string "reservation_mark"
+    t.boolean "reservation_mark", default: false
     t.string "client_name_flag"
     t.integer "user_id"
     t.integer "staff_id"

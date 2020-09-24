@@ -56,5 +56,7 @@ class ApplicationController < ActionController::Base
     id13 = id12+ 7
     id14 = id13+ 7
     @ids = [id1,id2,id3,id4,id5,id6,id7,id8,id9,id10,id11,id12,id13,id14] # idの配列を作成
+
+    @count = (@first_day.end_of_month - @first_day).to_i + 1
   end
 end

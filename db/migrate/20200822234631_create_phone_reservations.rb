@@ -4,7 +4,7 @@ class CreatePhoneReservations < ActiveRecord::Migration[5.2]
       t.date :worked_on
       t.string :reservation_line_flag
       t.text :reservation_work
-      t.string :reservation_mark
+      t.boolean :reservation_mark, default: false
       t.string :client_name_flag
       t.integer :user_id
       t.integer :staff_id

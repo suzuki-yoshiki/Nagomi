@@ -1,21 +1,24 @@
 <div class="calendar">
   <table class="table table-bordered">
-    <thead>
-      <tr>
-        <% if Date.today == @first_day %>
-          <th style="width: 8%" rowspan="2"><p class="week">前の2週間</p></th>
-        <% else %>
-          <th style="width: 8%" rowspan="2"><p class="week"><%= link_to "前の1週間", phone_reservations_path(date: @first_day.ago(14.days)), class: "week-prev" %></p></th>
-        <% end %>
-          <th colspan="14"><%= l(Date.today, format: :long) %></th>
-          <th style="width: 8%" rowspan="2"><p class="week"><%= link_to "次の2週間", phone_reservations_path(date: @first_day.since(14.days)), class: "week-next"%></p></th>
-      </tr>
-      <% @two_weeks.each do |day| %> 
-        <th class="day-cell">
-          <%= l day ,format: :short %><br>
-        </th>
+    <tr>
+      <% if Date.today == @first_day %>
+        <th style="width: 8%" rowspan="2"><p class="week">前の2週間</p></th>
+      <% else %>
+        <th style="width: 8%" rowspan="2"><p class="week"><%= link_to "前の1週間", phone_reservations_path(date: @first_day.ago(14.days)), class: "week-prev" %></p></th>
       <% end %>
-    </thead>
+        <% if @count > 13 %>
+          <th colspan="<%= @count %>"><%= l(@first_day, format: :middle2) %></th>
+        <% else %>
+          <th colspan="<%= @count %>"><%= l(@first_day, format: :middle2) %></th>
+          <th colspan="<%= 14 - @count %>"><%= l(@last_day, format: :middle2) %></th>
+        <% end %>
+        <th style="width: 8%" rowspan="2"><p class="week"><%= link_to "次の2週間", phone_reservations_path(date: @first_day.since(14.days)), class: "week-next"%></p></th>
+    </tr>
+    <% @two_weeks.each do |day| %> 
+      <th class="day-cell">
+        <%= l day ,format: :long2 %><br>
+      </th>
+    <% end %>
     <tbody>
       <tr>
         <td>11:00</td>
@@ -41,10 +44,14 @@
       <% @day_time.each do |time| %>
         <tr>
           <% @ids.each do |id| %>
-            <td><%= link_to valid(id + time) , edit_phone_reservation_path(id + time), remote: true, class: "mark" %></td>
+            <% if valide?(id + time) %>
+              <td><%= link_to "◎" , edit_phone_reservation_path(id + time), remote: true, class: "mark" %></td>
+            <% else %>
+              <td>✕</td>
+            <% end %>
           <% end %>
         </tr>
-      <% end %>  
+      <% end %>
       <tr>
         <td>11:00</td>
       </tr>

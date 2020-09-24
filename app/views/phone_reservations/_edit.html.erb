@@ -21,6 +21,7 @@
           <div class="times">
             <p class="times-time">お名前</p>
             <%= current_user.name %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
             <%= params[:format] %>
           </div>
         </div>

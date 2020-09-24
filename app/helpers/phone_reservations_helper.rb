@@ -7,9 +7,4 @@ module PhoneReservationsHelper
       false
     end
   end
-
-  def valid(id)
-    {true => "◎", false => "×"}[valide?(id)]
-  end
-
 end
