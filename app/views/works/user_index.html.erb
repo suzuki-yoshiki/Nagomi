@@ -4,11 +4,11 @@
       <h2 class="work-title-name-room">お部屋の掃除</h2>
     </div>
     <div class="btn-work-user-room">
-      <%= link_to "詳細はこちら", "#", class: "btn-gradient-3d-blue" %>
+      <%= link_to "詳細はこちら", user_show_room_works_path, class: "btn-gradient-3d-blue" %>
     </div>
   　<div class="work-user-container">
       <div class="works">
-        <h2 class="works-name">一部屋　6畳</h2>
+        <h2 class="works-name">一部屋　6畳以下</h2>
           <div class="image">
             <%= image_tag "6_tatami.jpg" %>
               <div class="note">
@@ -23,7 +23,7 @@
           </div>
       </div>
       <div class="works">
-        <h2 class="works-name">一部屋　8畳</h2>
+        <h2 class="works-name">一部屋　8畳以上</h2>
           <div class="image">
             <%= image_tag "8_tatami.jpg" %>
               <div class="note">
@@ -36,7 +36,7 @@
           </div>
       </div>
       <div class="works">
-        <h2 class="works-name">一部屋　まるごと</h2>
+        <h2 class="works-name">お家まるごとお掃除</h2>
           <div class="image">
             <%= image_tag "1_room.jpg", size: "270x200" %>
               <div class="note">

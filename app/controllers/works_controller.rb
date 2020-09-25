@@ -49,7 +49,9 @@ class WorksController < ApplicationController
   end
 
   def user_index
-    
+  end
+
+  def user_show_room
   end
 
   private

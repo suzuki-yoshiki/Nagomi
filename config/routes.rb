@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :works do
     collection do
       get 'user_index'
+      get 'user_show_room'
     end
   end
   resources :tools
