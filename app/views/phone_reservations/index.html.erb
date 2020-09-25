@@ -1,38 +1,78 @@
 <div class="calendar">
   <table class="table table-bordered">
-    <thead>
-      <tr>
-        <% if Date.today == @first_day %>
-          <th style="width: 8%" rowspan="2"><p class="week">前の2週間</p></th>
-        <% else %>
-          <th style="width: 8%" rowspan="2"><p class="week"><%= link_to "前の2週間", phone_reservations_path(date: @first_day.ago(14.days)), class: "week-prev" %></p></th>
-        <% end %>
-          <th colspan="14"><%= l(Date.today, format: :long) %></th>
-          <th style="width: 8%" rowspan="2"><p class="week"><%= link_to "次の2週間", phone_reservations_path(date: @first_day.since(14.days)), class: "week-next"%></p></th>
-      </tr>
-      <% @phone_reservations.each do |day| %> 
-        <th class="day-cell">
-          <%= l(day.worked_on, format: :short) %><br>
-          <% if day.worked_on.wday ==6 %>
-            <font color="#00f">(<%= $days_of_the_week[day.worked_on.wday] %>)</font>
-          <% elsif day.worked_on.wday == 0 %>
-            <font color="#f00">(<%= $days_of_the_week[day.worked_on.wday] %>)</font>
-          <% else %>
-            <font color="#000">(<%= $days_of_the_week[day.worked_on.wday] %>)</font>
-          <% end %>  
-        </th>
+    <tr>
+      <% if Date.today == @first_day %>
+        <th style="width: 8%" rowspan="2"><p class="week">前の2週間</p></th>
+      <% else %>
+        <th style="width: 8%" rowspan="2"><p class="week"><%= link_to "前の1週間", phone_reservations_path(date: @first_day.ago(14.days)), class: "week-prev" %></p></th>
       <% end %>
-    </thead>
+        <% if @count > 13 %>
+          <th colspan="<%= @count %>"><%= l(@first_day, format: :middle2) %></th>
+        <% else %>
+          <th colspan="<%= @count %>"><%= l(@first_day, format: :middle2) %></th>
+          <th colspan="<%= 14 - @count %>"><%= l(@last_day, format: :middle2) %></th>
+        <% end %>
+        <th style="width: 8%" rowspan="2"><p class="week"><%= link_to "次の2週間", phone_reservations_path(date: @first_day.since(14.days)), class: "week-next"%></p></th>
+    </tr>
+    <% @two_weeks.each do |day| %> 
+      <th class="day-cell">
+        <%= l day ,format: :long2 %><br>
+      </th>
+    <% end %>
     <tbody>
-      <% @day_time.each do |time| %> 
+      <tr>
+        <td>11:00</td>
+      </tr>
+      <tr>
+        <td>12:00</td>
+      </tr>
+      <tr>
+        <td>13:00</td>
+      </tr>
+      <tr>
+        <td>14:00</td>
+      </tr>
+      <tr>
+        <td>15:00</td>
+      </tr>
+      <tr>
+        <td>16:00</td>
+      </tr>
+      <tr>
+        <td>17:00</td>
+      </tr>
+      <% @day_time.each do |time| %>
         <tr>
-          <td><%= time %></td>
-            <% @phone_reservations.each do |day| %>
-              <td><%= link_to "◎", edit_phone_reservation_path(day.id, time), remote: true, class: "mark" %></td>
-            <% end %>  
-          <td><%= time %></td>
+          <% @ids.each do |id| %>
+            <% if valide?(id + time) %>
+              <td><%= link_to "◎" , edit_phone_reservation_path(id + time), remote: true, class: "mark" %></td>
+            <% else %>
+              <td>✕</td>
+            <% end %>
+          <% end %>
         </tr>
-      <% end %> 
+      <% end %>
+      <tr>
+        <td>11:00</td>
+      </tr>
+      <tr>
+        <td>12:00</td>
+      </tr>
+      <tr>
+        <td>13:00</td>
+      </tr>
+      <tr>
+        <td>14:00</td>
+      </tr>
+      <tr>
+        <td>15:00</td>
+      </tr>
+      <tr>
+        <td>16:00</td>
+      </tr>
+      <tr>
+        <td>17:00</td>
+      </tr>
     </tbody>
   </table>
 </div>
