@@ -10,24 +10,17 @@ class WorkReservationsController < ApplicationController
   def show
     @phone_reservation_number = 0  #電話予約が確定してないので仮の0
     @work_reservations = WorkReservation.where.not(worked_on: nil)
-    array = []  #予約状況の件数を配列に入れて表示させようとしてますが上手くいかず未完成の状態です。
-    work = WorkReservation.group(:worked_on).count(:worked_on)
-    array << work
-    @array = array
   end
 
   def create
-    @work_reservation = WorkReservation.new(
-      user_id: current_user.id,
-      reservation_work: params[:reservation_work],
-      worked_on: params[:worked_on],
-    )
-   if @work_reservation.save
+    @work_reservation = WorkReservation.new(work_reservation_params)
+
+   if @work_reservation.save!
        flash[:success] = "予約の新規作成に成功しました。"
-      redirect_to work_reservation_path(@current_user)
+      redirect_to work_reservation_path(current_user)
    else
        flash[:danger] = "不正な入力がありました、再入力してください。"
-      redirect_to work_reservation_path(@current_user)
+      redirect_to work_reservation_path(current_user)
    end
 
   end
@@ -57,6 +50,10 @@ class WorkReservationsController < ApplicationController
   end
 
   private
+
+   def work_reservation_params
+     params.require(:work_reservation).permit(:reservation_work, :worked_on, :user_id)
+   end
 
    def update_work_reservation_params
      params.require(:work_reservation).permit(:reservation_work, :worked_on)

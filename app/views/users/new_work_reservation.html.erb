@@ -4,7 +4,9 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_with(model: @work_reservation, url: work_reservations_path, local: true, method: :post) do |f| %>
+    <%= form_with(model: WorkReservation.new, url: work_reservations_path(@work_reservation), local: true, method: :post) do |f| %>
+
+      <%= f.hidden_field :user_id, :value => @user.id %>
 
       <%= f.label :作業内容, class: "label-#{yield(:class_text)}" %>
       <%= f.text_area :reservation_work, class: "form-control" %>

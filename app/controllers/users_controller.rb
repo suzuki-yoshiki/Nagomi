@@ -35,7 +35,6 @@ class UsersController < ApplicationController
   def edit_reservation_status
     @day = Date.parse.strftime(params[:day])
     @work_reservations = WorkReservation.where.not(worked_on: nil).where(worked_on: @day)
-    @users = User.all
   end
 
    def new_work_reservation

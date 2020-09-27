@@ -10,7 +10,7 @@
     <div class="modal-body">
       <div class="row">
         <div class="col-md-8 col-md-offset-3">
-           <% @work_reservations.zip(@users).each do |work_reservation, user| %>
+           <% @work_reservations.each do |work_reservation, user| %>
              <table class="table table-bordered table-condensed">
                <thead>
                  <tr>
@@ -25,12 +25,13 @@
 
               <tbody>
                  <tr>
-                  <td><%= user.name %></td>
-                  <td><%= user.phone_number %></td>
-                  <td><%= user.address %></td>
+                  <td><%= work_reservation.user.name %></td>
+                  <td><%= work_reservation.user.phone_number %></td>
+                  <td><%= work_reservation.user.address %></td>
                   <td><%= work_reservation.reservation_work %></td>
                   <td><%= work_reservation.worked_on %></td>
                   <td>
+                      <%= link_to "メール送信", edit_work_reservation_path(work_reservation), data: { confirm: "メールを送信してもよろしいですか？" }, class: "btn btn-success" %>
                       <%= link_to "編集", edit_work_reservation_path(work_reservation), class: "btn btn-warning" %>
                       <%= link_to "削除", work_reservation, method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
                   </td>
