@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       patch 'update_reservation_status'  #予約の編集
       get 'new_work_reservation'  #予約状況新規作成ページ行き
       get 'show_account'
+      patch 'reservation_confirmed_mail'
     end
   end
   resources :staffs do

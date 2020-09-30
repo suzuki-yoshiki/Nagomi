@@ -35,7 +35,25 @@ class UsersController < ApplicationController
   def edit_reservation_status
     @day = Date.parse.strftime(params[:day])
     @work_reservations = WorkReservation.where.not(worked_on: nil).where(worked_on: @day)
-    @users = User.all
+    @users = User.where(admin: false)
+    @staffs = Staff.all
+  end
+
+  def reservation_confirmed_mail
+    @user = User.find(params[:user])
+
+    respond_to do |format|
+      if @user.work_reservations.update
+        # 保存後にUserMailerを使ってwelcomeメールを送信
+        UserMailer.with(user: @user).welcome_email.deliver_later
+
+        format.html { redirect_to(@user, notice: '#{@user.name}様に予約確定メールを送信しました。') }
+        format.json { render json: @user, status: :created, location: @user }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
    def new_work_reservation
