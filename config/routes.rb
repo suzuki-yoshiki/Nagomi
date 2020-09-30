@@ -32,6 +32,10 @@ Rails.application.routes.draw do
   resources :works do
     collection do
       get 'user_index'
+      get 'user_show_room'
+      get 'user_show_kitchen'
+      get 'user_show_water'
+      get 'user_show_outside'
     end
   end
   resources :tools

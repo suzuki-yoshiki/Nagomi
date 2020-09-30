@@ -44,7 +44,8 @@ class ApplicationController < ActionController::Base
       @day_time.each do |time|
         PhoneReservation.create(worked_on: day, line_time: time)
       end
-    end    
+    end  
+    end  
 
     @phone_reservations = PhoneReservation.where(worked_on: @first_day) # 一番最初のデータを取得
     id1 = @phone_reservations.first.id
