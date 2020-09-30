@@ -4,11 +4,11 @@
       <h2 class="work-title-name-room">お部屋の掃除</h2>
     </div>
     <div class="btn-work-user-room">
-      <%= link_to "詳細はこちら", "#", class: "btn-gradient-3d-blue" %>
+      <%= link_to "詳細はこちら", user_show_room_works_path, class: "btn-gradient-3d-blue" %>
     </div>
-  　<div class="work-user-container">
+    <div class="work-user-container">
       <div class="works">
-        <h2 class="works-name">一部屋　6畳</h2>
+        <h2 class="works-name">一部屋&nbsp;6畳以下</h2>
           <div class="image">
             <%= image_tag "6_tatami.jpg" %>
               <div class="note">
@@ -22,7 +22,7 @@
           </div>
       </div>
       <div class="works">
-        <h2 class="works-name">一部屋　8畳</h2>
+        <h2 class="works-name">一部屋&nbsp;8畳以上</h2>
           <div class="image">
             <%= image_tag "8_tatami.jpg" %>
               <div class="note">
@@ -35,28 +35,29 @@
           </div>
       </div>
       <div class="works">
-        <h2 class="works-name">おうち　まるごと</h2>
-          <div class="image">
-            <%= image_tag "1_room.jpg", size: "270x200" %>
-              <div class="note">
-                <p>写真はイメージです。</p>
-              </div>
+        <div class="coment-option">
+          <span class="box-option">オプション</span>
+          <p>エアコン清掃</p>
+          <div class="image-option">
+            <%= image_tag "aircon.jpg", size: "250x140" %>
           </div>
-          <div class="coment">
-            <span class="box-title">POINT !</span>
-              <p>お部屋の掃除、片付け、整理整頓を行います。</p>
+          <p>窓ガラス清掃</p>
+          <div class="image-option">
+            <%= image_tag "glass.jpg", size: "250x140" %>
           </div>
-      </div>
+        </div>
+      </div> 
     </div>
+    <p><i class="fas fa-hand-point-right fa-lg"></i>&nbsp;自由にオプションをつけることが可能です。オプションのみの予約も可能ですのでお気軽にご相談下さい。</p>
     <div class="work-user-title-kitchen">
       <h2 class="work-title-name-kitchen">キッチンまわりの掃除</h2>
     </div>
     <div class="btn-work-user">
-      <%= link_to "詳細はこちら", "#", class: "btn-gradient-3d-blue" %>
+      <%= link_to "詳細はこちら", user_show_kitchen_works_path, class: "btn-gradient-3d-blue" %>
     </div>
     <div class="work-user-container">
       <div class="works">
-        <h2 class="works-name">シンク</h2>
+        <h2 class="works-name">キッチンクリーニング</h2>
           <div class="image">
             <%= image_tag "sink.jpg" %>
               <div class="note">
@@ -69,7 +70,7 @@
         </div>
       </div>
       <div class="works">
-        <h2 class="works-name">換気扇</h2>
+        <h2 class="works-name">レンジフードクリーニング</h2>
           <div class="image">
             <%= image_tag "vent-fan" %>
               <div class="note">
@@ -82,41 +83,29 @@
           </div>
       </div>
       <div class="works">
-        <h2 class="works-name">レンジまわり</h2>
-          <div class="image">
-            <%= image_tag "range.jpg" %>
-              <div class="note">
-                <p>写真はイメージです。</p>
-              </div>
+        <div class="coment-option">
+          <span class="box-option">オプション</span>
+          <p>冷蔵庫クリーニング</p>
+          <div class="image-option">
+            <%= image_tag "fridge.jpg", size: "250x140" %>
           </div>
-          <div class="coment">
-            <span class="box-title">POINT !</span>
-              <p>キッチンをピカピカに仕上げ、キレイなキッチンで気持ち良くお料理できるようになります。</p>
+          <p>電子レンジクリーニング</p>
+          <div class="image-option">
+            <%= image_tag "oven.jpg", size: "250x140" %>
           </div>
+        </div>
       </div>
     </div>
+    <p><i class="fas fa-hand-point-right fa-lg"></i>&nbsp;自由にオプションをつけることが可能です。オプションのみの予約も可能ですのでお気軽にご相談下さい。</p>
     <div class="work-user-title-water">
       <h2 class="work-title-name-water">水まわりの掃除</h2>
     </div>
     <div class="btn-work-user">
-      <%= link_to "詳細はこちら", "#", class: "btn-gradient-3d-blue" %>
+      <%= link_to "詳細はこちら", user_show_water_works_path, class: "btn-gradient-3d-blue" %>
     </div>
     <div class="work-user-container">
       <div class="works">
-        <h2 class="works-name">トイレ</h2>
-          <div class="image">
-            <%= image_tag "toilet.jpg" %>
-              <div class="note">
-                <p>写真はイメージです。</p>
-              </div>
-          </div>
-          <div class="coment">
-            <span class="box-title">POINT !</span>
-              <p>コメント</p>
-          </div>
-      </div>
-      <div class="works">
-        <h2 class="works-name">風呂場</h2>
+        <h2 class="works-name">浴室クリーニング</h2>
           <div class="image">
             <%= image_tag "bath.jpg" %>
               <div class="note">
@@ -127,66 +116,65 @@
             <span class="box-title">POINT !</span>
               <p>コメント</p>
           </div>
-        </div>
+      </div>
       <div class="works">
-        <h2 class="works-name">洗面所</h2>
-          <div class="image">
-            <%= image_tag "washroom.jpg", size: "260x200"%>
-              <div class="note">
-                <p>写真はイメージです。</p>
-              </div>
+        <div class="coment-option">
+          <span class="box-option">オプション</span>
+          <p>トイレクリーニング</p>
+          <div class="image-option">
+            <%= image_tag "toilet.jpg", size: "250x140" %>
           </div>
-          <div class="coment">
-            <span class="box-title">POINT !</span>
-              <p>コメント</p>
+          <p>洗面所クリーニング</p>
+          <div class="image-option">
+            <%= image_tag "washroom.jpg", size: "250x140" %>
           </div>
+        </div>
+      </div> 
+      <div class="works">
+        <div class="coment-option">
+          <span class="box-option">オプション</span>
+          <p>洗濯機クリーニング</p>
+          <div class="image-option">
+            <%= image_tag "washer.png", size: "250x140" %>
+          </div>
+          <p>棚づくり</p>
+          <div class="image-option">
+            <%= image_tag "shelf.jpg", size: "250x140" %>
+          </div>
+        </div>
       </div>
     </div>
+    <p><i class="fas fa-hand-point-right fa-lg"></i>&nbsp;自由にオプションをつけることが可能です。オプションのみの予約も可能ですのでお気軽にご相談下さい。</p>
     <div class="work-user-title-outside">
-      <h2 class="work-title-name-outside">外まわりの掃除</h2>
+      <h2 class="work-title-name-outside">その他のオプション</h2>
     </div>
     <div class="btn-work-user">
-      <%= link_to "詳細はこちら", "#", class: "btn-gradient-3d-blue" %>
+      <%= link_to "詳細はこちら", user_show_outside_works_path, class: "btn-gradient-3d-blue" %>
     </div>
     <div class="work-user-container">
       <div class="works">
-        <h2 class="works-name">玄関</h2>
-          <div class="image">
-            <%= image_tag "entrance.jpg", size: "260x200" %>
-              <div class="note">
-                <p>写真はイメージです。</p>
-              </div>
+        <div class="coment-option">
+          <span class="box-option">オプション</span>
+          <p>玄関清掃</p>
+          <div class="image-option">
+            <%= image_tag "entrance.jpg", size: "250x140" %>
           </div>
-          <div class="coment">
-            <span class="box-title">POINT !</span>
-              <p>コメント</p>
+          <p>外まわり清掃</p>
+          <div class="image-option">
+            <%= image_tag "garden.jpg", size: "250x140" %>
           </div>
+        </div>
       </div>
       <div class="works">
-        <h2 class="works-name">庭</h2>
-          <div class="image">
-            <%= image_tag "garden.jpg", size: "260x200" %>
-              <div class="note">
-                <p>写真はイメージです。</p>
-              </div>
-          </div>
-          <div class="coment">
-            <span class="box-title">POINT !</span>
-              <p>コメント</p>
-          </div>
+        <div class="coment-option">
+          <span class="box-option">オプション</span>
+        </div>
       </div>
       <div class="works">
-        <h2 class="works-name">倉庫</h2>
-          <div class="image">
-            <%= image_tag "store_room.jpg", size: "260x200" %>
-              <div class="note">
-                <p>写真はイメージです。</p>
-              </div>
-          </div>
-          <div class="coment">
-            <span class="box-title">POINT !</span>
-              <p>コメント</p>
-          </div>
+        <div class="coment-option">
+          <span class="box-option">オプション</span>
+        </div>
       </div>
-    </div>
+    </div> 
+    <p><i class="fas fa-hand-point-right fa-lg"></i>&nbsp;自由にオプションをつけることが可能です。オプションのみの予約も可能ですのでお気軽にご相談下さい。</p>
 </div> 
