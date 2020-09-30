@@ -140,6 +140,15 @@ img {
   width: 260px;
   height: 174px;
 }
+.image-option {
+  margin-left: 20px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  border: 1px solid #A9A9A9;
+  width: 250px;
+  height: 140px;
+}  
+
 // 詳細ボタン、位置、デザイン
 .btn-work-user-room {
   position: absolute; top:162px; left:300px;
@@ -195,6 +204,35 @@ img {
   text-align: right;
   font-size: 11px;
 }
+// option枠
+.coment-option {
+  width: 316px;
+  height: 370px;
+  margin-top: 20px;
+  margin-left: 10px;
+  position: relative;
+  padding: 0.5em 1em;
+  border: solid 2px #95ccff;
+  border-radius: 8px;
+}
+.coment-option .box-option {
+  position: absolute;
+  display: inline-block;
+  top: -13px;
+  left: 10px;
+  padding: 0 9px;
+  line-height: 1;
+  font-size: 19px;
+  height: 20px;
+  border-radius: 3px;
+  background: #fc5185;
+  color: #fff;
+  font-weight: bold;
+}
+.coment-option p {
+  margin: 0; 
+  padding: 0;
+}
 
 
 // ここから詳細ページのCSS
@@ -212,14 +250,14 @@ img {
 .work-user-show-container {
   border: 1px solid #DCDCDC;
   background-color: #F5F5F5;
-  height: 600px;
+  height: 810px;
   padding: 10px;
   margin-top: 20px;
 }
 .work-user-one-room-container {
   border: 1px solid #DCDCDC;
   background-color: #F5F5F5;
-  height: 800px;
+  height: 1020px;
   padding: 10px;
   margin-top: 20px;
 }
@@ -232,6 +270,7 @@ img {
   position: relative;
   display: inline-block;
   padding: 0 55px;
+  color: #696969;
 }
 .cargo:before, .cargo:after {
   content: '';
@@ -257,6 +296,7 @@ img {
   position: relative;
   display: inline-block;
   padding: 0 55px;
+  color: #696969;
 }
 .non-cargo:before, .non-cargo:after {
   content: '';
@@ -291,6 +331,13 @@ img {
   width: 450px;
   height: 300px;
 }
+.cargo_in_out {
+  float: left;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #696969;
+}
+
 // メインの価格ボード
 .charge {
   width: 600px;
@@ -301,7 +348,7 @@ img {
 }
 .charge-one-room {
   width: 600px;
-  height: 550px;
+  height: 720px;
   padding: 0.5em 1em;
   border: solid 2px #95ccff;
   border-radius: 8px;
@@ -310,6 +357,21 @@ img {
   font-size: 18px;
   width: 50px;
   height: 30px;
+  text-align: left;
+  margin-top: 4px;
+  margin-left: 30px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  background-color: #483D8B;
+  text-align: center;
+  border-radius: 5px;
+  color: #fff;
+  float: left;
+}
+.main-price-water {
+  font-size: 15px;
+  width: 45px;
+  height: 25px;
   text-align: left;
   margin-top: 4px;
   margin-left: 30px;
@@ -348,6 +410,31 @@ img {
   border: none;
   border-bottom: solid 15px transparent;
   border-right: solid 20px rgb(149, 158, 155);/*折り返し部分*/
+}
+.ribbon-water {
+  display: inline-block;
+  position: relative;
+  padding: 5px 5px;
+  margin-top: 0px;
+  margin-right: 50px;
+  margin-bottom: 5px;
+  letter-spacing: 0.1em;
+  font-size: 12px;/*フォントサイズ*/
+  color: #FFF;/*フォントカラー*/
+  background: #a6d3c8;/*リボンの色*/
+  float: left;
+}
+.ribbon-water:before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px rgb(149, 158, 155);/*折り返し部分*/
+}
+.work-comment-water {
+  margin-bottom: 20px;
 }
 
 .price-bord-6 {
@@ -433,5 +520,21 @@ img {
 }
 .price-comment {
   color: #333333;
+  text-align: left;
+}
+.notice {
+  position: relative;
+  padding: 0.3em 0.5em;
+  background-image: -webkit-radial-gradient(27% 185%, #F9F6F1 0%, #D7D0C5 100%);
+  background-image: radial-gradient(27% 185%, #F9F6F1 0%, #D7D0C5 100%);
+  color: #495193;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+.list-item {
+  margin-left: 20px;
+  font-size: 12px;
 }
 

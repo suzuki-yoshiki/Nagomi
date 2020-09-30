@@ -54,6 +54,15 @@ class WorksController < ApplicationController
   def user_show_room
   end
 
+  def user_show_kitchen
+  end
+
+  def user_show_water
+  end
+
+  def user_show_outside
+  end
+
   private
 
     def update_work_params
