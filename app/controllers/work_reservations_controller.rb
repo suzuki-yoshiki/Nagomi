@@ -52,7 +52,7 @@ class WorkReservationsController < ApplicationController
   private
 
    def work_reservation_params
-     params.require(:work_reservation).permit(:reservation_work, :worked_on, :user_id)
+     params.require(:work_reservation).permit({main_menu: []}, {option_menu: []}, :reservation_work, :worked_on, :start_times, :user_id)
    end
 
    def update_work_reservation_params
