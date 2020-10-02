@@ -1,0 +1,50 @@
+<% provide(:title, "メールを確認し送信") %>
+<% provide(:class_text, 'staff--edit') %>
+<% provide(:button_text, '更新') %>
+
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @user, url: reservation_confirmed_mail_user_path(@user), local: true, method: :patch) do |f| %>
+      <%= form_with(model: @work_reservation, url: reservation_confirmed_mail_user_path(@work_reservation), local: true, method: :patch) do |f| %>
+        <h1><%= @user.name %>様へメール内容</h1>
+
+        <%= f.label :カナ, class: "label-#{yield(:class_text)}" %>
+        <%= @user.kana %>
+
+        <div class="field">
+          <%= f.label :性別 %> <br/>
+          <%= @user.sex %>
+        </div>
+
+        <div class="field">
+        <%= f.label :Gメール, class: "label-#{yield(:class_text)}" %>
+        <%= @user.email %>
+        </div>
+
+        <div class="field">
+        <%= f.label :電話番号, class: "label-#{yield(:class_text)}" %>
+        <%= @user.phone_number %>
+        </div>
+
+        <div class="field">
+        <%= f.label :LineID, class: "label-#{yield(:class_text)}" %>
+        <%= @user.line_id %>
+        </div>
+
+        <div class="field">
+        <%= f.label :住所, class: "label-#{yield(:class_text)}" %>
+        <%= @user.address %>
+        </div>
+
+        <%= f.label :作業内容, class: "label-#{yield(:class_text)}" %>
+        <%= f.text_area :reservation_work, class: "form-control" %>
+
+        <%= f.label :訪問日, class: "label-#{yield(:class_text)}" %>
+        <%= f.date_field :worked_on, class: "form-control" %>
+
+        <%= f.submit "#{@user.name}へ送信する", class: "btn btn-primary" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

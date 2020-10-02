@@ -38,16 +38,20 @@ class UsersController < ApplicationController
     @users = User.where(admin: false)
     @staffs = Staff.all
   end
-
+  #メール内容確認ページ
+  def reservation_confirmed
+    @user = User.find(params[:id])
+    #joins(:work_reservations).group("user.id").where.not(work_reservations: {reservation_work: nil})
+    @work_reservation = WorkReservation.find(params[:id])
+  end
+  #メール送信する処理
   def reservation_confirmed_mail
-    @user = User.find(params[:user])
-
+    @user = User.find(params[:id])
     respond_to do |format|
-      if @user.work_reservations.update
+      if @user.work_reservations.update(@work_reservation)
         # 保存後にUserMailerを使ってwelcomeメールを送信
         UserMailer.with(user: @user).welcome_email.deliver_later
-
-        format.html { redirect_to(@user, notice: '#{@user.name}様に予約確定メールを送信しました。') }
+        format.html { redirect_to work_reservation_url, notice: '#{@user.name}様に予約確定メールを送信しました。' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: 'new' }
@@ -56,18 +60,18 @@ class UsersController < ApplicationController
     end
   end
 
-   def new_work_reservation
+  def new_work_reservation
     @user = User.find(params[:id])
-   end
+  end
 
-   def show_account
+  def show_account
     @user = User.find(params[:id])
-   end
+  end
 
-  private
+    private
 
-    def user_params
-      params.require(:user).permit(:name, :kana, :sex, :email, :phone_number, :password, :password_confirmation)
-    end
+      def user_params
+        params.require(:user).permit(:name, :kana, :sex, :email, :phone_number, :password, :password_confirmation)
+      end
 
 end

@@ -32,7 +32,7 @@
                   <td><%= work_reservation.worked_on %></td>
                   <td>
                       <%= link_to "編集", edit_work_reservation_path(work_reservation), class: "btn btn-warning" %>
-                      <%= link_to "メールを送信", reservation_confirmed_mail_user_path(user.work_reservations), method: :patch, class: "btn btn-info" %>
+                      <%= link_to "送るメールの内容を確認する", reservation_confirmed_user_path, class: "btn btn-info" %>
                       <%= link_to "削除", work_reservation, method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
                   </td>
                  </tr>
