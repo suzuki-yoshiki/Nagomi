@@ -43,7 +43,7 @@
         <%= f.label :訪問日, class: "label-#{yield(:class_text)}" %>
         <%= f.date_field :worked_on, class: "form-control" %>
 
-        <%= f.submit "#{@user.name}へ送信する", class: "btn btn-primary" %>
+        <%= f.submit "#{@user.name}へ送信する", data: { confirm: "メールを送信してもよろしいですか？" },　class: "btn btn-primary" %>
       <% end %>
     <% end %>
   </div>
