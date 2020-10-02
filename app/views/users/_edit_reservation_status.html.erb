@@ -10,31 +10,27 @@
     <div class="modal-body">
       <div class="row">
         <div class="col-md-8 col-md-offset-3">
-           <% @work_reservations.zip(@users).each do |work_reservation, user| %>
+           <% @work_reservations.each do |work_reservation, user| %>
              <table class="table table-bordered table-condensed">
                <thead>
-                 <tr>
-                  <th>名前</th>
-                  <th>TEL</th>
-                  <th>住所</th>
-                  <th>作業内容</th>
-                  <th>訪問日</th>
-                  <th></th>
-                 </tr>
+
               </thead>
 
               <tbody>
-                 <tr>
-                  <td><%= user.name %></td>
-                  <td><%= user.phone_number %></td>
-                  <td><%= user.address %></td>
-                  <td><%= work_reservation.reservation_work %></td>
-                  <td><%= work_reservation.worked_on %></td>
-                  <td>
+                 <tr><th colspan="2">名前</th><td colspan="2"><%= work_reservation.user.name %></td></tr>
+                 <tr><th colspan="2">TEL</th><td colspan="2"><%= work_reservation.user.phone_number %></td></tr>
+                 <tr><th colspan="2">住所</th><td colspan="2"><%= work_reservation.user.address %></td></tr>
+                 <tr><th colspan="2">メイン予約項目</th><td colspan="2"><%= work_reservation.main_menu.delete(",[]") %></td></tr>
+                 <tr><th colspan="2">オプション予約項目</th><td colspan="2"><%= work_reservation.option_menu.delete(",[]") %></td></tr>
+                 <tr><th colspan="2">作業内容</th><td colspan="2"><%= work_reservation.reservation_work %></td></tr>
+                 <tr><th colspan="2">訪問日</th><td colspan="2"><%= work_reservation.worked_on.to_s(:date) %></td></tr>
+                 <tr><th colspan="2">作業開始時間</th><td colspan="2"><%= work_reservation.start_times.to_s(:hour) %>時<%= work_reservation.start_times.to_s(:min) %>分</td></tr>
+                 <tr><th colspan="2"></th><td colspan="2">
+                      <%= link_to "メール送信", edit_work_reservation_path(work_reservation), data: { confirm: "メールを送信してもよろしいですか？" }, class: "btn btn-success" %>
                       <%= link_to "編集", edit_work_reservation_path(work_reservation), class: "btn btn-warning" %>
                       <%= link_to "削除", work_reservation, method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-danger" %>
-                  </td>
-                 </tr>
+                  </td></tr>
+
               </tbody>
              </table>
            <% end %>

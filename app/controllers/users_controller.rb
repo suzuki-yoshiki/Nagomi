@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  protect_from_forgery except: :new_work_reservation
+
 
   def index
     @users = User.all
@@ -35,11 +37,13 @@ class UsersController < ApplicationController
   def edit_reservation_status
     @day = Date.parse.strftime(params[:day])
     @work_reservations = WorkReservation.where.not(worked_on: nil).where(worked_on: @day)
-    @users = User.all
   end
 
    def new_work_reservation
     @user = User.find(params[:id])
+    @work_reservation = WorkReservation.find_by(params[:id])
+    @main_menus = %w(ー部屋掃除８畳以上 ー部屋掃除6畳以下 レンジフードクリーニング キッチンクリーニング )
+    @option_menus = %w(窓ガラス内側のみクリーニング エアコンはフィルターまでやる 洗濯機は洗剤を入れて１日おく 電化製品 棚づくり 玄関 トイレ 洗面所 庭 )
    end
 
    def show_account
