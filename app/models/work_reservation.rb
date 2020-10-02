@@ -5,4 +5,8 @@ class WorkReservation < ApplicationRecord
   def start_time  #simple calendarで必要なメソッド
     self.worked_on
   end
+
+  def user
+    return User.find_by(id: self.user_id)
+  end
 end

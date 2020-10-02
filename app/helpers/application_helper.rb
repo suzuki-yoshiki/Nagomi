@@ -14,8 +14,8 @@ module ApplicationHelper
     user == current_user
   end
 
+
   def current_staff?(staff)
     staff == current_staff
   end
-  
 end
