@@ -37,11 +37,17 @@
         <%= @user.address %>
         </div>
 
+        <%= f.label :メイン予約項目, class: "label-#{yield(:class_text)}" %>
+        <%= @work_reservation.main_menu %><br>
+
         <%= f.label :作業内容, class: "label-#{yield(:class_text)}" %>
         <%= f.text_area :reservation_work, class: "form-control" %>
 
         <%= f.label :訪問日, class: "label-#{yield(:class_text)}" %>
         <%= f.date_field :worked_on, class: "form-control" %>
+
+        <%= f.label :作業開始時間, class: "label-#{yield(:class_text)}" %>
+        <%= f.time_field :start_times, ignore_data:true, class: "form-control" %></br>
 
         <%= f.submit "#{@user.name}へ送信する", data: { confirm: "メールを送信してもよろしいですか？" },　class: "btn btn-primary" %>
       <% end %>
