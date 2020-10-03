@@ -1,0 +1,21 @@
+<% provide(:title, '所在地編集') %>
+<% provide(:button_text, '編集更新') %>
+<h1>所在地</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @map, local: true) do |f| %>
+    <%= render 'share/error_messages' , object: @map %>
+
+    <%= f.label :address, class: "label-signup" %>
+    <%= f.text_field :address, placeholder: "住所", class: "form-control" %>
+
+    <%= f.label :distance, class: "label-signup" %>
+    <%= f.text_field :distance, placeholder: "設定距離 (km)", class: "form-control" %>
+
+    <%= f.label :time, class: "label-signup" %>
+    <%= f.text_field :time, placeholder: "所要時間 (分)", class: "form-control" %>
+
+    <%= f.submit yield(:button_text), class: "btn btn-primary btn-block btn-signup" %>
+  <% end %>
+  </div>
+</div>

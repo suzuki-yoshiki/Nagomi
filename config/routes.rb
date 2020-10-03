@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'maps/index'
+  get 'maps/new'
+  get 'maps/edit'
   root 'static_pages#top'
 
   devise_for :staffs, controllers: {
@@ -35,6 +38,7 @@ Rails.application.routes.draw do
     end
   end
   resources :tools
+  resources :maps
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

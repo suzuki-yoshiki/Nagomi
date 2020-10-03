@@ -1,0 +1,104 @@
+<% provide(:title, 'サービスエリア') %>
+<div class="container">
+  <h1>サービスエリア</h1>
+  <input id="address" type="textbox" value="ご希望の住所">
+  <input type="button" value="検索" onclick="codeAddress()">
+
+  <div id="display">エリア対象結果を表示します</div>
+
+  <div id='map'></div>
+  <div class="botton">
+    <h2>現在の設定距離<%= @map.distance %>km</h2>
+    <h2>現在の設定時間<%= @map.time %>分</h2>
+    <h2>
+      <%= link_to "編集", edit_map_path(@map), class: "btn btn-lg btn-primary" %>
+    </h2>
+  </div>
+
+<script>
+let map
+let geocode
+
+const display = document.getElementById('display')
+
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: 
+    {lat: <%= @map.latitude.present? ? @map.latitude : 34.9787 %>,
+     lng:<%= @map.longitude.present? ? @map.longitude : 138.3830 %>},
+    zoom: 12,
+  });
+
+  marker = new google.maps.Marker({
+    position:  {lat: <%= @map.latitude.present? ? @map.latitude : 34.9787 %>,
+                lng:<%= @map.longitude.present? ? @map.longitude : 138.3830 %>},
+    map: map
+  });
+}
+
+function codeAddress(){
+  let inputAddress = document.getElementById('address').value;
+
+  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+    if (status == 'OK') {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+  
+
+      display.textContent = "検索結果：" + results[ 0 ].geometry.location
+    } else {
+      alert('該当する結果がありませんでした：' + status);
+    }
+  });   
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeIeL51o-vc5og6xFQZOuw9HtI4cPABVQ&callback=initMap" async defer></script>
+
+</div>
+  <%
+=begin%>
+ <div class="row" >
+    <div class="col-md-8 col-md-offset-2">
+      <% if @videos.count < 1 %><%#= データの数で %>
+        <h1>只今、準備中です。。。</h1>
+      <% else %>
+        <% @videos.each do |video| %>
+          <div class="title">
+            <p>タイトル：<%= video.title %></p>
+          </div>
+          <div class="video">
+            <iframe width="750" height="500" src="https://www.youtube.com/embed/<%= video.body %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <% if current_user.present? && current_user.admin? %> <%#= current_userが存在し、かつ管理者の場合表示させる %>
+            <div class="botton">
+              <td>
+                <%= link_to "編集", edit_video_path(video), class: "btn btn-lg btn-primary" %>
+              </td>
+              <td>
+                <%= link_to "削除", video , method: :delete, data: { confirm: "削除してよろしいですか？" }, class: "btn btn-lg btn-danger" %>
+              </td>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-md-8 col-md-offset-2">
+    <div class="botton2">
+      <td>
+        <%= link_to "ホームへ", root_path, class: "btn btn-lg btn-primary" %>
+      </td>
+      <% if current_user.present? && current_user.admin? %> <%#= current_userが存在し、かつ管理者の場合表示させる %>
+        <td>
+          <%= link_to "新規追加", new_video_path, class: "btn btn-lg btn-primary" %>
+        </td>
+      <% end %>
+    </div>
+  </div> 
+<%
+=end%>
