@@ -12,6 +12,8 @@ class PhoneReservationsController < ApplicationController
   end
 
   def show
+    @users = User.all
+    @phone_reservation_number = PhoneReservation.where(line_booked: true) #Line電話予約した場合
   end
 
   def edit

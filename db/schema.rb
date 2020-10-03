@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_120928) do
     t.string "address"
     t.string "phone_number"
     t.string "staff_number"
+    t.boolean "admin"
     t.index ["email"], name: "index_staffs_on_email", unique: true
     t.index ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true
   end
