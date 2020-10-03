@@ -8,7 +8,7 @@ class WorkReservationsController < ApplicationController
   end
 
   def show
-    @phone_reservation_number = 0  #電話予約が確定してないので仮の0
+    @phone_reservation_number = PhoneReservation.where(line_booked: true).size  #電話予約が確定してないので仮の0
     @work_reservations = WorkReservation.where.not(worked_on: nil)
   end
 
