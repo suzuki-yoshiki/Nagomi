@@ -6,6 +6,12 @@ Staff.create!(name: "Sample User",
              password_confirmation: "password",
              admin: true)
 
+#サンプルスタッフ            
+Staff.create!(name: "Sample Staff",
+              email: "sample-staff@email.com",
+              password: "password",
+              password_confirmation: "password")
+
 #サンプルユーザー             
 User.create!(name: "Sample-1 User",
              email: "sample-1@email.com",
@@ -13,8 +19,4 @@ User.create!(name: "Sample-1 User",
              password_confirmation: "password",
              admin: false)
 
-#サンプルスタッフ            
-Staff.create!(name: "Sample Staff",
-              email: "sample-staff@email.com",
-              password: "password",
-              password_confirmation: "password")
+

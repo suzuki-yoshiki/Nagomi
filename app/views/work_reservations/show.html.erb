@@ -10,7 +10,7 @@
 </div>
   <h1 class="work-title">作業予約状況</h1>
   <% if @phone_reservation_number == 0 %>
-  <p>nashi</p>
+  <p align="center">予約なし</p>
   <% else %>
   <p align="center"><%= link_to "【電話予約#{@phone_reservation_number}件】", phone_reservation_path, :style=>"color:red;" %></p>
   <% end %>
