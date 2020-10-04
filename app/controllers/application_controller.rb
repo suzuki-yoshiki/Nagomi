@@ -14,12 +14,18 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource) #deviseでログイン後のリダイレクト先を指定
     case resource
     when Staff
-      work_reservation_path(resource)
-    when User
-      if current_user.admin?
-        work_reservation_path(resource) #adminの場合管理者ページへ
+      if current_staff.present?
+        work_reservation_path(resource)        
       else
-        phone_reservation_path(resource) #その他ユーザーは最初のページへ。後ほど社員の場合も作る必要があるのかも？
+        flash[:damger] = "ログインしてください"
+        root_path(resource)
+      end
+    when User
+      if current_user.present?
+        phone_reservations_path(resource) #Userの場合Line電話予約受付ページへ
+      else
+        flash[:damger] = "ログインしてください"
+        root_path(resource) #その他ユーザーは最初のページへ。後ほど社員の場合も作る必要があるのかも？
       end
     end
   end

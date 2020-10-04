@@ -12,7 +12,10 @@
   <% if @phone_reservation_number == 0 %>
   <p align="center">予約なし</p>
   <% else %>
-  <p align="center"><%= link_to "【電話予約#{@phone_reservation_number}件】", phone_reservation_path, :style=>"color:red;" %></p>
+  
+  <p align="center">
+  <i class="fas fa-bell fa-fw fa-lg "></i>
+    <%= link_to "【電話予約#{@phone_reservation_number}件】", phone_reservation_path, :style=>"color:red;" %></p>
   <% end %>
     <p align="right"><%= link_to "新規作業予約を登録する", work_reservations_path, class: "btn btn-success" %></p>
   <div class= 'calender'>
