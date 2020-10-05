@@ -4,6 +4,23 @@ class MapsController < ApplicationController
   end
 
   def new
+    @map = Map.new
+  end
+
+  def create
+    @map = Map.find(1)
+    @map1 = Map.new(map_params)
+    if @map1.save
+      if @map1.distance_to(@map) < @map.distance
+        flash[:success] = '対応可能です'
+        redirect_to maps_index_url
+      else
+        flash[:danger] = '対応不可です'
+        redirect_to maps_index_url
+      end
+    else
+      render :new
+    end
   end
 
   def edit
