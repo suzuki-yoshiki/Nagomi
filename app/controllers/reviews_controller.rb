@@ -14,6 +14,7 @@ class ReviewsController < ApplicationController
       redirect_to reviews_path(@review)
       flash[:success] = "新規投稿を作成しました。"
     else
+      flash.now[:danger] = "投稿内容は150文字以内で入力して下さい"
       render :new
     end
   end
@@ -43,7 +44,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:score, :content, :image)
+    params.require(:review).permit(:score, :content, :image, :rate, :name, :email)
   end
   
 end

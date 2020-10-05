@@ -1,6 +1,6 @@
 # coding: utf-8
 #管理者ユーザー
-User.create!(name: "Sample User",
+Staff.create!(name: "Sample User",
              email: "sample@email.com",
              password: "password",
              password_confirmation: "password",

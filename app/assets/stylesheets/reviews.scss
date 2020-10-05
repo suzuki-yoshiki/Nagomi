@@ -65,27 +65,21 @@
   left: 200px;
 }
 // 星
-.star-rating {
-  position: relative;
-  width: 5em;
-  height: 1em;
-  font-size: 23px;
-  display: inline-block;
-  margin-right: 650px;
-  margin-top: -115px;
-  float: right;
-}
-
-.star-rating-front {
+.review-star {
   position: absolute;
-  top: 0;
-  left: 0;
-  overflow: hidden;
-  color: #fc3;
+  top: 10px;
+  left: 340px;
 }
-.star-rating-back {
-  color: #ccc;
+.star-img img {
+  height: 20px;
+  width: 20px;
 }
+.form-group-star img {
+  height: 25px;
+  width: 25px;
+  // margin-bottom: 20px;
+}
+// コメント
 .review-comment {
 position: absolute;
 top: 50px;
@@ -93,6 +87,11 @@ left: 200px;
 margin-right: 50px;
 font-size: 15px;
 }
+.review-coment-new {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+// ボタン
 .review-edit-btn {
   position: absolute;
   top: 120px;
@@ -138,4 +137,8 @@ font-size: 15px;
   top: 130px;
   left: 150px;
   color: rgba(0, 0, 0, 0.5);
+}
+// ボタン位置
+.review-star-edit {
+  margin-top: 10px;
 }

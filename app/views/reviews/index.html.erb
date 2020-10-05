@@ -11,22 +11,34 @@
       <div class="review-item-image"><%= attachment_image_tag review, :image, fallback: "no_image.png", class: "index-review-photo"%></div> 
         <i class="far fa-hand-point-left fa-lg"></i>
           <div class="review-cs">お客様満足度</div>
-            <div class="star-rating">
-              <div class="star-rating-front" style="width: %">★★★★★</div>
-              <div class="star-rating-back">★★★★★</div>
-            </div>
-            <div class="review-comment"><%= review.content %></div>
-            <div class="review-date">投稿日&nbsp;<%= l(review.updated_at, format: :half) %></div>
-            <% if signed_in? %>
-              <% if current_user.admin? %>
-                <div class="review-edit-btn">
-                  <%= link_to "編集", edit_review_path(review), class: "btn btn-primary" %>
-                </div>
-                <div class="review-delete-btn">
-                  <%= link_to "削除", review_path(review), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
-                </div>
-              <% end %>
+          <div class="review-star">
+            <span class="star-img" id="star-rate-<%= review.id %>"></span>
+          </div>
+          <div class="review-comment"><%= review.content %></div>
+          <div class="review-date">投稿日&nbsp;<%= l(review.updated_at, format: :half) %></div>
+          <% if signed_in? %>
+            <% if current_user.admin? %>
+              <div class="review-edit-btn">
+                <%= link_to "編集", edit_review_path(review), class: "btn btn-primary" %>
+              </div>
+              <div class="review-delete-btn">
+                <%= link_to "削除", review_path(review), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger" %>
+              </div>
             <% end %>
+          <% end %>
     </div>
+    <script>
+      $(document).on('turbolinks:load', function() { 
+        $('#star-rate-<%= review.id %>').raty({
+          size: 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          half: true,
+          readOnly: true,
+          score: <%= review.rate %>,
+        });
+      });
+    </script>
   <% end %>
     

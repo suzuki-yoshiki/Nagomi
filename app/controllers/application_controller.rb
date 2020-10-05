@@ -40,30 +40,30 @@ class ApplicationController < ActionController::Base
     @two_weeks = [*@first_day..@last_day] # 対象の週の日数を代入
     @day_time = [ 0,1,2,3,4,5,6 ] # 時間の配列を作成
     @two_weeks.each do |day| # 表示するデータが存在すること保証
-    unless PhoneReservation.where(worked_on: day).present?
-      @day_time.each do |time|
-        PhoneReservation.create(worked_on: day, line_time: time)
-      end
-    end  
-    end  
+      unless PhoneReservation.where(worked_on: day).present?
+        @day_time.each do |time|
+          PhoneReservation.create(worked_on: day, line_time: time)
+        end
+      end    
 
-    @phone_reservations = PhoneReservation.where(worked_on: @first_day) # 一番最初のデータを取得
-    id1 = @phone_reservations.first.id
-    id2 = id1 + 7
-    id3 = id2 + 7
-    id4 = id3 + 7
-    id5 = id4 + 7
-    id6 = id5 + 7
-    id7 = id6 + 7
-    id8 = id7 + 7
-    id9 = id8 + 7
-    id10 = id9 + 7
-    id11 = id10 + 7
-    id12 = id11+ 7
-    id13 = id12+ 7
-    id14 = id13+ 7
-    @ids = [id1,id2,id3,id4,id5,id6,id7,id8,id9,id10,id11,id12,id13,id14] # idの配列を作成
+      @phone_reservations = PhoneReservation.where(worked_on: @first_day) # 一番最初のデータを取得
+      id1 = @phone_reservations.first.id
+      id2 = id1 + 7
+      id3 = id2 + 7
+      id4 = id3 + 7
+      id5 = id4 + 7
+      id6 = id5 + 7
+      id7 = id6 + 7
+      id8 = id7 + 7
+      id9 = id8 + 7
+      id10 = id9 + 7
+      id11 = id10 + 7
+      id12 = id11+ 7
+      id13 = id12+ 7
+      id14 = id13+ 7
+      @ids = [id1,id2,id3,id4,id5,id6,id7,id8,id9,id10,id11,id12,id13,id14] # idの配列を作成
 
-    @count = (@first_day.end_of_month - @first_day).to_i + 1
+      @count = (@first_day.end_of_month - @first_day).to_i + 1
+    end
   end
 end

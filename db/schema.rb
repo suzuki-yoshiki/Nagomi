@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_03_121245) do
+ActiveRecord::Schema.define(version: 2020_10_05_125059) do
 
   create_table "phone_reservations", force: :cascade do |t|
     t.date "worked_on"
@@ -42,6 +42,9 @@ ActiveRecord::Schema.define(version: 2020_10_03_121245) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image_id"
+    t.float "rate"
+    t.string "name"
+    t.string "email"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -61,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_10_03_121245) do
     t.string "address"
     t.string "phone_number"
     t.string "staff_number"
+    t.boolean "admin"
     t.index ["email"], name: "index_staffs_on_email", unique: true
     t.index ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true
   end
@@ -116,6 +120,9 @@ ActiveRecord::Schema.define(version: 2020_10_03_121245) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.string "main_menu"
+    t.string "option_menu"
+    t.time "start_times"
     t.index ["user_id"], name: "index_work_reservations_on_user_id"
   end
 
