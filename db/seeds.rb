@@ -18,3 +18,6 @@ Staff.create!(name: "Sample Staff",
               email: "sample-staff@email.com",
               password: "password",
               password_confirmation: "password")
+
+
+Map.create!(address: "静岡駅")

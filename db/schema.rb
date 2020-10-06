@@ -12,6 +12,20 @@
 
 ActiveRecord::Schema.define(version: 2020_10_05_125059) do
 
+  create_table "maps", force: :cascade do |t|
+    t.text "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.integer "distance"
+    t.integer "near_distance"
+    t.integer "time"
+    t.integer "near_time"
+    t.text "title"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "phone_reservations", force: :cascade do |t|
     t.date "worked_on"
     t.string "reservation_line_flag"
