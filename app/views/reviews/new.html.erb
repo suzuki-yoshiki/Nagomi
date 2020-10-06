@@ -1,0 +1,37 @@
+<div class="container-fluid jumbotron-position">
+  <h1>新規投稿</h1>
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_with model: @review, url: reviews_path(@review), local: true do |f| %>
+        <span class="form-group-star" id="star">
+          <%= f.hidden_field :star, id: :review_star %>
+        </span>
+        <div class="review-coment-new">
+          <%= f.text_area :content, size: "30x6", :required => true, class: "form-control"%>
+        </div>
+        <div class="form-group">
+          <%= f.label :アンケート画像, class: "label-review-new" %>
+          <%= f.attachment_field :image, class: "enquete"%>
+        </div>
+        <div class="form-group">
+          <%= f.label :名前, class: "label-signup" %>
+          <%= f.text_field :name, class: "form-control"%>
+        </div>
+        <div class="form-group">
+          <%= f.label :メールアドレス, class: "label-signup" %>
+          <%= f.email_field :email, class: "form-control" %>
+        </div>
+        <%= f.submit "投稿する", class:  "btn btn-primary" %>
+      <% end %>
+    </div>
+</div>
+<!-- 星評価javascript -->
+<script>
+$('#star').raty({
+  size     : 36,
+  starOff:  '<%= asset_path('star-off.png') %>',
+  starOn : '<%= asset_path('star-on.png') %>',
+  starHalf: '<%= asset_path('star-half.png') %>',
+  scoreName: 'review[rate]',
+  half: true,
+});
+</script>

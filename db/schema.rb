@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_30_120928) do
+ActiveRecord::Schema.define(version: 2020_10_05_125059) do
 
   create_table "maps", force: :cascade do |t|
     t.text "address"
@@ -30,11 +30,11 @@ ActiveRecord::Schema.define(version: 2020_09_30_120928) do
     t.date "worked_on"
     t.string "reservation_line_flag"
     t.text "reservation_work"
-    t.boolean "reservation_mark", default: false
+    t.string "reservation_mark"
     t.string "client_name_flag"
     t.integer "user_id"
     t.integer "staff_id"
-    t.integer "line_time"
+    t.string "line_time"
     t.string "line_time_11"
     t.string "line_time_12"
     t.string "line_time_13"
@@ -42,11 +42,24 @@ ActiveRecord::Schema.define(version: 2020_09_30_120928) do
     t.string "line_time_15"
     t.string "line_time_16"
     t.string "line_time_17"
-    t.boolean "line_booked", default: false
+    t.boolean "line_booked"
     t.text "time_work"
     t.string "time_line_flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "content"
+    t.integer "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image_id"
+    t.float "rate"
+    t.string "name"
+    t.string "email"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "staffs", force: :cascade do |t|
