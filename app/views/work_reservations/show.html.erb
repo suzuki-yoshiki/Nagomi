@@ -17,20 +17,17 @@
       <%= link_to "【電話予約#{@phone_reservation_number}件】", phone_reservation_path, :style=>"color:red;" %></p>
   <% end %>
     <p align="right"><%= link_to "新規作業予約を登録する", work_reservations_path, class: "btn btn-success" %></p>
+    <p align="center"><%= "【作業予約#{@work_reservations.count}件】" %></p>
   <div class= 'calender'>
               <% array = [] %>
               <%= month_calendar events: @work_reservations do |date, work_reservations| %>
                   <%= date.day %></br>
                     <% work_reservations.each do |work_reservation| %>
-                      <% array.push(work_reservation.reservation_work) %>
-                      <% @array = array %>
-                      <% if @array.count == 1 %>
-                        <%= link_to "【#{@array.count}件】", edit_reservation_status_user_path(params:{ day: date }), remote: true %>
-                        <i class="fa fa-circle notification-circle" style="color: red;"></i>
-                      <% else %>
-                        <%= link_to "【#{@array.count}件】", edit_reservation_status_user_path(params:{ day: date }), remote: true %>
-                        <i class="fa fa-circle notification-circle" style="color: blue;"></i>
-                      <% end %>
+                      <% array.push(work_reservation) %>
+                       <% @array = array %>
+                        <%= link_to "【予約No#{@array.count}】", edit_reservation_status_user_path(params:{ day: date }), remote: true %>
+                        <i class="fa fa-circle notification-circle" style="color: red;"></i></br>
+
                     <% end %>
               <% end %>
 
