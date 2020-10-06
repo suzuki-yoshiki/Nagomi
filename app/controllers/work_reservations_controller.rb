@@ -27,6 +27,8 @@ class WorkReservationsController < ApplicationController
 
   def edit
     @work_reservation = WorkReservation.find(params[:id])
+    @main_menus = %w(ー部屋掃除８畳以上 ー部屋掃除6畳以下 レンジフードクリーニング キッチンクリーニング )
+    @option_menus = %w(窓ガラス内側のみクリーニング エアコンはフィルターまでやる 洗濯機は洗剤を入れて１日おく 電化製品 棚づくり 玄関 トイレ 洗面所 庭 )
   end
 
   def update
@@ -56,6 +58,6 @@ class WorkReservationsController < ApplicationController
    end
 
    def update_work_reservation_params
-     params.require(:work_reservation).permit(:reservation_work, :worked_on)
-   end
+     params.require(:work_reservation).permit({main_menu: []}, {option_menu: []}, :reservation_work, :worked_on, :start_times)
+  end
 end
