@@ -13,11 +13,13 @@
             <p class="days-day">日付</p>
             <%= l(@phone_reservation.worked_on, format: :long) %>
           </div>
+
           <div class="times">
             <p class="times-time">時間</p>
             <%= @phone_reservation.line_time %>
             <%= params[:format] %>
           </div>
+          
           <div class="times">
             <p class="times-time">お名前</p>
             <%= current_user.name %>

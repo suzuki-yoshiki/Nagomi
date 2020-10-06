@@ -17,10 +17,10 @@ class WorkReservationsController < ApplicationController
 
    if @work_reservation.save!
        flash[:success] = "予約の新規作成に成功しました。"
-      redirect_to work_reservation_path(current_user)
+      redirect_to work_reservation_url(current_staff)
    else
        flash[:danger] = "不正な入力がありました、再入力してください。"
-      redirect_to work_reservation_path(current_user)
+      redirect_to work_reservation_url(current_staff)
    end
 
   end
