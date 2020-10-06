@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'maps/index'
-  get 'maps/new'
-  get 'maps/edit'
   root 'static_pages#top'
 
   devise_for :staffs, controllers: {
