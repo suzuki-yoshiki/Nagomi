@@ -9,6 +9,7 @@
           <% if current_staff.present? %> <%# スタッフとしてログインしているかどうか %>
             <li><i class="fab fa-line fa-lg line-green"></i> <%= link_to "電話予約状況", phone_reservations_path %></li>
             <li><i class="fas fa-user-circle fa-lg"></i></i> <%= link_to "お客様情報", users_path %></li>
+            <li><i class="fas fa-user-circle fa-lg"></i></i> <%= link_to "スタッフ一覧", staffs_path %></li>
           <% elsif current_user.admin? %> <%# 管理者としてログインいるかどうか %>
             <li><i class="fab fa-line fa-lg line-green"></i> <%= link_to "電話予約状況", phone_reservations_path %></li>
             <li><i class="fas fa-user-circle fa-lg"></i></i> <%= link_to "お客様情報", users_path %></li>
@@ -22,8 +23,8 @@
                <li><%= link_to "動画", videos_path %></li>
              </ul>
             </li>
-           <% else %> <%# 一般ユーザとしてログインしているかどうか %>
-            <li><i class="fas fa-broom fa-lg"></i> <%= link_to "サービス一覧", '#'%> </li>
+           <% else %> <%# 現ユーザーがadmin以外の場合  *後ほど社員の場合などさらにelsifで分ける必要があるかも？%>
+            <li><i class="fas fa-broom fa-lg"></i> <%= link_to "サービス一覧", user_index_works_path %> </li>
             <li><i class="fab fa-youtube fa-lg youtube-red"></i> <%= link_to "作業風景", '#'%>    </li>
             <li><i class="fab fa-line fa-lg line-green"></i> <%= link_to "電話予約状況", phone_reservations_path %>    </li>
             <li><i class="fas fa-car-side fa-lg"></i><%= link_to "サービス一エリア", maps_index_path %>    </li>

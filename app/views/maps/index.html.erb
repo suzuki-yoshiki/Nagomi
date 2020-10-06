@@ -7,13 +7,15 @@
         <%= link_to "検索フォーム", maps_new_path,remote: true, class: "btn btn-lg btn-primary" %>
       </p>
       <div class="map-2" id='map'></div>
-      <div class="botton">
-        <p class="hensyu">現在の設定場所 : <%= @map.address %></p>
-        <p class="hensyu">現在の設定距離 : <%= @map.distance %> km</p>
-        <p class="hensyu">
-          <%= link_to "編集", edit_map_path(@map), class: "btn btn-lg btn-primary" %>
-        </p>
-      </div>
+      <% if current_user %>
+        <div class="botton">
+          <p class="hensyu">現在の設定場所 : <%= @map.address %></p>
+          <p class="hensyu">現在の設定距離 : <%= @map.distance %> km</p>
+          <p class="hensyu">
+            <%= link_to "編集", edit_map_path(@map), class: "btn btn-lg btn-primary" %>
+          </p>
+        </div>
+      <% end %>
     <div>
   </div>
 </div>

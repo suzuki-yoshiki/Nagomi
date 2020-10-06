@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2020_09_27_012406) do
     t.string "address"
     t.string "phone_number"
     t.string "staff_number"
+    t.boolean "admin"
     t.index ["email"], name: "index_staffs_on_email", unique: true
     t.index ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true
   end
@@ -120,6 +121,9 @@ ActiveRecord::Schema.define(version: 2020_09_27_012406) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.string "main_menu"
+    t.string "option_menu"
+    t.time "start_times"
     t.index ["user_id"], name: "index_work_reservations_on_user_id"
   end
 
