@@ -1,7 +1,7 @@
 <div class="edit-review-body">
   <h1>投稿編集</h1>
     <div class="col-md-6 col-md-offset-3">
-      <%= form_with model: @review, url: review_path(@review) do |f| %>
+      <%= form_with model: @review, url: review_path(@review), local: true do |f| %>
         <span class="form-group-star" id="star">
           <%= f.hidden_field :star, id: :review_star %>
         </span>

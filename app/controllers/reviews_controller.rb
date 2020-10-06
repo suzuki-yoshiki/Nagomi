@@ -29,8 +29,8 @@ class ReviewsController < ApplicationController
       redirect_to reviews_path(@review)
       flash[:success] = "投稿を更新しました。"
     else
-      redirect_to edit_review_path(@review)
       flash[:danger] = "投稿内容は150文字以内で入力して下さい"
+      render :edit
     end
   end
 
