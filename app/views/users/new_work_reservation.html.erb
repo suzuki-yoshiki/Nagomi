@@ -12,7 +12,7 @@
       <%= f.label :メイン予約項目, class: "label-#{yield(:class_text)}" %></br>
        <% @main_menus.each do |main_menu| %>
           <div>
-            <%= f.check_box :main_menu, { multiple: true, checked: @work_reservation.main_menu.present? ? @work_reservation.main_menu.split(",").include?(main_menu) : false }, main_menu, nil %>
+            <%= f.check_box :main_menu, { multiple: true }, main_menu, nil %>
             <span><%= main_menu %></span>
           </div>
         <% end %>
@@ -22,7 +22,7 @@
       <%= f.label :オプション予約項目, class: "label-#{yield(:class_text)}" %></br>
        <% @option_menus.each do |option_menu| %>
           <div>
-            <%= f.check_box :option_menu, { multiple: true, checked: @work_reservation.option_menu.present? ? @work_reservation.option_menu.split(",").include?(option_menu) : false }, option_menu, nil %>
+            <%= f.check_box :option_menu, { multiple: true }, option_menu, nil %>
             <span><%= option_menu %></span>
           </div>
         <% end %>

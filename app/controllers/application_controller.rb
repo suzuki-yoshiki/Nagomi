@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
       if current_user.admin?
         work_reservation_path(resource) #adminの場合管理者ページへ
       else
-        phone_reservation_path(resource) #その他ユーザーは最初のページへ。後ほど社員の場合も作る必要があるのかも？
+        phone_reservations_path(resource) #その他ユーザーは最初のページへ。後ほど社員の場合も作る必要があるのかも？
       end
     end
   end
@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
         @day_time.each do |time|
           PhoneReservation.create(worked_on: day, line_time: time)
         end
-      end    
+      end
 
       @phone_reservations = PhoneReservation.where(worked_on: @first_day) # 一番最初のデータを取得
       id1 = @phone_reservations.first.id

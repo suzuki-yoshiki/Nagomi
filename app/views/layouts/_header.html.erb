@@ -7,8 +7,9 @@
         <li><i class="fa fa-home fa-lg" aria-hidden="true"></i>&nbsp;<%= link_to "トップ", root_path %></li>
         <% if signed_in? %> <%# ログインしているかどうか %>
           <% if current_staff.present? %> <%# スタッフとしてログインしているかどうか %>
-            <li><i class="fab fa-line fa-lg line-green"></i>&nbsp;<%= link_to "電話予約状況", phone_reservations_path %></li>
-            <li><i class="fas fa-user-circle fa-lg"></i>&nbsp;<%= link_to "お客様情報", users_path %></li>
+            <li><i class="fab fa-line fa-lg line-green"></i> <%= link_to "電話予約状況", phone_reservations_path %></li>
+            <li><i class="fas fa-user-circle fa-lg"></i></i> <%= link_to "お客様情報", users_path %></li>
+            <li><i class="fas fa-user-circle fa-lg"></i></i> <%= link_to "スタッフ一覧", staffs_path %></li>
           <% elsif current_user.admin? %> <%# 管理者としてログインいるかどうか %>
             <li><i class="fab fa-line fa-lg line-green"></i>&nbsp;<%= link_to "電話予約状況", phone_reservations_path %></li>
             <li><i class="fas fa-user-circle fa-lg"></i>&nbsp;<%= link_to "お客様情報", users_path %></li>
