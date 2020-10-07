@@ -8,6 +8,6 @@ class AddNameToUsers < ActiveRecord::Migration[5.2]
     add_column :users, :phone_number, :string
     add_column :users, :admin, :boolean
     add_column :users, :work_id, :integer
-    add_column :users, :reservation_id, :integer
+    add_column :users, :work_reservation_id, :integer
   end
 end

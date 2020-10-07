@@ -5,12 +5,15 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-      <%= form_with(model: @work_reservation, url: reservation_confirmed_mail_user_path, local: true, method: :patch) do |f| %>
+    <%= form_with(model: @work_reservation, url: reservation_confirmed_mail_user_path, local: true, method: :patch) do |f| %>
+      <% if %>
         <h1><%= @user.name %>様へメール内容</h1>
-        <%= f.hidden_field :user_id, :value => @user.id %>
+          <%= f.hidden_field :user_id, :value => @user.id %>
 
-        <%= f.label :カナ, class: "label-#{yield(:class_text)}" %>
-        <%= @user.kana %>
+        <div class="field">
+          <%= f.label :カナ, class: "label-#{yield(:class_text)}" %>
+          <%= @user.kana %>
+        </div>
 
         <div class="field">
           <%= f.label :性別 %> <br/>
@@ -18,24 +21,44 @@
         </div>
 
         <div class="field">
-        <%= f.label :Gメール, class: "label-#{yield(:class_text)}" %>
-        <%= @user.email %>
+          <%= f.label :Gメール, class: "label-#{yield(:class_text)}" %>
+          <%= @user.email %>
         </div>
 
         <div class="field">
-        <%= f.label :電話番号, class: "label-#{yield(:class_text)}" %>
-        <%= @user.phone_number %>
+          <%= f.label :電話番号, class: "label-#{yield(:class_text)}" %>
+          <%= @user.phone_number %>
         </div>
 
         <div class="field">
-        <%= f.label :LineID, class: "label-#{yield(:class_text)}" %>
-        <%= @user.line_id %>
+          <%= f.label :LineID, class: "label-#{yield(:class_text)}" %>
+          <%= @user.line_id %>
         </div>
 
         <div class="field">
-        <%= f.label :住所, class: "label-#{yield(:class_text)}" %>
-        <%= @user.address %>
+          <%= f.label :住所, class: "label-#{yield(:class_text)}" %>
+          <%= @user.address %>
         </div>
+
+        <div class="field">
+          <%= f.label :予約項目, class: "label-#{yield(:class_text)}" %>
+          <% @work_reservation.each do |main_menu| %>
+              <div>
+                <%= main_menu.main_menu %>
+                <span><%= main_menu %></span>
+              </div>
+          <% end %>
+        </div></br>
+
+        <div class="field">
+          <%= f.label :オプション, class: "label-#{yield(:class_text)}" %>
+          <% @work_reservation.each do |option_menu| %>
+            <div>
+              <%= option_menu.option_menu %>
+              <span><%= option_menu %></span>
+            </div>
+          <% end %>
+        </div></br>
 
         <%= f.label :作業内容, class: "label-#{yield(:class_text)}" %>
         <%= f.text_area :reservation_work, class: "form-control" %>
@@ -46,7 +69,8 @@
         <%= f.label :作業開始時間, class: "label-#{yield(:class_text)}" %>
         <%= f.time_field :start_times, ignore_data:true, class: "form-control" %></br>
 
-        <%= f.submit "#{@user.name}様へ送信する", data: { confirm: "メールを送信してもよろしいですか？" },　class: "btn btn-primary" %>
+        <%= f.submit "#{@user.name}様へ送信する", data: { confirm: "メールを送信してもよろしいですか？" }, class: "btn btn-primary" %>
       <% end %>
+    <% end %>
   </div>
 </div>
