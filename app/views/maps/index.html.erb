@@ -1,0 +1,50 @@
+<% provide(:title, 'サービスエリア') %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1>サービスエリア</h1>
+      <p class="hensyu">
+        <%= link_to "検索フォーム", maps_new_path,remote: true, class: "btn btn-lg btn-primary" %>
+      </p>
+      <div class="map-2" id='map'></div>
+      <div class="botton">
+        <p class="hensyu">現在の設定場所 : <%= @map.address %></p>
+        <p class="hensyu">現在の設定距離 : <%= @map.distance || 10 %> km</p>
+        <p class="hensyu">
+          <%= link_to "編集", edit_map_path(@map), class: "btn btn-lg btn-primary" %>
+        </p>
+      </div>
+    <div>
+  </div>
+</div>
+
+<script>
+let map
+let geocode
+
+const display = document.getElementById('display')
+
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: 
+    {lat: <%= @map.latitude.present? ? @map.latitude : 34.9787 %>,
+     lng:<%= @map.longitude.present? ? @map.longitude : 138.3830 %>},
+    zoom: 12,
+  });
+
+  marker = new google.maps.Marker({
+    position:  {lat: <%= @map.latitude.present? ? @map.latitude : 34.9787 %>,
+                lng:<%= @map.longitude.present? ? @map.longitude : 138.3830 %>},
+    map: map
+  });
+}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeIeL51o-vc5og6xFQZOuw9HtI4cPABVQ&callback=initMap" async defer></script>
+
+</div>
+
+<!--モーダルウインドウ表示-->
+<div id="new" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

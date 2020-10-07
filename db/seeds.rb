@@ -50,3 +50,7 @@ WorkReservation.create!(option_menu: "庭")
 puts "WorkReservation Created"
 
 
+Map.create!(address: "静岡駅")
+
+puts "Map Created"
+
