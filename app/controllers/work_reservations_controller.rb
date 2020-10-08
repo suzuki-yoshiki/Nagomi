@@ -19,7 +19,7 @@ class WorkReservationsController < ApplicationController
       redirect_to work_reservation_url(current_staff)
    else
        flash[:danger] = "不正な入力がありました、再入力してください。"
-      redirect_to work_reservation_url(current_staff)
+       render :new
    end
   end
 
@@ -31,10 +31,13 @@ class WorkReservationsController < ApplicationController
 
   def update
     @work_reservation = WorkReservation.find(params[:id])
-    if @work_reservation.update_attributes(update_work_reservation_params)
-      flash[:success] = "編集しました。"
-    end
-    redirect_to work_reservation_path
+      if @work_reservation.update_attributes(update_work_reservation_params)
+       flash[:success] = "編集しました。"
+       redirect_to work_reservation_path
+      else
+        flash[:danger] = "不正な入力がありました、再入力してください。"
+        render :edit
+      end
   end
 
   def destroy
