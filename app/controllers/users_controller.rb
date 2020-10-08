@@ -43,16 +43,17 @@ class UsersController < ApplicationController
   #メール内容確認ページ
   def reservation_confirmed
     @user = User.find(params[:id])
-    @work_reservation = WorkReservation.where.not(worked_on: nil).where(worked_on: @day)
+    @work_reservations = WorkReservation.where.not(worked_on: nil)
   end
   #メール送信する処理ですが未だ途中10/3
   def reservation_confirmed_mail
     @user = User.find(params[:id])
-    @work_reservation = WorkReservation.find_by(params[:user_id])
+    @work_reservation = WorkReservation.find(params[:id])
     respond_to do |format|
       if @work_reservation.update(finished_mail_params)
         # 保存後にUserMailerを使って予約確定メールを送信
-        UserMailer.welcome_email.deliver_later(@work_reservation)
+        UserMailer.welcome_email.deliver_now
+        @work_reservations = @user.work_reservations.where(user_id: @user.id)
         format.html { redirect_to work_reservation_url, notice: '#{@user.name}様に予約確定メールを送信しました。' }
         format.json { render json: @user, status: :created, location: @user }
       else
