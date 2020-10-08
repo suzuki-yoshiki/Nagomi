@@ -10,6 +10,16 @@
             <li><i class="fab fa-line fa-lg line-green"></i> <%= link_to "電話予約状況", phone_reservations_path %></li>
             <li><i class="fas fa-user-circle fa-lg"></i></i> <%= link_to "お客様情報", users_path %></li>
             <li><i class="fas fa-user-circle fa-lg"></i></i> <%= link_to "スタッフ一覧", staffs_path %></li>
+            <li class="dropdown">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="far fa-list-alt fa-lg"></i> 各種一覧 <b class="caret"></b>
+             </a>
+             <ul class="dropdown-menu">
+               <li><%= link_to "社員", staffs_path %></li>
+               <li><%= link_to "道具", tools_path %></li>
+               <li><%= link_to "作業内容", works_path %></li>
+               <li><%= link_to "動画", videos_path %></li>
+             </ul>
+            </li>
           <% elsif current_user.admin? %> <%# 管理者としてログインいるかどうか %>
             <li><i class="fab fa-line fa-lg line-green"></i>&nbsp;<%= link_to "電話予約状況", phone_reservations_path %></li>
             <li><i class="fas fa-user-circle fa-lg"></i>&nbsp;<%= link_to "お客様情報", users_path %></li>
@@ -25,11 +35,18 @@
              </ul>
             </li>
            <% else %> <%# 現ユーザーがadmin以外の場合  *後ほど社員の場合などさらにelsifで分ける必要があるかも？%>
+<<<<<<< HEAD
             <li><i class="fas fa-broom fa-lg"></i>&nbsp;<%= link_to "サービス一覧", user_index_works_path %></li>
             <li><i class="fab fa-youtube fa-lg youtube-red"></i>&nbsp;<%= link_to "作業風景", '#'%></li>
             <li><i class="fab fa-line fa-lg line-green"></i>&nbsp;<%= link_to "電話予約状況", phone_reservations_path %></li>
             <li><i class="fas fa-car-side fa-lg"></i>&nbsp;<%= link_to "サービス一エリア", '#'%></li>
             <li><i class="far fa-comments fa-lg"></i>&nbsp;<%= link_to "お客様の声", reviews_path %></li>
+=======
+            <li><i class="fas fa-broom fa-lg"></i> <%= link_to "サービス一覧", user_index_works_path %> </li>
+            <li><i class="fab fa-youtube fa-lg youtube-red"></i> <%= link_to "作業風景", '#'%>    </li>
+            <li><i class="fab fa-line fa-lg line-green"></i> <%= link_to "電話予約状況", phone_reservations_path %>    </li>
+            <li><i class="fas fa-car-side fa-lg"></i><%= link_to "サービス一エリア", maps_path %>    </li>
+>>>>>>> 9839512... 作業内容を作成できるように修正
            <% end %> <%# スタッフ or 管理者 or 一般ユーザとしてログインしているかどうかの判断終了 %>
          <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -47,11 +64,18 @@
              <% end %>
           </li>
         <% else %> <%# ログインしていない場合 %>
+<<<<<<< HEAD
            <li><i class="fas fa-broom fa-lg"></i>&nbsp;<%= link_to "サービス一覧", user_index_works_path%></li>
            <li><i class="fab fa-youtube fa-lg youtube-red"></i>&nbsp;<%= link_to "作業風景", '#'%></li>
            <li><i class="fab fa-line fa-lg line-green"></i>&nbsp;<%= link_to "電話予約状況", phone_reservations_path %></li>
            <li><i class="fas fa-car-side fa-lg"></i>&nbsp;<%= link_to "サービス一エリア", '#'%></li>
            <li><i class="far fa-comments fa-lg"></i>&nbsp;<%= link_to "お客様の声", reviews_path %></li>
+=======
+           <li><i class="fas fa-broom fa-lg"></i> <%= link_to "サービス一覧", user_index_works_path%> </li>
+           <li><i class="fab fa-youtube fa-lg youtube-red"></i> <%= link_to "作業風景", '#'%>    </li>
+           <li><i class="fab fa-line fa-lg line-green"></i> <%= link_to "電話予約状況", phone_reservations_path %>    </li>
+           <li><i class="fas fa-car-side fa-lg"></i><%= link_to "サービス一エリア", maps_path %>    </li>
+>>>>>>> 9839512... 作業内容を作成できるように修正
          <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               ログイン <b class="caret"></b>
