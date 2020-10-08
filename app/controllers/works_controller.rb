@@ -4,25 +4,20 @@ class WorksController < ApplicationController
   end
 
   def new
+    @work = Work.new
   end
 
   def show
   end
 
   def create
-    @work = Work.new(
-      profile_image_id: params[:profile_image_id],
-      content_name: params[:content_name],
-      content: params[:content],
-      content_price: params[:content_price]
-    )
-   if @work.save
-       flash[:success] = "作業の新規作成に成功しました。"
-      redirect_to works_path
-   else
-       flash[:danger] = "不正な入力がありました、再入力してください。"
-      redirect_to works_path
-   end
+    @work = Work.new(work_params)
+    if @work.save
+      redirect_to works_url
+      flash[:success] = "新規登録に成功しました。"
+    else
+      render :new
+    end
   end
 
   def edit
@@ -31,12 +26,12 @@ class WorksController < ApplicationController
 
   def update
     @work = Work.find(params[:id])
-    if @work.update_attributes(update_work_params)
-     flash[:success] = "編集しました。"
-     redirect_to works_path
+    if @work.update_attributes(work_params)
+     flash[:success] = "作業内容を編集しました。"
+     redirect_to works_url
     else
-      flash[:danger] = "不正な入力がありました、再入力してください。"
-      redirect_to works_path
+      flash[:danger] = "必須項目を埋めて下さい。"
+      render :edit
     end
   end
 
@@ -44,8 +39,7 @@ class WorksController < ApplicationController
     work = Work.find(params[:id])
     work.delete
     flash[:success] = "削除しました。"
-
-    redirect_to works_path
+    redirect_to works_url
   end
 
   def user_index
@@ -65,8 +59,8 @@ class WorksController < ApplicationController
 
   private
 
-    def update_work_params
-      params.require(:work).permit(:profile_image_id, :content_name, :content, :content_price)
+    def work_params
+      params.require(:work).permit(:profile_image, :content_name, :content, :content_price)
     end
 
 end
