@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.user_id = current_user.id
+    @review.user_id = current_staff.id
     if @review.save
       redirect_to reviews_path(@review)
       flash[:success] = "新規投稿を作成しました。"
