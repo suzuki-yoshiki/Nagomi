@@ -25,14 +25,14 @@
         <td><%= staff.email %></td>
         <td><%= staff.phone_number %></td>
         <td>
-          <% if current_user.admin? && !current_user?(staff) %>
+          <% if current_staff.admin? && !current_staff?(staff) %>
             <%= link_to "削除", staff, method: :delete,
                 data: { confirm: "削除してよろしいですか？" },
                 class: "btn btn-danger" %>
           <% end %>
         </td>
         <td>
-          <% if current_user.admin? && !current_user?(staff) %>
+          <% if current_staff.admin? && !current_staff?(staff) %>
             <%= link_to "編集", edit_staff_path(staff), class: "btn btn-primary" %>
           <% end %>
         </td>
