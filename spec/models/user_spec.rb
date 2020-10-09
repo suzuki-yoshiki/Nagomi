@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  it "名前、メールアドレス、パスワードがあれば有効な状態である" do
+   it "名前、メールアドレス、パスワードがあれば有効な状態である" do
      user = User.new(
      name: "Sample",
      email: "sample@email.com",
