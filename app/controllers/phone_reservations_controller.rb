@@ -5,9 +5,8 @@ class PhoneReservationsController < ApplicationController
   def index
   end
 
-  def show
-    @users = User.all
-    @phone_reservation_number = PhoneReservation.where(line_booked: true) #Line電話予約した場合
+  def index_users
+    @phone_reservations = PhoneReservation.where(line_booked: true) #Line電話予約した場合
   end
 
   def edit

@@ -27,7 +27,13 @@ Rails.application.routes.draw do
       get 'show_account'
     end
   end
-  resources :phone_reservations
+  
+  resources :phone_reservations do
+    member do
+      get 'index_users'
+    end
+  end
+
   resources :work_reservations
   resources :videos
   resources :works do
