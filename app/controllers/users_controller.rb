@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   #メール内容確認ページ
   def reservation_confirmed
     @work_reservation = WorkReservation.find(params[:id])
-    @work_reservations = WorkReservation.where.not(worked_on: nil)
+
   end
   #メール送信する処理ですが未だ途中10/3
   def reservation_confirmed_mail
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
      respond_to do |format|
       if @work_reservation.present?
         UserMailer.with(work: @work_reservation).welcome_email.deliver_later
-        format.html { redirect_to(@work_reservation, notice: 'ユーザーが正常に作成されました。') }
+        format.html { redirect_to(@work_reservation, notice: 'お客様に予約内容を送信しました。') }
         format.json { render json: @work_reservation, status: :created, location: @work_reservation }
       else
         format.html { render action: 'new' }
