@@ -1,0 +1,26 @@
+<%= @work_reservation.user.name %>様、この度は、Nagomiをご利用いただきありがとうございます。
+===============================================
+
+Nagomiへのご予約内容が確定いたしました。
+予約内容は
+「<%= @work_reservation.user.name %>」様
+
+メイン項目「<%= @work_reservation.main_menu.delete(",[]") %>」
+
+オプション「<%= @work_reservation.option_menu.delete("(""""[])") %>」
+
+作業内容「<%= @work_reservation.reservation_work %>」
+
+お伺いする日付「<%= @work_reservation.worked_on.to_s(:date) %>」
+
+お伺いする時間「<%= @work_reservation.start_times.to_s(:hour) %>時<%= @work_reservation.start_times.to_s(:min) %>分」
+
+でございます。
+
+このサイトにログインするには、<%= @url %> をクリックしてください。
+
+なにかご不明な点はLine@で対応させていただきます。
+
+気軽にお申し付けくださいませ。
+
+Nagomiを今後ともよろしくお願いいたします。

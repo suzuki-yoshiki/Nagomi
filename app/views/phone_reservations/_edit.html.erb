@@ -13,12 +13,23 @@
             <p class="days-day">日付</p>
             <%= l(@phone_reservation.worked_on, format: :long) %>
           </div>
+
           <div class="times">
             <p class="times-time">時間</p>
+            <%= @phone_reservation.line_time %>
+            <%= params[:format] %>
+          </div>
+          
+          <div class="times">
+            <p class="times-time">お名前</p>
+            <%= current_user.name %>
+            <%= f.hidden_field :user_id, :value => current_user.id %>
             <%= params[:format] %>
           </div>
         </div>
-        <div class="form-group">
+        <%
+=begin%>
+ <div class="form-group">
           <%= f.label :title, "名前" %>
           <span class="must">必須</span>
           <%= f.text_field :name, class: "form-control" %>
@@ -45,6 +56,11 @@
         <div class="form-group">
           <%= f.label :title, "メールアドレス" %>
           <%= f.email_field :address, class: "form-control" %>
+        </div> 
+<%
+=end%>
+        <div class="form-group">
+          <%= f.hidden_field :line_booked, :value => true %>
         </div>
         <div class="modal-footer">  
           <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>

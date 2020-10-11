@@ -13,5 +13,9 @@ module ApplicationHelper
   def current_user?(user)
     user == current_user
   end
-  
+
+
+  def current_staff?(staff)
+    staff == current_staff
+  end
 end

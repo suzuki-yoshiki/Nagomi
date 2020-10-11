@@ -8,57 +8,52 @@ class WorkReservationsController < ApplicationController
   end
 
   def show
-    @phone_reservation_number = 0  #電話予約が確定してないので仮の0
+    @phone_reservation_number = PhoneReservation.where(line_booked: true).size  #電話予約が確定してないので仮の0
     @work_reservations = WorkReservation.where.not(worked_on: nil)
-    array = []  #予約状況の件数を配列に入れて表示させようとしてますが上手くいかず未完成の状態です。
-    work = WorkReservation.group(:worked_on).count(:worked_on)
-    array << work
-    @array = array
   end
 
   def create
-    @work_reservation = WorkReservation.new(
-      user_id: current_user.id,
-      reservation_work: params[:reservation_work],
-      worked_on: params[:worked_on],
-    )
-   if @work_reservation.save
+   @work_reservation = WorkReservation.new(work_reservation_params)
+   if @work_reservation.save!
        flash[:success] = "予約の新規作成に成功しました。"
-      redirect_to root_path
+      redirect_to work_reservation_url(current_staff)
    else
        flash[:danger] = "不正な入力がありました、再入力してください。"
-      redirect_to root_path
+       render :new
    end
-
   end
 
   def edit
     @work_reservation = WorkReservation.find(params[:id])
+    @main_menus = %w(ー部屋掃除８畳以上 ー部屋掃除6畳以下 レンジフードクリーニング キッチンクリーニング )
+    @option_menus = %w(窓ガラス内側のみクリーニング エアコンはフィルターまでやる 洗濯機は洗剤を入れて１日おく 電化製品 棚づくり 玄関 トイレ 洗面所 庭 )
   end
 
   def update
     @work_reservation = WorkReservation.find(params[:id])
-
       if @work_reservation.update_attributes(update_work_reservation_params)
-
        flash[:success] = "編集しました。"
-
+       redirect_to work_reservation_path
+      else
+        flash[:danger] = "不正な入力がありました、再入力してください。"
+        render :edit
       end
-      redirect_to work_reservation_path
   end
 
   def destroy
     work_reservation = WorkReservation.find(params[:id])
     work_reservation.destroy
     flash[:success] = "削除しました。"
-
     redirect_to work_reservation_path
-
   end
 
   private
 
-   def update_work_reservation_params
-     params.require(:work_reservation).permit(:reservation_work, :worked_on)
+   def work_reservation_params
+     params.require(:work_reservation).permit({main_menu: []}, {option_menu: []}, :reservation_work, :worked_on, :start_times, :user_id)
    end
+
+   def update_work_reservation_params
+     params.require(:work_reservation).permit({main_menu: []}, {option_menu: []}, :reservation_work, :worked_on, :start_times)
+  end
 end

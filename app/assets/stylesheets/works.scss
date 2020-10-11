@@ -12,3 +12,524 @@
 .works-title {
   margin-top: 50px;
 }
+// ハウスクリーニング
+// 各分類枠背景
+.work-user-container {
+  border: 1px solid #DCDCDC;
+  background-color: #F5F5F5;
+  display:flex;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+}
+.work-user-index {
+  font-size: 32px;
+  font-weight: bold;
+  color: #696969;
+  margin-top: 30px;
+  margin-left: 430px;
+  margin-bottom: 20px;
+  width: 350px;
+  letter-spacing: 0.05em;
+  background: linear-gradient(transparent 70%, #FFDEAD 70%);
+}
+// 各分類タイトル名前、(部屋)
+.work-user-title {
+  font-size: large;
+  display: inline-block;
+  margin-bottom: 15px;
+  padding: 0.5rem;
+  background: #f7f7f7;
+  border-left: solid 6px #32CD32;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
+}
+// 各分類タイトル位置
+.work-title-name-room {
+  color: #32CD32;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  text-align: left;
+}
+// 作業内容枠背景
+.works {
+  border: 1px solid #A9A9A9;
+  border-radius: 5px 5px 0px 0px;
+  width: 350px;
+  height: 400px;
+  margin: 20px 20px 20px 20px;
+  background-color: #F8F8FF;
+}
+// 作業内容タイトル装飾
+.works-name {
+  padding: 0.5em;/*文字周りの余白*/
+  font-size: 20px;
+  color: #010101;/*文字色*/
+  background: #eaf3ff;/*背景色*/
+  border-bottom: solid 3px #516ab6;/*下線*/
+  border-radius: 5px 5px 0px 0px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  height: 40px;
+  letter-spacing: 0.05em;
+}
+
+// 各分類タイトル名前、(キッチン)
+.work-user-title-kitchen {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-size: large;
+  display: inline-block;
+  margin-bottom: 15px;
+  padding: 0.5rem;
+  position: relative;
+  background: #f7f7f7;
+  border-left: solid 6px #FFA500;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
+}
+.work-title-name-kitchen {
+  color: #FFA500;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  text-align: left;
+}
+// 各分類タイトル名前、(水まわり)
+.work-user-title-water {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-size: large;
+  display: inline-block;
+  margin-bottom: 15px;
+  padding: 0.5rem;
+  position: relative;
+  background: #f7f7f7;
+  border-left: solid 6px #1E90FF;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
+}
+.work-title-name-water {
+  color: #1E90FF;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  text-align: left;
+}
+// 各分類タイトル名前、(外まわり)
+.work-user-title-outside {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-size: large;
+  display: inline-block;
+  margin-bottom: 15px;
+  padding: 0.5rem;
+  position: relative;
+  background: #f7f7f7;
+  border-left: solid 6px #BA55D3;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
+}
+.work-title-name-outside {
+  color: #BA55D3;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  text-align: left;
+}
+// 画像
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.image-index {
+  margin-left: 40px;
+  border: 1px solid #A9A9A9;
+  width: 260px;
+  height: 174px;
+}
+.image-option {
+  margin-left: 20px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  border: 1px solid #A9A9A9;
+  width: 250px;
+  height: 140px;
+}  
+
+// 詳細ボタン、位置、デザイン
+.btn-work-user-room {
+  position: absolute; top:162px; left:300px;
+}
+.btn-work-user {
+  display: inline-block;
+  margin-left: 25px;
+}
+.btn-gradient-3d-blue {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #fff;
+  background-image: linear-gradient(#4169E1 0%, #00BFFF 100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #4169E1;
+}
+.btn-gradient-3d-blue:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+}
+// コメント欄
+.coment {
+  width: 316px;
+  height: 130px;
+  margin-top: 30px;
+  margin-left: 10px;
+  position: relative;
+  padding: 0.5em 1em;
+  border: solid 2px #95ccff;
+  border-radius: 8px;
+}
+.coment .box-title {
+  position: absolute;
+  display: inline-block;
+  top: -13px;
+  left: 10px;
+  padding: 0 9px;
+  line-height: 1;
+  font-size: 19px;
+  background: #f7f7f7;
+  color: #95ccff;
+  font-weight: bold;
+}
+.coment p {
+  margin: 0; 
+  padding: 0;
+}
+.note {
+  text-align: right;
+  font-size: 11px;
+}
+// option枠
+.coment-option {
+  width: 316px;
+  height: 370px;
+  margin-top: 20px;
+  margin-left: 10px;
+  position: relative;
+  padding: 0.5em 1em;
+  border: solid 2px #95ccff;
+  border-radius: 8px;
+}
+.coment-option .box-option {
+  position: absolute;
+  display: inline-block;
+  top: -13px;
+  left: 10px;
+  padding: 0 9px;
+  line-height: 1;
+  font-size: 19px;
+  height: 20px;
+  border-radius: 3px;
+  background: #fc5185;
+  color: #fff;
+  font-weight: bold;
+}
+.coment-option p {
+  margin: 0; 
+  padding: 0;
+}
+
+
+// ここから詳細ページのCSS
+.work-user-show {
+  margin-top: 30px;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  color: #fff;
+  position: relative;
+  background-color: #00CED1;
+  box-shadow: 0px 0px 0px 5px #00CED1;
+  border: dashed 2px white;
+  padding: 0.2em 0.5em;
+}
+.work-user-show-container {
+  border: 1px solid #DCDCDC;
+  background-color: #F5F5F5;
+  height: 810px;
+  padding: 10px;
+  margin-top: 20px;
+}
+.work-user-one-room-container {
+  border: 1px solid #DCDCDC;
+  background-color: #F5F5F5;
+  height: 1020px;
+  padding: 10px;
+  margin-top: 20px;
+}
+// 一部屋まるごと（荷物あり）
+.cargo {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 70px;
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+  padding: 0 55px;
+  color: #696969;
+}
+.cargo:before, .cargo:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  width: 45px;
+  height: 1px;
+  background-color: black;
+}
+.cargo:before {
+  left:0;
+}
+.cargo:after {
+  right: 0;
+}
+// 一部屋丸ごと（荷物なし）
+.non-cargo {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 150px;
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+  padding: 0 55px;
+  color: #696969;
+}
+.non-cargo:before, .non-cargo:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  display: inline-block;
+  width: 45px;
+  height: 1px;
+  background-color: black;
+}
+.non-cargo:before {
+  left:0;
+}
+.non-cargo:after {
+  right: 0;
+}
+
+.show-container {
+  display:flex;
+  flex-wrap: wrap;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+}
+// 画像
+.show-image {
+  margin-left: 10px;
+  border: 1px solid #A9A9A9;
+  width: 450px;
+  height: 300px;
+}
+.cargo_in_out {
+  float: left;
+  font-weight: bold;
+  margin-bottom: 30px;
+  color: #696969;
+}
+
+// メインの価格ボード
+.charge {
+  width: 600px;
+  height: 300px;
+  padding: 0.5em 1em;
+  border: solid 2px #95ccff;
+  border-radius: 8px;
+}
+.charge-one-room {
+  width: 600px;
+  height: 720px;
+  padding: 0.5em 1em;
+  border: solid 2px #95ccff;
+  border-radius: 8px;
+}
+.main-price {
+  font-size: 18px;
+  width: 50px;
+  height: 30px;
+  text-align: left;
+  margin-top: 4px;
+  margin-left: 30px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  background-color: #483D8B;
+  text-align: center;
+  border-radius: 5px;
+  color: #fff;
+  float: left;
+}
+.main-price-water {
+  font-size: 15px;
+  width: 45px;
+  height: 25px;
+  text-align: left;
+  margin-top: 4px;
+  margin-left: 30px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  background-color: #483D8B;
+  text-align: center;
+  border-radius: 5px;
+  color: #fff;
+  float: left;
+}
+.tatami-6-8 {
+  float: left;
+}
+.mgr-10 {
+  margin-right: 50px;
+  color: #483D8B;
+}
+// リボン
+.ribbon {
+  display: inline-block;
+  position: relative;
+  padding: 10px 15px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  letter-spacing: 0.1em;
+  font-size: 18px;/*フォントサイズ*/
+  color: #FFF;/*フォントカラー*/
+  background: #a6d3c8;/*リボンの色*/
+}
+.ribbon:before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px rgb(149, 158, 155);/*折り返し部分*/
+}
+.ribbon-water {
+  display: inline-block;
+  position: relative;
+  padding: 5px 5px;
+  margin-top: 0px;
+  margin-right: 50px;
+  margin-bottom: 5px;
+  letter-spacing: 0.1em;
+  font-size: 12px;/*フォントサイズ*/
+  color: #FFF;/*フォントカラー*/
+  background: #a6d3c8;/*リボンの色*/
+  float: left;
+}
+.ribbon-water:before {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px rgb(149, 158, 155);/*折り返し部分*/
+}
+.work-comment-water {
+  margin-bottom: 20px;
+}
+
+.price-bord-6 {
+  text-align: right;
+  font-weight: bold;
+  font-size: 22px;
+  color: red;
+}
+.indent {
+  text-indent: -1em;
+  margin-left: 20px;
+}
+.price-bord-one-room {
+  text-align: right;
+  font-weight: bold;
+  margin-bottom: 0px;
+  font-size: 17px;
+  color: red;
+}
+.option {
+  display: flex;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+  width: 100%;
+  height: 220px;
+}
+.menue {
+  display: inline-block;
+  text-align: left;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  color: #808080;
+  margin-top: 25px;
+  margin-left: 20px;
+  margin-bottom: 0px;
+  border-bottom: double 5px #F4A460;
+}
+.name-box {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  width: 320px;
+  height: 200px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #5989cf;
+  background: #c6e4ff;
+  border-bottom: solid 6px #aac5de;
+  border-radius: 9px;
+  display: inline-block;
+  text-align: center;
+}
+.box-title {
+  color: #333333;
+  font-weight: bold;
+  font-size: large;
+  border-bottom: 5px #F4A460;
+}
+.title-bottom {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  height: 1px;
+  background-color: #808080;;
+}
+.price {
+  font-size: 13px;
+  width: 40px;
+  height: 22px;
+  text-align: left;
+  margin-top: 4px;
+  margin-left: 30px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  background-color: #483D8B;
+  text-align: center;
+  border-radius: 5px;
+  color: #fff;
+  float: left;
+}
+.price-bord {
+  font-weight: bold;
+  font-size: 19px;
+  color: #191970;
+}
+.price-comment {
+  color: #333333;
+  text-align: left;
+}
+.notice {
+  position: relative;
+  padding: 0.3em 0.5em;
+  background-image: -webkit-radial-gradient(27% 185%, #F9F6F1 0%, #D7D0C5 100%);
+  background-image: radial-gradient(27% 185%, #F9F6F1 0%, #D7D0C5 100%);
+  color: #495193;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+.list-item {
+  margin-left: 20px;
+  font-size: 12px;
+}

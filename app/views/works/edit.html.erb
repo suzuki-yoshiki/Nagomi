@@ -6,7 +6,7 @@
     <%= form_with(model: @work, url: work_path(@work), local: true, method: :patch) do |f| %>
 
       <%= f.label :写真, class: "label-#{yield(:class_text)}" %>
-      <%= f.file_field :profile_image_id %>
+      <%= f.file_field :profile_image %>
 
       <%= f.label :名前, class: "label-#{yield(:class_text)}" %>
       <%= f.text_field :content_name, class: "form-control" %>
@@ -17,7 +17,7 @@
       <%= f.label :単価, class: "label-#{yield(:class_text)}" %>
       <%= f.number_field :content_price, class: "form-control" %>
 
-      <%= f.submit "作成する", class: "btn btn-primary" %>
+      <%= f.submit "編集する", class: "btn btn-primary" %>
    <% end %>
   </div>
 </div>

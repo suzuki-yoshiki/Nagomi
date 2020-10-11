@@ -1,40 +1,98 @@
+<% provide(:title, "Line予約受付表") %>
+
+<h1 class="index-title-post">Line電話の予約受付表です</h1>
+<div class = "center">
+<h1>予約の前に友達追加をしてください</h1>
+<i class="fas fa-hand-point-down fa-lg fa-fw faa-vertical animated"></i></br>
+  <a href="https://lin.ee/ZnnCWE4"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
+</div>
 <div class="calendar">
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <% if Date.today == @first_day %>
-          <th style="width: 8%" rowspan="2"><p class="week">前の2週間</p></th>
-        <% else %>
-          <th style="width: 8%" rowspan="2"><p class="week"><%= link_to "前の2週間", phone_reservations_path(date: @first_day.ago(14.days)), class: "week-prev" %></p></th>
-        <% end %>
-          <th colspan="14"><%= l(Date.today, format: :long) %></th>
-          <th style="width: 8%" rowspan="2"><p class="week"><%= link_to "次の2週間", phone_reservations_path(date: @first_day.since(14.days)), class: "week-next"%></p></th>
-      </tr>
-      <% @phone_reservations.each do |day| %> 
-        <th class="day-cell">
-          <%= l(day.worked_on, format: :short) %><br>
-          <% if day.worked_on.wday ==6 %>
-            <font color="#00f">(<%= $days_of_the_week[day.worked_on.wday] %>)</font>
-          <% elsif day.worked_on.wday == 0 %>
-            <font color="#f00">(<%= $days_of_the_week[day.worked_on.wday] %>)</font>
-          <% else %>
-            <font color="#000">(<%= $days_of_the_week[day.worked_on.wday] %>)</font>
-          <% end %>  
-        </th>
-      <% end %>
-    </thead>
-    <tbody>
-      <% @day_time.each do |time| %> 
+  <div class="container">
+    <div class="row">
+      <table class="table table-bordered hyou">
         <tr>
-          <td><%= time %></td>
-            <% @phone_reservations.each do |day| %>
-              <td><%= link_to "◎", edit_phone_reservation_path(day.id, time), remote: true, class: "mark" %></td>
-            <% end %>  
-          <td><%= time %></td>
+          <% if Date.today == @first_day %>
+            <th rowspan="2"><p class="week">前の2週間</p></th>
+          <% else %>
+            <th rowspan="2"><p class="week"><%= link_to "前の1週間", phone_reservations_path(date: @first_day.ago(14.days)), class: "week-prev" %></p></th>
+          <% end %>
+            <% if @count > 13 %>
+              <th colspan="<%= @count %>"><%= l(@first_day, format: :middle2) %></th>
+            <% else %>
+              <th colspan="<%= @count %>"><%= l(@first_day, format: :middle2) %></th>
+              <th colspan="<%= 14 - @count %>"><%= l(@last_day, format: :middle2) %></th>
+            <% end %>
+            <th rowspan="2"><p class="week"><%= link_to "次の2週間", phone_reservations_path(date: @first_day.since(14.days)), class: "week-next"%></p></th>
         </tr>
-      <% end %> 
-    </tbody>
-  </table>
+        <% @two_weeks.each do |day| %> 
+          <th style="width: 6%" class="day-cell">
+            <%= l day ,format: :long2 %><br>
+          </th>
+        <% end %>
+      </table>
+    </div>
+    <div class="row">
+      <table class="table table-bordered zikan">
+        <tr>
+          <td>11:00</td>
+        </tr>
+        <tr>
+          <td>12:00</td>
+        </tr>
+        <tr>
+          <td>13:00</td>
+        </tr>
+        <tr>
+          <td>14:00</td>
+        </tr>
+        <tr>
+          <td>15:00</td>
+        </tr>
+        <tr>
+          <td>16:00</td>
+        </tr>
+        <tr>
+          <td>17:00</td>
+        </tr>
+      </table>
+      <table class="table table-bordered zikann">
+        <% @day_time.each do |time| %>
+          <tr>
+            <% @ids.each do |id| %>
+              <% if valide?(id + time) %>
+                <td><%= link_to "◎" , edit_phone_reservation_path(id + time), remote: true, class: "mark" %></td>
+              <% else %>
+                <td>✕</td>
+              <% end %>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+      <table class="table table-bordered zikan">
+        <tr>
+          <td>11:00</td>
+        </tr>
+        <tr>
+          <td>12:00</td>
+        </tr>
+        <tr>
+          <td>13:00</td>
+        </tr>
+        <tr>
+          <td>14:00</td>
+        </tr>
+        <tr>
+          <td>15:00</td>
+        </tr>
+        <tr>
+          <td>16:00</td>
+        </tr>
+        <tr>
+          <td>17:00</td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
 
 <!--モーダルウインドウ表示-->

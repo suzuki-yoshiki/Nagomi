@@ -1,46 +1,57 @@
-<script> 
+<% provide(:title, "作業内容一覧") %>
+
+<script>
   $(function() {
     setTimeout("$('.alert').fadeOut('slow')", 2500);
   });
-</script> 
-<div class="container fluid-box-works">
-  <% flash.each do |message_type, msg| %>
-    <div class="alert alert-<%= message_type %>"><%= msg %></div>
-  <% end %>
-</div>
-<h1 class="works-title">作業内容一覧</h1>
+</script>
 
-<div align="center">
-  <%= link_to "新規登録", new_work_path, class: "btn btn-success" %>
-</div>
-
-<table class="table table-bordered">
-          <thead>
-          <tr>
-           <th>写真</th>
-           <th>名前</th>
-           <th>内容</th>
-           <th>単価</th>
-           <th></th>
-         </tr>
-         </thead>
-
-
-       <tbody>
+<link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+  <div class="tool-index-body">
+    <div class="container fluid-box-index">
+      <% flash.each do |message_type, msg| %>
+        <div class="alert alert-<%= message_type %>"><%= msg %></div>
+      <% end %>
+    </div>
+    <section class="user-index">
+      <div class="container">
+        <h1 class="index-title-post">作業内容一覧</h1>
+      </div>
+    </section>
+      <div class="new-btn">
+        <%= link_to "新規登録", new_work_path, class: "btn-gradient-3d-green" %>
+      </div>
+      <div class="row">
+        <div class="col-md-offset-8 col-md-3 form-center-search">
+        </div>
+      </div>
+    <section class="section">
+      <div class="container">
+        <hr class="tool-bar">
          <% @works.each do |work| %>
-          <tr>
-           <td><% if work.profile_image_id.url %>
-                <%= image_tag work.profile_image_id.url %>
-               <% end %>
-           </td>
-           <td><%= work.content_name %></td>
-           <td><%= work.content %></td>
-           <td><%= work.content_price %>円</td>
-           <td>
-               <%= link_to "編集", edit_work_path(work), class: "btn btn-warning" %>
-               <%= link_to "削除", "/works/#{work.id}", method: :delete, class: "btn btn-danger", data: { confirm: "作業内容を削除してよろしいですか？" } %>
-           </td>
-         </tr>
-         <% end %>
-       </tbody>
-      </table>
+          <div class="row">
+              <div class="col-md-2">
+                <div class="grid-item-image"><%= attachment_image_tag work, :profile_image, fallback: "no_image.png", class: "index-photo"%></div>
+              </div>
+              <div class="col-md-2 tool--item">
+                <%= work.content_name %>
+              </div>
+              <div class="col-md-1 tool--item">
+                <%= work.content %>
+              </div>
+              <div class="col-md-1 tool--item">
+                <%= work.content_price %> 円
+              </div>
+
+              <div class="col-md-1 tool--item">
+                <%= link_to "編集", edit_work_path(work), class: "btn-gradient-3d-simple" %>
+              </div>
+              <div class="col-md-1 btn--del">
+                <%= link_to "削除", "/works/#{work.id}", method: :delete, class: "btn-gradient-3d-orange", data: { confirm: "作業内容を削除してよろしいですか？" } %>
+              </div>
+            </div>
+            <hr class="tool-bar">
+          <% end %>
+      </div>
+    </section>
+  </div>

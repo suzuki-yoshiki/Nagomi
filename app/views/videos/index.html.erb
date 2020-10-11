@@ -1,6 +1,7 @@
 <% provide(:title, 'Video 一覧') %>
+<div class="tool-index-body">
 <div class="container">
-  <h1>動画一覧</h1>
+  <h1 class="index-title-post">YouTube動画コーナー</h1>
   <div class="row" >
     <div class="col-md-8 col-md-offset-2">
       <% if @videos.count < 1 %><%#= データの数で %>
@@ -13,7 +14,7 @@
           <div class="video">
             <iframe width="750" height="500" src="https://www.youtube.com/embed/<%= video.body %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
-          <% if current_user.present? && current_user.admin? %> <%#= current_userが存在し、かつ管理者の場合表示させる %>
+          <% if current_staff.present?  %> <%#= current_userが存在し、かつ管理者の場合表示させる %>
             <div class="botton">
               <td>
                 <%= link_to "編集", edit_video_path(video), class: "btn btn-lg btn-primary" %>
@@ -32,11 +33,12 @@
       <td>
         <%= link_to "ホームへ", root_path, class: "btn btn-lg btn-primary" %>
       </td>
-      <% if current_user.present? && current_user.admin? %> <%#= current_userが存在し、かつ管理者の場合表示させる %>
+      <% if current_staff.present? %> <%#= current_staffが存在し、かつ管理者の場合表示させる %>
         <td>
           <%= link_to "新規追加", new_video_path, class: "btn btn-lg btn-primary" %>
         </td>
       <% end %>
     </div>
   </div>
+</div>
 </div>
