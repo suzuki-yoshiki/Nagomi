@@ -42,25 +42,22 @@ class UsersController < ApplicationController
   end
   #メール内容確認ページ
   def reservation_confirmed
-    @user = User.find(params[:id])
+    @work_reservation = WorkReservation.find(params[:id])
     @work_reservations = WorkReservation.where.not(worked_on: nil)
   end
   #メール送信する処理ですが未だ途中10/3
   def reservation_confirmed_mail
-    @user = User.find(params[:id])
     @work_reservation = WorkReservation.find(params[:id])
-    respond_to do |format|
-      if @work_reservation.update(finished_mail_params)
-        # 保存後にUserMailerを使って予約確定メールを送信
-        UserMailer.welcome_email.deliver_now
-        @work_reservations = @user.work_reservations.where(user_id: @user.id)
-        format.html { redirect_to work_reservation_url, notice: '#{@user.name}様に予約確定メールを送信しました。' }
-        format.json { render json: @user, status: :created, location: @user }
+     respond_to do |format|
+      if @work_reservation.present?
+        UserMailer.with(work: @work_reservation).welcome_email.deliver_later
+        format.html { redirect_to(@work_reservation, notice: 'ユーザーが正常に作成されました。') }
+        format.json { render json: @work_reservation, status: :created, location: @work_reservation }
       else
         format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @work_reservation.errors, status: :unprocessable_entity }
       end
-    end
+     end
   end
 
   def new_work_reservation
