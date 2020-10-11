@@ -1,7 +1,7 @@
 <% provide(:title, "new") %>
 <% provide(:class_text, 'staff--new') %>
 <% provide(:button_text, '登録') %>
-<h1>スタッフの新規登録</h1>
+<h1 class="index-title-post">スタッフの新規登録</h1>
 
 
 <div class="row">
@@ -9,47 +9,47 @@
     <%= form_with(model: @staff, url: staffs_path, local: true, method: :post) do |f| %>
 
   <div class="field">
-    <%= f.label :社員番号 %> <br />
+    <%= f.label :社員番号 %> <span class="must">必須</span><br />
     <%= f.text_field :staff_number, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= f.label :名前 %> <br />
+    <%= f.label :名前 %> <span class="must">必須</span><br />
     <%= f.text_field :name, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= f.label :ふりがな %> <br />
+    <%= f.label :ふりがな %> <span class="must">必須</span><br />
     <%= f.text_field :kana, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= f.label :性別 %> <br />
+    <%= f.label :性別 %> <span class="must">必須</span><br />
     <%= f.radio_button :sex, "男" %>男 <%= f.radio_button :sex, "女" %>女
   </div>
 
   <div class="field">
-    <%= f.label :メールアドレス %><br />
+    <%= f.label :メールアドレス %><span class="must">必須</span><br />
     <%= f.email_field :email,  class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= f.label :住所 %> <br />
+    <%= f.label :住所 %> <span class="must">必須</span><br />
     <%= f.text_field :address, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= f.label :電話番号 %> <br />
+    <%= f.label :電話番号 %> <span class="must">必須</span> <br />
     <%= f.text_field :phone_number, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= f.label :Line_ID %><br />
+    <%= f.label :Line_ID %> <span class="must">必須</span><br />
     <%= f.text_field :line_id, class: 'form-control' %>
   </div>
 
   <div class="field">
-    <%= f.label :パスワード %>
+    <%= f.label :パスワード %> <span class="must">必須</span>
     <% if @minimum_password_length %>
     <em>(最小<%= @minimum_password_length %>文字)</em>
     <% end %><br />
@@ -57,7 +57,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :パスワード確認 %><br />
+    <%= f.label :パスワード確認 %> <span class="must">必須</span><br />
     <%= f.password_field :password_confirmation,  class: 'form-control' %>
   </div>
 
