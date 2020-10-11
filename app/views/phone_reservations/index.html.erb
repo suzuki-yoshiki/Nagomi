@@ -62,7 +62,7 @@
               <% if valide?(id + time) %>
                 <td><%= link_to "◎" , edit_phone_reservation_path(id + time), remote: true, class: "mark" %></td>
               <% else %>
-                <td>✕</td>
+                <td> ✕ </td>
               <% end %>
             <% end %>
           </tr>

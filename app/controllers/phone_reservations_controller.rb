@@ -1,14 +1,8 @@
 class PhoneReservationsController < ApplicationController
   before_action :set_two_weeks,only: [:index, :edit]
-  # before_action :authenticate_user!, only: [:edit, :update, :destroy, :new, :create]
+  #before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   def index
-  end
-
-  def new
-  end
-
-  def create
   end
 
   def show
