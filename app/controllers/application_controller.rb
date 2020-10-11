@@ -71,4 +71,20 @@ class ApplicationController < ActionController::Base
     @ids = [id1,id2,id3,id4,id5,id6,id7,id8,id9,id10,id11,id12,id13,id14] # idの配列を作成
     @count = (@first_day.end_of_month - @first_day).to_i + 1
   end
+
+  protect_from_forgery with: :exception #セッション情報を元に、現在のカートを呼び出すことができるようになる
+
+  helper_method :current_cart
+
+  def current_cart
+    if session[:cart_id]
+      # セッションから取得したcart_idを元にCartテーブルからCart情報を取得
+      @cart = Cart.find_by(id: session[:cart_id])
+    else
+      # Cart情報が存在しない場合、@cartを作成
+      @cart = Cart.create
+      # 取得したCart情報よりIDを取得し、セッションに設定
+      session[:cart_id] = @cart.id
+    end
+  end
 end

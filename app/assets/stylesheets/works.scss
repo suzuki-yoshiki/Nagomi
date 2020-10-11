@@ -341,6 +341,7 @@ img {
   padding: 0.5em 1em;
   border: solid 2px #95ccff;
   border-radius: 8px;
+  position: relative;
 }
 .charge-one-room {
   width: 600px;
@@ -532,4 +533,10 @@ img {
 .list-item {
   margin-left: 20px;
   font-size: 12px;
+}
+ 
+.btn-work-cart {
+  position: absolute;
+  top: 250px;
+  right: 10px;
 }
