@@ -5,6 +5,10 @@ class PhoneReservationsController < ApplicationController
   def index
   end
 
+  def index_holidays
+    @phone_reservations = PhoneReservation.where(holiday: true) 
+  end
+
   def index_users
     @phone_reservations = PhoneReservation.where(line_booked: true) #Line電話予約した場合
   end
@@ -16,8 +20,13 @@ class PhoneReservationsController < ApplicationController
   def update
     @phone_reservation = PhoneReservation.find(params[:id])
     if @phone_reservation.update_attributes(phone_reservation_params) #予約ボタンを押されたら line_booked => true ,user_id => current_user.id となる
-      flash[:success] = "#{l @phone_reservation.worked_on} #{@phone_reservation.line_time}のLINE電話予約が完了しました。"
-      redirect_to phone_reservations_url
+      if params[:phone_reservation][:line_booked] = true
+        flash[:success] = "#{l @phone_reservation.worked_on} #{@phone_reservation.line_time}のLINE電話予約が完了しました。"
+        redirect_to phone_reservations_url
+      elsif params[:phone_reservation][:holiday] = true 
+        flash[:success] = "#{l @phone_reservation.worked_on} #{@phone_reservation.line_time}を休みにしました。"
+        redirect_to phone_reservations_url
+      end
     else
       render :edit      
     end
@@ -29,7 +38,7 @@ class PhoneReservationsController < ApplicationController
   private
 
   def phone_reservation_params
-    params.require(:phone_reservation).permit(:line_booked, :user_id ) #予約ボタンを押されたら line_booked => true ,user_id => current_user.id となる
+    params.require(:phone_reservation).permit(:line_booked, :user_id ,:holiday) #予約ボタンを押されたら line_booked => true ,user_id => current_user.id となる
   end
   
 

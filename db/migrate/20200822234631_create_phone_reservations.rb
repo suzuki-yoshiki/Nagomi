@@ -4,19 +4,14 @@ class CreatePhoneReservations < ActiveRecord::Migration[5.2]
       t.date :worked_on
       t.string :reservation_line_flag
       t.text :reservation_work
-      t.boolean :reservation_mark, default: false
       t.string :client_name_flag
       t.integer :user_id
       t.integer :staff_id
       t.integer :line_time
-      t.string :line_time_11
-      t.string :line_time_12
-      t.string :line_time_13
-      t.string :line_time_14
-      t.string :line_time_15
-      t.string :line_time_16
-      t.string :line_time_17
-      t.boolean :line_booked, default: false
+      t.boolean :reservation_mark, default: false 
+      t.boolean :line_end, default: false #LINE電話が完了したか
+      t.boolean :holiday, default: false #休みにする
+      t.boolean :line_booked, default: false #LINE電話の予約する
       t.text :time_work
       t.string :time_line_flag
       t.text :time_work

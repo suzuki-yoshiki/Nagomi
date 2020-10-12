@@ -29,6 +29,9 @@ Rails.application.routes.draw do
   end
   
   resources :phone_reservations do
+    collection do
+      get 'index_holidays'
+    end
     member do
       get 'index_users'
     end
