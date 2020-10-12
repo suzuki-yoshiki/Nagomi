@@ -1,0 +1,38 @@
+<% provide(:title, "Line電話の予約") %>
+
+<div>
+  <h1>Line電話予約申し込み者一覧</h1>
+  <div class="col-md-10 col-md-offset-1">
+    <table class="table table-condensed table-hover" id="table-users">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>名前</th>
+          <th>かな</th>
+          <th>性別</th>
+          <th>アドレス</th>
+          <th>電話番号</th>
+        </tr>
+      </thead>
+
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= link_to user.name ,user_path(user) %></td>
+          <td><%= user.kana %></td>
+          <td><%= user.sex %></td>
+          <td><%= user.email %></td>
+          <td><%= user.phone_number %></td>
+          <td>
+          </td>
+          <td>
+            <% if current_staff.present? %>
+              <%= link_to "電話済み", edit_user_path(user), class: "btn btn-danger" %>
+              <%= link_to "過去の電話履歴確認", edit_user_path(user), class: "btn btn-primary" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
