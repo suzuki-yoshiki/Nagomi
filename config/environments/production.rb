@@ -47,12 +47,12 @@ Rails.application.configure do
     :enable_starttls_auto => true,
     :address => 'smtp.gmail.com',
     :port => '587',
-    :domain => 'smtp.gmail.com',
+    :domain => 'gmail.com',
     :authentication => 'plain',
     :user_name => 'yoshisu04183@gmail.com',
-    :password => 'ehshgvusddrabvkv'
+    :password => 'yoshiki4869'
   }
-
+  # ehshgvusddrabvkv
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
