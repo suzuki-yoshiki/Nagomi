@@ -10,7 +10,25 @@
       <div class="charge">
         <p class="main-price">価格</p>
         <p class="price-bord-6"><span class="mgr-10">6畳以下</span>¥ 12,000&ensp;(税抜)&emsp;</p>
-        <p class="price-bord-6"><span class="mgr-10">8畳以上</span>¥ 15,000&ensp;(税抜)&emsp;</p>
+
+
+        <%#= form_with ([@work, @cart_item], url: add_item_cart_path, local: true, method: :post) do |f| %>
+        <%#= form_with(model: @work, url: add_item_cart_path(@carts), local: true, method: :post) do |f| %>  
+
+        <div class="btn-work6-cart">
+          <%#= f.submit "お見積りカートに入れる", class: "btn-gradient-3d-orange" %>
+        </div>
+
+        <%# end %>
+
+
+
+
+
+        <p class="price-bord-8"><span class="mgr-10">8畳以上</span>¥ 15,000&ensp;(税抜)&emsp;</p>
+        <div class="btn-work8-cart">
+          <%= link_to "お見積りカートに入れる", "#", class: "btn-gradient-3d-orange" %>
+        </div>
         <h2 class="ribbon">主な作業内容</h2>
         <ul>
           <li class="indent"><i class="far fa-check-square"></i>&nbsp;	床の清掃（フローリング、板張り、畳）</li>
@@ -18,11 +36,6 @@
           <li class="indent"><i class="far fa-check-square"></i>&nbsp; 窓ガラスの清掃はオプションとなります。</li>
           <li class="indent"><i class="far fa-check-square"></i>&nbsp; 壁紙の清掃は行っておりません。</li>
         </ul>
-        <div class="btn-work-cart">
-          <%#= link_to cart_add_item_path, method: :post do %>
-          <div class="btn-gradient-3d-orange">お見積りカートに入れる</div>
-          <%# end %>
-        </div>
       </div>
     </div>
   <h2 class="menue">オプションメニュー</h2>

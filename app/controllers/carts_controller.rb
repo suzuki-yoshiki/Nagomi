@@ -5,10 +5,10 @@ class CartsController < ApplicationController
     @cart_items = current_cart.cart_items
   end
 
-  # 商品一覧画面から、「商品購入」を押した時のアクション
+  # 商品一覧画面から、「お見積りカートに入れる」を押した時のアクション
   def add_item
     if @cart_item.blank?
-      @cart_item = current_cart.cart_items.build(work_id: params[:work_id])
+      @cart_item = current_cart.cart_items.build(item_id: params[:item_id])
     end
     @cart_item.quantity += params[:quantity].to_i
     @cart_item.save
@@ -30,7 +30,7 @@ class CartsController < ApplicationController
   private
 
   def setup_cart_item!
-    @cart_item = current_cart.cart_items.find_by(work_id: params[:work_id])
+    @cart_item = current_cart.cart_items.find_by(item_id: params[:item_id])
   end
-end
+
 end

@@ -437,7 +437,14 @@ img {
 .price-bord-6 {
   text-align: right;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 23px;
+  color: red;
+}
+.price-bord-8 {
+  margin-top: 50px;
+  text-align: right;
+  font-weight: bold;
+  font-size: 23px;
   color: red;
 }
 .indent {
@@ -535,8 +542,14 @@ img {
   font-size: 12px;
 }
  
-.btn-work-cart {
+.btn-work6-cart {
   position: absolute;
-  top: 250px;
+  top: 45px;
   right: 10px;
 }
+.btn-work8-cart {
+  position: absolute;
+  top: 135px;
+  right: 10px;
+}
+

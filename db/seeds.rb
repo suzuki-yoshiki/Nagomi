@@ -23,13 +23,24 @@ User.create!(name: "Sample-1 User",
 
 puts "User Created"
 
+Item.create!(name: "ー部屋掃除８畳以上",
+             price: "15000")
+
+Item.create!(name: "ー部屋掃除6畳以上",
+             price: "12000")
+
+Item.create!(name: "レンジフードクリーニング",
+             price: "12000")
+
+puts "Item Created"
+
 # WorkReservation.create!(main_menu: "ー部屋掃除８畳以上",
 #                         option_menu: "窓ガラス内側のみクリーニング")
 
 # WorkReservation.create!(main_menu: "ー部屋掃除6畳以下",
 #                         option_menu: "エアコンはフィルターまで行います")
 
-# WorkReservation.create!(main_menu: "レンジフードクリーニング",
+# WorkReservation.create!(min_menu: "レンジフードクリーニング",
 #                         option_menu: "洗濯機は洗剤を入れて６０分")
 
 # WorkReservation.create!(main_menu: "キッチンクリーニング",
