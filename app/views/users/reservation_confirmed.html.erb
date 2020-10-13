@@ -19,7 +19,9 @@
        訪問日：<%= @work_reservation.worked_on.to_s(:date) %></br>
        作業開始時間：<%= @work_reservation.start_times.to_s(:hour) %>時<%= @work_reservation.start_times.to_s(:min) %>分</br>
 
-     <%= form_with(model: @work_reservation, url: reservation_confirmed_mail_user_path(@work_reservation), local: true, method: :get) do |f| %>
+     <%= form_with(model: @work_reservation, url: reservation_confirmed_mail_user_path(@work_reservation), local: true, method: :patch) do |f| %>
+       <%= f.label :送信許可, class: "label-#{yield(:class_text)}" %>
+       <%= f.check_box :reservation_mark ,{}, "true", "false" %></br>
        <%= f.submit "以上の内容をお客様へ送信する", data: { confirm: "メールを送信してもよろしいですか？" }, class: "btn btn-primary" %>
      <% end %>
   </div>

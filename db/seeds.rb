@@ -1,6 +1,6 @@
 # coding: utf-8
 #管理者ユーザー
-Staff.create!(name: "Sample User",
+Staff.create!(name: "管理者Sample User",
              email: "sample@email.com",
              password: "password",
              password_confirmation: "password",
@@ -12,14 +12,34 @@ Staff.create!(name: "Sample Staff",
               password: "password",
               password_confirmation: "password")
 
+40.times do |n|
+  name  = Faker::Name.name
+  email = "sample-#{n+1}@email.com"
+  password = "password"
+  Staff.create!(name: name,
+                email: email,
+                password: password,
+                password_confirmation: password)
+end        
+                
 puts "Staff Created"
 
 #サンプルユーザー             
-User.create!(name: "Sample-1 User",
-             email: "sample-1@email.com",
+User.create!(name: "お客様Sample User",
+             email: "sample1@email.com",
              password: "password",
              password_confirmation: "password",
              admin: false)
+
+40.times do |n|
+name  = Faker::Name.name
+email = "sample-#{n+1}@email.com"
+password = "password"
+User.create!(name: name,
+              email: email,
+              password: password,
+              password_confirmation: password)
+end        
 
 puts "User Created"
 

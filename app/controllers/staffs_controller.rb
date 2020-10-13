@@ -1,7 +1,11 @@
 class StaffsController < ApplicationController
 
   def index
-    @staffs = Staff.all
+    if 
+     @staffs = Staff.paginate(page: params[:page], per_page: 10)
+    else
+     Staff.all
+    end
   end
 
   def new
