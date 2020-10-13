@@ -17,6 +17,12 @@
               </thead>
 
               <tbody>
+                 <% if work_reservation.reservation_mark.present?%>
+                   <tr><th colspan="2">送信確認</th><td colspan="2">お客様に予約メールを送信済み</td></tr>
+                 <% else %>
+                   <tr><th colspan="2">送信確認</th><td colspan="2">お客様に予約メールを未送信</td></tr>
+                 <%end%>
+
                  <tr><th colspan="2">名前</th><td colspan="2"><%= work_reservation.user.name %></td></tr>
                  <tr><th colspan="2">TEL</th><td colspan="2"><%= work_reservation.user.phone_number %></td></tr>
                  <tr><th colspan="2">住所</th><td colspan="2"><%= work_reservation.user.address %></td></tr>
