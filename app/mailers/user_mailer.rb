@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: 'notifications@example.com'
+  default from: 'Nagomi@example.com'
 
   def welcome_email
     @url  = 'https://nagomi-system.herokuapp.com/staffs/sign_in'

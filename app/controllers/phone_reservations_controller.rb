@@ -12,7 +12,11 @@ class PhoneReservationsController < ApplicationController
   end
 
   def show
-    @users = User.all
+    if 
+      @users = User.paginate(page: params[:page], per_page: 2)
+    else
+      User.all
+    end
     @phone_reservation_number = PhoneReservation.where(line_booked: true) #Line電話予約した場合
   end
 
