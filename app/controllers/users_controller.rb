@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     @work_reservation = WorkReservation.find(params[:id])
      respond_to do |format|
       if @work_reservation.update_attributes(finished_mail_params)
-        UserMailer.with(work_reservation: @work_reservation).welcome_email.deliver_now
+        UserMailer.welcome_email(@work_reservation).deliver
         format.html { redirect_to(@work_reservation, notice: 'お客様に予約内容を送信しました。') }
         format.text { redirect_to(@work_reservation, notice: 'お客様に予約内容を送信しました。') }
         flash[:success] = "お客様に予約内容を送信しました。"
