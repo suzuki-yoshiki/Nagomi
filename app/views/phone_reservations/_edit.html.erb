@@ -22,9 +22,15 @@
           
           <div class="times">
             <p class="times-time">お名前</p>
-            <%= current_user.name %>
-            <%= f.hidden_field :user_id, :value => current_user.id %>
-            <%= params[:format] %>
+            <% if current_user.nil? && current_staff.nil? %>
+              <p>ゲストユーザー</p>
+            <% elsif current_user.present? %>
+              <%= current_user.name %>
+              <%= f.hidden_field :user_id, :value => current_user.id %>
+              <%= params[:format] %>
+            <% elsif current_staff.present? %>
+              <p><%= current_staff.name %></p>
+            <% end %>
           </div>
         </div>
         <%

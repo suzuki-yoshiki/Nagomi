@@ -2,6 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :work_reservations, dependent: :destroy
+  has_many :phone_reservations, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :kana,length: { maximum: 50 }
