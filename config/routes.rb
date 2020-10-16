@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'work_histories/index'
   root 'static_pages#top'
 
   devise_for :staffs, controllers: {
@@ -42,6 +43,6 @@ Rails.application.routes.draw do
   resources :tools
   resources :reviews
   resources :maps
-
+  resources :work_histories
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
