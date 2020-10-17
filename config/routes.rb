@@ -42,6 +42,12 @@ Rails.application.routes.draw do
   resources :tools
   resources :reviews
   resources :maps
-
+  resources :carts, only: [:show] 
+  resources :cart_items
+  resources :items do
+      post '/add_item' => 'carts#add_item'
+      post '/update_item' => 'carts#update_item'
+      delete '/delete_item' => 'carts#delete_item'
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

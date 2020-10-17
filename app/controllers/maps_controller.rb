@@ -14,10 +14,10 @@ class MapsController < ApplicationController
     if @map1.save
       if @map1.distance_to(@map) < (@map.distance || 10)
         flash[:success] = 'サービス対応可能です！'
-        redirect_to maps_index_url
+        redirect_to maps_url
       else
         flash[:danger] = 'サービス対応していません。一度お問い合わせください'
-        redirect_to maps_index_url
+        redirect_to maps_url
       end
     else
       render :new

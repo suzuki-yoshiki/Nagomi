@@ -45,7 +45,7 @@ class Staffs::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    work_reservation_path(@staff.id)
+    show_account_staff_path(@staff.id)
   end
 
   # If you have extra params to permit, append them to the sanitizer.

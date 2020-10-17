@@ -42,25 +42,22 @@ class UsersController < ApplicationController
   end
   #メール内容確認ページ
   def reservation_confirmed
-    @user = User.find(params[:id])
-    @work_reservations = WorkReservation.where.not(worked_on: nil)
+    @work_reservation = WorkReservation.find(params[:id])
+
   end
   #メール送信する処理ですが未だ途中10/3
   def reservation_confirmed_mail
-    @user = User.find(params[:id])
     @work_reservation = WorkReservation.find(params[:id])
-    respond_to do |format|
-      if @work_reservation.update(finished_mail_params)
-        # 保存後にUserMailerを使って予約確定メールを送信
-        UserMailer.welcome_email.deliver_now
-        @work_reservations = @user.work_reservations.where(user_id: @user.id)
-        format.html { redirect_to work_reservation_url, notice: '#{@user.name}様に予約確定メールを送信しました。' }
-        format.json { render json: @user, status: :created, location: @user }
+     respond_to do |format|
+      if @work_reservation.update_attributes(finished_mail_params)
+        UserMailer.with(work_reservation: @work_reservation).welcome_email.deliver_now
+        format.html { redirect_to(@work_reservation, notice: 'お客様に予約内容を送信しました。') }
+        format.text { redirect_to(@work_reservation, notice: 'お客様に予約内容を送信しました。') }
+        flash[:success] = "お客様に予約内容を送信しました。"
       else
         format.html { render action: 'new' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
-    end
+     end
   end
 
   def new_work_reservation
@@ -81,7 +78,7 @@ class UsersController < ApplicationController
       end
 
       def finished_mail_params
-        params.require(:work_reservation).permit({main_menu: []}, {option_menu: []}, :reservation_work, :worked_on, :start_times, :user_id)
+        params.require(:work_reservation).permit(:reservation_mark)
       end
 
 end
