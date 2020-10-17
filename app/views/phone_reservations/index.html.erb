@@ -11,7 +11,7 @@
     <div class="row">
       <table class="table table-bordered hyou">
         <tr>
-          <% if Date.today == @first_day %>
+          <% if Date.tomorrow == @first_day %>
             <th rowspan="2"><p class="week">前の2週間</p></th>
           <% else %>
             <th rowspan="2"><p class="week"><%= link_to "前の1週間", phone_reservations_path(date: @first_day.ago(14.days)), class: "week-prev" %></p></th>
@@ -93,9 +93,11 @@
       </table>
     </div>
   </div>
-</div>
-<div>
-  <%= link_to "休み設定", index_holidays_phone_reservations_path , class: "btn btn-lg btn-primary" %>
+  <div class="botton2">
+    <td>
+      <%= link_to "休み設定", index_holidays_phone_reservations_path , class: "btn btn-lg btn-primary" %>
+    </td>
+  </div>
 </div>
 
 <!--モーダルウインドウ表示-->

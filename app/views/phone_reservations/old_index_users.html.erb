@@ -1,8 +1,8 @@
-<% provide(:title, "Line電話の予約申込一覧") %>
+<% provide(:title, "Line電話完了済み") %>
 
 <div>
   <h1>Line電話予約申し込み者一覧</h1>
-  <h1>Line電話予約申し込み者一覧</h1>
+  <h1>Line電話完了済み</h1>
   <div class="col-md-10 col-md-offset-1">
     <table class="table table-condensed table-hover" id="table-users">
       <thead>
@@ -13,11 +13,8 @@
           <th>ユーザーID</th>
           <th>ユーザー名</th>
           <th>LINE ID</th>
-          <th>完了</th>
-          <th>削除</th>
         </tr>
       </thead>
-
       <% @phone_reservations.each do |phone_reservation| %>
         <% user = User.find(phone_reservation.user_id) %>
         <tr>
@@ -33,22 +30,12 @@
               なし
             <% end %>
           </td>
-          <td>
-            <%= form_with(model: @phone_reservation, url: update_index_users_phone_reservations_path(id:phone_reservation.id), local: true, method: :patch) do |f| %>
-              <%= f.submit "完了",data: { confirm: "完了してよろしいでしょうか" }, class: "btn btn-sm btn-primary" %>
-            <% end %>
-          </td>
-          <td>
-            <%= form_with(model: @phone_reservation, url: update_index_users_phone_reservations_path(id:phone_reservation.id), local: true, method: :patch) do |f| %>
-              <%= f.submit "削除",data: { confirm: "解除してよろしいでしょうか" }, class: "btn btn-sm btn-danger" %>
-            <% end %>
-          </td>
         </tr>
       <% end %>
     </table>
     <div class="botton2">
       <td>
-        <%= link_to "履歴へ", old_index_users_phone_reservations_path	, class: "btn btn-lg btn-primary" %>
+        <%= link_to "Line電話予約申し込み者一覧", index_users_phone_reservations_path, class: "btn btn-lg btn-primary" %>
       </td>
     </div>
   </div>

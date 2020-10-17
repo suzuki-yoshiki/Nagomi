@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   def set_two_weeks
     if params[:date].nil? # 前の週、次の週に対応
       require 'date'
-      @first_day = Date.today
+      @first_day = Date.tomorrow
       @last_day = (@first_day+13.day)
     else
       @first_day = params[:date].to_date

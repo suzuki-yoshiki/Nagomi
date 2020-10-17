@@ -31,9 +31,10 @@ Rails.application.routes.draw do
   resources :phone_reservations do
     collection do
       get 'index_holidays'
-    end
-    member do
+      patch 'update_holidays'
       get 'index_users'
+      patch 'update_index_users'
+      get 'old_index_users'
     end
   end
 
