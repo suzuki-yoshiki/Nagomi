@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_10_12_165930) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+ActiveRecord::Schema.define(version: 2020_10_15_212839) do
 
   create_table "maps", force: :cascade do |t|
     t.text "address"
@@ -141,6 +142,22 @@ ActiveRecord::Schema.define(version: 2020_10_12_165930) do
     t.string "youtube_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "work_histories", force: :cascade do |t|
+    t.date "worked_on"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.text "reservation_work"
+    t.string "reservation_mark"
+    t.string "client_name_flag"
+    t.string "main_menu"
+    t.string "option_menu"
+    t.time "start_times"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_work_histories_on_user_id"
   end
 
   create_table "work_reservations", force: :cascade do |t|
