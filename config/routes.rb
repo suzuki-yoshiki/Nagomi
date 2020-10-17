@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'work_histories/index'
   root 'static_pages#top'
 
   devise_for :staffs, controllers: {
@@ -49,5 +50,7 @@ Rails.application.routes.draw do
       post '/update_item' => 'carts#update_item'
       delete '/delete_item' => 'carts#delete_item'
   end
+
+  resources :work_histories
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

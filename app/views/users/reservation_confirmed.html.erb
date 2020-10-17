@@ -9,9 +9,10 @@
        名前：<%= @work_reservation.user.name %></br>
        フリガナ：<%= @work_reservation.user.kana %></br>
        性別：<%= @work_reservation.user.sex %></br>
+       メールアドレス：<%= @work_reservation.user.email %></br>
        電話番号：<%= @work_reservation.user.phone_number %></br>
        住所：<%= @work_reservation.user.address %></br>
-       Line ID:<%= @work_reservation.user.line_id %></br>
+       Line ID：<%= @work_reservation.user.line_id %></br>
        メインメニュー：<%= @work_reservation.main_menu.delete(",[]") %></br>
        オプションメニュー：<%= @work_reservation.option_menu.delete("(""""[])") %></br>
        作業内容：<%= @work_reservation.reservation_work %></br>

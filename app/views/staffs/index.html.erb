@@ -4,6 +4,7 @@
    <%= link_to "新規登録", new_staff_path, class: "btn-gradient-3d-green" %>
  </div>
 <div class="col-md-10 col-md-offset-1">
+  <%= will_paginate %>
   <table class="table table-condensed table-hover" id="table-staffs">
     <thead>
       <tr>
@@ -39,4 +40,5 @@
       </tr>
     <% end %>
   </table>
+  <%= will_paginate %>
 </div>
