@@ -50,16 +50,21 @@
             <th>性別</th>
             <th>アドレス</th>
             <th>電話番号</th>
+            <th>電話した日付</th>
+            <th>電話した時間</th>
           </tr>
         </thead>
 
         <% @phone_reservations.each do |phone_reservation, user| %>
           <tr>
+            <td><%= phone_reservation.user_id %></td>  
             <td><%= link_to phone_reservation.user.name ,user_path(phone_reservation.user_id) %></td>  
             <td><%= phone_reservation.user.kana %></td>
             <td><%= phone_reservation.user.sex %></td>
             <td><%= phone_reservation.user.email %></td>
             <td><%= phone_reservation.user.phone_number %></td>
+            <td><%= phone_reservation.worked_on %></td>
+            <td><%= phone_reservation.line_time %></td>
             <td>
             </td>  
             <td>
