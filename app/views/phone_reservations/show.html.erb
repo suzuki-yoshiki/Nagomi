@@ -31,8 +31,8 @@
           <td>
           </td>  
           <td>
-            <% if current_staff.present? %>
-              <%= link_to "電話が終わったらこのボタンを押す", "#", class: "btn btn-danger" %>
+            <%= form_with(model: @phone_reservation, url: "#", local: true, method: :patch) do |f| %>
+              <%= f.submit "電話が終わったらこのボタンを押す", data: { confirm: "メールを送信してもよろしいですか？" }, class: "btn btn-danger" %>
             <% end %>
           </td>
         </tr>
