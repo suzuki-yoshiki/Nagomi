@@ -22,43 +22,17 @@
           
           <div class="times">
             <p class="times-time">お名前</p>
-            <%= current_user.name %>
-            <%= f.hidden_field :user_id, :value => current_user.id %>
-            <%= params[:format] %>
+            <% if current_user.nil? && current_staff.nil? %>
+              <p>ゲストユーザー</p>
+            <% elsif current_user.present? %>
+              <%= current_user.name %>
+              <%= f.hidden_field :user_id, :value => current_user.id %>
+              <%= params[:format] %>
+            <% elsif current_staff.present? %>
+              <p><%= current_staff.name %></p>
+            <% end %>
           </div>
         </div>
-        <%
-=begin%>
- <div class="form-group">
-          <%= f.label :title, "名前" %>
-          <span class="must">必須</span>
-          <%= f.text_field :name, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :title, "カナ" %>
-          <span class="must">必須</span>
-          <%= f.text_field :kana, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :title, "性別" %>
-          <%= f.radio_button :sex, "男" %>男 <%= f.radio_button :sex, "女" %>女
-        </div>
-        <div class="form-group">
-          <%= f.label :title, "LINE ID" %>
-          <span class="must">必須</span>
-          <%= f.text_field :line_id, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :title, "TEL." %>
-          <span class="must">必須</span>
-          <%= f.text_field :phone_number, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :title, "メールアドレス" %>
-          <%= f.email_field :address, class: "form-control" %>
-        </div> 
-<%
-=end%>
         <div class="form-group">
           <%= f.hidden_field :line_booked, :value => true %>
         </div>

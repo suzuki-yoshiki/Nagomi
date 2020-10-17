@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_15_054120) do
+ActiveRecord::Schema.define(version: 2020_10_15_212839) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "cart_id"
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 2020_10_15_054120) do
     t.datetime "updated_at", null: false
     t.integer "quantity"
   end
-ActiveRecord::Schema.define(version: 2020_10_15_212839) do
 
   create_table "maps", force: :cascade do |t|
     t.text "address"
@@ -70,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_10_15_212839) do
     t.string "time_line_flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_phone_reservations_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
