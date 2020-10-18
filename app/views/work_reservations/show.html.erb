@@ -16,7 +16,7 @@
   <% else %>
     <p align="center">
     <i class="fas fa-bell fa-fw fa-lg "></i>
-      <%= link_to "【電話予約#{@phone_reservation_number}件】", phone_reservation_path, :style=>"color:red;" %></p>
+      <%= link_to "【電話予約#{@phone_reservation_number}件】", index_users_phone_reservations_path, :style=>"color:red;" %></p>
   <% end %>
     <p align="right"><%= link_to "新規作業予約を登録する", work_reservations_path, class: "btn btn-success" %></p>
     <p align="right"><%= link_to "作業履歴を確認する", work_histories_path, class: "btn btn-info" %></p>
