@@ -31,7 +31,13 @@
               <%= button_to item_delete_item_path(@item), method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'} do %><i class="fas fa-shopping-cart"></i>&nbsp;カートを空にする
               <% end %>
             </div>
-            <%#= button_to '注文をする', "#", method: :get, class: 'fbtn' %>
+            <div class="cart-notice">
+              <i class="fas fa-info-circle"></i>&nbsp;作業メニューのご依頼は<span style="font-size:1.2em; color:#fc624d;">Line電話</span>にて承っております。
+            </div>
+            <div class="cart-line-tell"><%= link_to phone_reservations_path, method: :get, class: "btn-gradient-radius-green" do %> 
+              次の手続きに進む&nbsp;<i class="far fa-arrow-alt-circle-right"></i>
+            <% end %>
+            </div>
         </div>
     <% end %>
 </div>
