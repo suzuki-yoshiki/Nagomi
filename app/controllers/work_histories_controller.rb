@@ -1,12 +1,12 @@
 class WorkHistoriesController < ApplicationController
 
   def index
-    @work_histories = WorkHistory.all
+    @work_histories = WorkHistory.all.order(worked_on: "ASC")
   end
 
   def show
     @user = User.find(params[:id])
-    @work_histories = @user.work_histories.all
+    @work_histories = @user.work_histories.all.order(worked_on: "ASC")
   end
 
   def destroy

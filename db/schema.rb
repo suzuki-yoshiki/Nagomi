@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2020_10_18_041502) do
     t.string "time_line_flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_phone_reservations_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
