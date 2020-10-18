@@ -18,6 +18,29 @@ class PhoneReservationsController < ApplicationController
   def index_users  #Line電話予約した人の一覧ページ
     @phone_reservations = PhoneReservation.where(line_booked: true).where(line_end: false) 
   end
+  # def create
+  #   #必要だったら使う
+  #   if current_user.nil? && current_staff.nil?
+  #     flash[:danger] = "ログインしてください"
+  #     redirect_to new_user_session_url and return
+  #   end
+  #   @phone_reservation = PhoneReservation.new(phone_reservation_params)
+  #   if @phone_reservation.save! #予約ボタンを押されたら line_booked => true ,user_id => current_user.id となる
+  #     flash[:success] = "#{l @phone_reservation.worked_on} #{@phone_reservation.line_time}のLINE電話予約が完了しました。"
+  #     redirect_to phone_reservations_url and return
+  #   else
+  #     render :edit      
+  #   end
+  # end
+
+#   def show
+#     #UserとPhoneReservationで親子関係を作りphone_reservationのline_booked: trueを持っているUserのレコードを取り出す
+#     # @user = User.joins(:phone_reservations).group("users.id").where(phone_reservations: {line_booked: true}).paginate(page: params[:page], per_page: 3)
+#     # @users = User.all.paginate(page: params[:page], per_page: 5)
+#     # @phone_reservations = PhoneReservation.where(line_booked: true).paginate(page: params[:page], per_page: 5)
+#     @phone_reservation_number = PhoneReservation.all #Line電話予約した場合
+#     # @finished_phone_users = 
+#   end
 
   def update_index_users #Line電話予約した人の完了or削除
     @phone_reservation = PhoneReservation.find(params[:id])
