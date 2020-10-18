@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_05_125059) do
+ActiveRecord::Schema.define(version: 2020_10_15_212839) do
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "cart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "item_id"
+    t.integer "quantity", default: 1
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "profile_image_id"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "quantity"
+  end
 
   create_table "maps", force: :cascade do |t|
     t.text "address"
@@ -42,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_10_05_125059) do
     t.string "time_line_flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_phone_reservations_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -115,6 +138,22 @@ ActiveRecord::Schema.define(version: 2020_10_05_125059) do
     t.string "youtube_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "work_histories", force: :cascade do |t|
+    t.date "worked_on"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.text "reservation_work"
+    t.string "reservation_mark"
+    t.string "client_name_flag"
+    t.string "main_menu"
+    t.string "option_menu"
+    t.time "start_times"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_work_histories_on_user_id"
   end
 
   create_table "work_reservations", force: :cascade do |t|

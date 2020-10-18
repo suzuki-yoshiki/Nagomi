@@ -7,6 +7,9 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
 gem 'rails-i18n'
 gem 'bootstrap-sass'
+gem 'faker'
+gem 'will_paginate' 
+gem 'bootstrap-will_paginate'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'simple_calendar', '~> 2.0' #カレンダー作成に使用
@@ -82,4 +85,4 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # ファイルの一番下に書いておくと書いてあったのでとりあえず一番下にあります
-gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
+# gem 'webpacker', git: 'https://github.com/rails/webpacker.git'

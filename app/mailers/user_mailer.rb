@@ -1,9 +1,10 @@
 class UserMailer < ApplicationMailer
-  default from: 'notifications@example.com'
+  default from: 'Nagomi@example.com'
 
-  def welcome_email
-    @url  = 'https://nagomi-system.herokuapp.com/staffs/sign_in'
-    @work_reservation = params[:work]
+  def welcome_email(work_reservation)
+    @url  = 'https://nagomi-system.herokuapp.com/users/sign_in'
+    @line = "https://lin.ee/ZnnCWE4"
+    @work_reservation = work_reservation
     mail(to: @work_reservation.user.email, subject: "予約確定のお知らせ")
   end
 end

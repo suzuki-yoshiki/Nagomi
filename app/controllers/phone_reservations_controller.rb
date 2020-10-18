@@ -39,13 +39,17 @@ class PhoneReservationsController < ApplicationController
 
   def update
     @phone_reservation = PhoneReservation.find(params[:id])
+    if current_user.nil? && current_staff.nil?
+      flash[:danger] = "ログインしてください"
+      redirect_to new_user_session_url and return
+    end
     if @phone_reservation.update_attributes(phone_reservation_params) #予約ボタンを押されたら line_booked => true ,user_id => current_user.id となる
       if params[:phone_reservation][:line_booked] = true
         flash[:success] = "#{l @phone_reservation.worked_on} #{@phone_reservation.line_time}のLINE電話予約が完了しました。"
-        redirect_to phone_reservations_url
+        redirect_to phone_reservations_url and return
       elsif params[:phone_reservation][:holiday] = true 
         flash[:success] = "#{l @phone_reservation.worked_on} #{@phone_reservation.line_time}を休みにしました。"
-        redirect_to phone_reservations_url
+        redirect_to phone_reservations_url and return
       end
     else
       render :edit      

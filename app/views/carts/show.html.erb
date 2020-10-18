@@ -1,0 +1,37 @@
+<div class="container-fluid jumbotron-position">
+  <h1 class="quantity-title"><i class="fas fa-shopping-cart"></i>&nbsp;お見積りカート</h1>
+    <% if @cart_items.blank? %>
+      <div class="cart-empty">カートの中にメニューはございません</div>
+      <div class="quantity-index"><%= link_to "メニューを探す", items_path, class: "btn-gradient-radius" %></div>
+    <% else %>
+      <div class="quantity-index"><%= link_to "続けて他のメニューを探す", items_path, class: "btn-gradient-radius" %></div>
+        <div class="col-md-10 col-md-offset-1">
+          <table border="2" style="border-collapse: collapse; border-color: black">
+            <tr class="quantity-item-title">
+              <th class=col-md-3>商品名</th>
+              <th class=col-md-2>価格&nbsp;<span style="font-size:0.8em;">(税抜き)</span></th>
+              <th class=col-md-1>数量</th>
+              <th class=col-md-2>合計&nbsp;<span style="font-size:0.8em;">(税抜き)</span></th>
+              <th class=col-md-1></th>
+            </tr>
+          <% @cart_items.each do |item| %>
+            <tr class="quantity-item">
+              <td class="item-name"><%= item.item.name %></td>
+              <td class="item"><%= (item.item.price).to_s(:delimited) %>円</td>
+              <td class="item"><%= item.quantity %></td>
+              <td class="item-price"><%= (item.total_price).to_s(:delimited) %>円</td>
+              <td><%= button_to '削除する', item, method: :delete, data: {confirm: 'カートから削除してよろしいですか？'}, class: 'fbtn' %></td>
+            </tr>
+          <% end %>
+            <tr>
+              <td class="quantity-total", colspan="5"><font size="6">総計：<%= (@cart.total_price).to_s(:delimited) %>円<span style="font-size:0.7em;">（税抜き）</span></font></td>
+            </tr>
+          </table>
+            <div class="cart-delete">
+              <%= button_to item_delete_item_path(@item), method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'} do %><i class="fas fa-shopping-cart"></i>&nbsp;カートを空にする
+              <% end %>
+            </div>
+            <%#= button_to '注文をする', "#", method: :get, class: 'fbtn' %>
+        </div>
+    <% end %>
+</div>
