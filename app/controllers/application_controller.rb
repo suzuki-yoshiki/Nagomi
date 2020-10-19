@@ -15,9 +15,9 @@ class ApplicationController < ActionController::Base
     case resource
     when Staff
       if current_staff.present?
-        work_reservation_path(resource)        #社員がログインしたら作業予約状況ページへ
+        work_reservations_path(resource)        #社員がログインしたら作業予約状況ページへ
       else
-        flash[:damger] = "ログインしてください"
+        flash[:danger] = "ログインしてください"
         root_path(resource)                     #ログインしてなかったらトップページへ戻る
       end
     when User
