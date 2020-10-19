@@ -1,13 +1,13 @@
 class WorkReservationsController < ApplicationController
   def index
-    @phone_reservation_number = PhoneReservation.where(line_booked: true).size  #電話予約が確定してないので仮の0
+    @phone_reservation_number = PhoneReservation.where(line_booked: true).where(line_end: false).size  #電話予約が確定してないので仮の0
     @work_reservations = WorkReservation.where.not(worked_on: nil)
   end
 
   def new
     @work_reservation = WorkReservation.new
-    @main_menus = %w(ー部屋掃除8畳以上 ー部屋掃除6畳以下 レンジフードクリーニング キッチンクリーニング 風呂場 )
-    @option_menus = %w(窓ガラス内側のみクリーニング エアコンはフィルターまで行います 洗濯機は洗剤を入れて６０分 電化製品 冷蔵庫クリーニング 電子レンジクリーニング 棚づくり 玄関 トイレ 洗面所 庭 )
+    @main_menus = %w(ー部屋掃除8畳以上 ー部屋掃除6畳以下 レンジフードクリーニング キッチンクリーニング 風呂場 ) #予約項目メインメニュー
+    @option_menus = %w(窓ガラス内側のみクリーニング エアコンはフィルターまで行います 洗濯機は洗剤を入れて６０分 電化製品 冷蔵庫クリーニング 電子レンジクリーニング 棚づくり 玄関 トイレ 洗面所 庭 )#オプションメニュー
   end
 
   def show
@@ -30,7 +30,7 @@ class WorkReservationsController < ApplicationController
   def edit
     @work_reservation = WorkReservation.find(params[:id])
     @main_menus = %w(ー部屋掃除８畳以上 ー部屋掃除6畳以下 レンジフードクリーニング キッチンクリーニング )
-    @option_menus = %w(窓ガラス内側のみクリーニング エアコンはフィルターまでやる 洗濯機は洗剤を入れて１日おく 電化製品 棚づくり 玄関 トイレ 洗面所 庭 )
+    @option_menus = %w(窓ガラス内側のみクリーニング エアコンはフィルターまで行います 洗濯機は洗剤を入れて６０分 電化製品 冷蔵庫クリーニング 電子レンジクリーニング 棚づくり 玄関 トイレ 洗面所 庭 )#オプションメニュー
   end
 
   def update
