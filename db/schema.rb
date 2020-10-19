@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_15_212839) do
+ActiveRecord::Schema.define(version: 2020_10_18_041502) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "cart_id"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2020_10_15_212839) do
     t.datetime "updated_at", null: false
     t.integer "item_id"
     t.integer "quantity", default: 1
+    t.integer "order_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -48,22 +49,27 @@ ActiveRecord::Schema.define(version: 2020_10_15_212839) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "email"
+    t.string "phone_number"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "phone_reservations", force: :cascade do |t|
     t.date "worked_on"
     t.string "reservation_line_flag"
     t.text "reservation_work"
-    t.boolean "reservation_mark", default: false
     t.string "client_name_flag"
     t.integer "user_id"
     t.integer "staff_id"
     t.integer "line_time"
-    t.string "line_time_11"
-    t.string "line_time_12"
-    t.string "line_time_13"
-    t.string "line_time_14"
-    t.string "line_time_15"
-    t.string "line_time_16"
-    t.string "line_time_17"
+    t.boolean "reservation_mark", default: false
+    t.boolean "line_end", default: false
+    t.boolean "holiday", default: false
     t.boolean "line_booked", default: false
     t.text "time_work"
     t.string "time_line_flag"

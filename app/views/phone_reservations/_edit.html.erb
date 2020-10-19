@@ -29,17 +29,22 @@
               <%= f.hidden_field :user_id, :value => current_user.id %>
               <%= params[:format] %>
             <% elsif current_staff.present? %>
-              <p><%= current_staff.name %></p>
+              <%= current_staff.name %>
+              <%= f.hidden_field :user_id, :value => current_staff.id %>
+              <%= params[:format] %>
             <% end %>
           </div>
-        </div>
-        <div class="form-group">
-          <%= f.hidden_field :line_booked, :value => true %>
         </div>
         <div class="modal-footer">  
           <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
           <%= button_tag :type => "submit", class: "reservation-btn" do %>
-            <i class="far fa-calendar-alt">予約する</i>
+            <% if current_user.present? || current_user.nil? %>
+              <%= f.hidden_field :line_booked, :value => true %>
+              <i class="far fa-calendar-alt">予約する</i>
+            <% elsif current_staff.present? %>
+              <%= f.hidden_field :holiday, :value => true %>
+              <i class="far fa-calendar-alt">休みにする</i>
+            <% end %>
           <% end %>
         </div>
       </div>

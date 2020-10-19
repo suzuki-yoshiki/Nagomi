@@ -29,7 +29,17 @@ Rails.application.routes.draw do
       get 'show_account'
     end
   end
-  resources :phone_reservations
+  
+  resources :phone_reservations do
+    collection do
+      get 'index_holidays'
+      patch 'update_holidays'
+      get 'index_users'
+      patch 'update_index_users'
+      get 'old_index_users'
+    end
+  end
+
   resources :work_reservations
   resources :videos
   resources :works do
