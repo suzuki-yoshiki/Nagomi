@@ -1,29 +1,36 @@
-<% provide(:title, "新規予約作成") %>
+<% provide(:title, "作業予約状況") %>
 
-<h1 class="index-title-post">新規予約作成</h1>
-
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-  <%= will_paginate(@users) %>
-   <div>
-    <table class="table table-bordered" >
-     <thead>
-      <tr>
-       <th>名前</th><br/>
-       <th></th><br/>
-      </tr>
-     </thead>
-
-     <tbody>
-       <% @users.each do |user| %>
-        <tr>
-         <td><%= user.name %></td>
-         <td class="text-center"><%= link_to "予約作成", new_work_reservation_user_path(user.id), class: "btn btn-xs btn-info" %></td>
-        </tr>
-       <% end %>
-     </tbody>
-    </table>
-   </div>
-  <%= will_paginate(@users) %>
-  </div>
+<script>
+  $(function() {
+    setTimeout("$('.alert').fadeOut('slow')", 2500);
+  });
+</script>
+<div class="container fluid-box-work">
+  <% flash.each do |message_type, msg| %>
+    <div class="alert alert-<%= message_type %>"><%= msg %></div>
+  <% end %>
 </div>
+  <h1>作業予約状況</h1>
+  <% if @phone_reservation_number == 0 %>
+    <p align="center">予約なし</p>
+  <% else %>
+    <p align="center">
+    <i class="fas fa-bell fa-fw fa-lg "></i>
+      <%= link_to "【電話予約#{@phone_reservation_number}件】", phone_reservation_path(current_staff), :style=>"color:red;" %></p>
+  <% end %>
+    <p align="right"><%= link_to "新規作業予約を登録する", new_work_reservation_user_path(current_staff), class: "btn btn-success" %></p>
+    <p align="right"><%= link_to "作業履歴を確認する", work_histories_path, class: "btn btn-info" %></p>
+    <p align="center"><%= "【作業予約#{@work_reservations.count}件】" %></p>
+  <div class= 'calender'>
+    <% array = [] %>
+      <%= month_calendar events: @work_reservations do |date, work_reservations| %>
+        <%= date.day %></br>
+          <% work_reservations.each do |work_reservation| %>
+            <% array.push(work_reservation) %>
+              <% @array = array %>
+              <%= link_to "【予約No#{@array.count}】", edit_reservation_status_user_path(current_staff, params:{ day: date }), remote: true %>
+              <i class="fa fa-circle notification-circle" style="color: red;"></i></br>
+          <% end %>
+      <% end %>
+  </div>
+  <div id="edit-reservation-status" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

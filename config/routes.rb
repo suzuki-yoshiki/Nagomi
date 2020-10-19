@@ -17,7 +17,8 @@ Rails.application.routes.draw do
     member do
       get 'edit_reservation_status'  #予約状況ページの件数を押すとモーダルに行く
       patch 'update_reservation_status'  #予約の編集
-      get 'new_work_reservation'  #予約状況新規作成ページ行き
+      get 'new_work_reservation'  #予約状況新規作成ページ行き名前選択
+      get 'new_index_work_reservation' #作業新規予約作成
       get 'show_account'
       get 'reservation_confirmed' #メール内容確認ページ行き
       patch 'reservation_confirmed_mail' #メール送信処理

@@ -27,8 +27,20 @@
                  <tr><th colspan="2">TEL</th><td colspan="2"><%= work_reservation.user.phone_number %></td></tr>
                  <tr><th colspan="2">メールアドレス</th><td colspan="2"><%= work_reservation.user.email %></td></tr>
                  <tr><th colspan="2">住所</th><td colspan="2"><%= work_reservation.user.address %></td></tr>
-                 <tr><th colspan="2">メイン予約項目</th><td colspan="2"><%= work_reservation.main_menu.delete(",[]") %></td></tr>
-                 <tr><th colspan="2">オプション予約項目</th><td colspan="2"><%= work_reservation.option_menu.delete("(""""[])") %></td></tr>
+                 <tr><th colspan="2">メイン予約項目</th><td colspan="2">
+                 <% if work_reservation.main_menu.present? %>
+                  <%= work_reservation.main_menu.delete(",[]") %>
+                 <% else %>
+                 なし
+                 <% end %>
+                  </td></tr>
+                 <tr><th colspan="2">オプション予約項目</th><td colspan="2">
+                 <% if work_reservation.option_menu.present? %>
+                  <%= work_reservation.option_menu.delete(",[]") %>
+                 <% else %>
+                 なし
+                 <% end %>
+                 </td></tr>
                  <tr><th colspan="2">作業内容</th><td colspan="2"><%= work_reservation.reservation_work %></td></tr>
                  <tr><th colspan="2">訪問日</th><td colspan="2"><%= work_reservation.worked_on.to_s(:date) %></td></tr>
                  <tr><th colspan="2">作業開始時間</th><td colspan="2"><%= work_reservation.start_times.to_s(:hour) %>時<%= work_reservation.start_times.to_s(:min) %>分</td></tr>

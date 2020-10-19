@@ -1,14 +1,14 @@
 <% provide(:title, "新規予約作成") %>
 
 <h1>新規予約作成</h1>
-<h1><%= User.name %></h1>
+<h1><%= @user.name %></h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
 
     <%= form_with(model: WorkReservation.new, url: work_reservations_path(@work_reservation), local: true, method: :post) do |f| %>
 
-      <%= f.hidden_field :user_id, :value => @work_reservation.user_id %>
+      <%= f.hidden_field :user_id, :value => @user.id %>
 
       <%= f.label :メイン予約項目, class: "label-#{yield(:class_text)}" %></br>
        <% @main_menus.each do |main_menu| %>

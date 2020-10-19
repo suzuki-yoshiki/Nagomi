@@ -25,9 +25,9 @@ class PhoneReservationsController < ApplicationController
 
   def show
     #UserとPhoneReservationで親子関係を作りphone_reservationのline_booked: trueを持っているUserのレコードを取り出す
-    # @user = User.joins(:phone_reservations).group("users.id").where(phone_reservations: {line_booked: true}).paginate(page: params[:page], per_page: 3)
+    @user = User.joins(:phone_reservations).group("users.id").where(phone_reservations: {line_booked: true}).paginate(page: params[:page], per_page: 3)
     # @users = User.all.paginate(page: params[:page], per_page: 5)
-    # @phone_reservations = PhoneReservation.where(line_booked: true).paginate(page: params[:page], per_page: 5)
+    @phone_reservations = PhoneReservation.where(line_booked: true).paginate(page: params[:page], per_page: 5)
     @phone_reservation_number = PhoneReservation.all #Line電話予約した場合
     # @finished_phone_users = 
   end

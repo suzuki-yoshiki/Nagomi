@@ -40,7 +40,7 @@ end
 
   def edit_reservation_status
     @day = Date.parse.strftime(params[:day])
-    @work_reservations = WorkReservation.where.not(worked_on: nil).where(worked_on: @day)
+    @work_reservations = WorkReservation.where.not(worked_on: nil).where(worked_on: @day).order("start_times ASC")
     @users = User.where(admin: false)
     @staffs = Staff.all
   end
@@ -74,10 +74,21 @@ end
   end
 
   def new_work_reservation
-    @user = User.find(params[:id])
+    if 
+      @users = User.paginate(page: params[:page], per_page: 10)
+    else
+      User.all
+    end
     @work_reservation = WorkReservation.find_by(params[:id])
     @main_menus = %w(ー部屋掃除8畳以上 ー部屋掃除6畳以下 レンジフードクリーニング キッチンクリーニング 風呂場 )
     @option_menus = %w(窓ガラス内側のみクリーニング エアコンはフィルターまで行います 洗濯機は洗剤を入れて６０分 電化製品 棚づくり 玄関 トイレ 洗面所 庭 )
+  end
+
+  def new_index_work_reservation
+    @user = User.find(params[:id])
+    @work_reservation = WorkReservation.find_by(params[:id])
+    @main_menus = %w(ー部屋掃除8畳以上 ー部屋掃除6畳以下 レンジフードクリーニング キッチンクリーニング 風呂場 )
+    @option_menus = %w(窓ガラス内側のみクリーニング エアコンはフィルターまで行います 洗濯機は洗剤を入れて６０分 電化製品 冷蔵庫クリーニング 電子レンジクリーニング 棚づくり 玄関 トイレ 洗面所 庭 )
   end
 
   def show_account

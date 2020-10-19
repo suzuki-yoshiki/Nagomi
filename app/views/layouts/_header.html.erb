@@ -8,7 +8,7 @@
         <% if signed_in? %> <%# ログインしているかどうか %>
           <% if current_staff.present? %> <%# スタッフとしてログインしているかどうか %>
             <li><i class="fab fa-line fa-lg line-green"></i> <%= link_to "電話予約状況", phone_reservations_path %></li>
-            <li><i class="far fa-calendar-alt fa-fw fa-lg"></i> <%= link_to "作業予約", work_reservation_path(current_staff) %></li>
+            <li><i class="far fa-calendar-alt fa-fw fa-lg"></i> <%= link_to "作業予約", work_reservations_path %></li>
             <li><i class="fas fa-car-side fa-lg"></i><%= link_to "サービス一エリア", maps_path %>    </li>
             <li><i class="far fa-comments fa-lg"></i>&nbsp;<%= link_to "お客様の声", reviews_path %></li>
             <li class="dropdown">
