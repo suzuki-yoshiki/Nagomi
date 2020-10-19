@@ -93,13 +93,13 @@
       </table>
     </div>
   </div>
-  <div class="botton2">
-    <td>
-      <% if current_staff.present? %>
+  <% if current_staff.present? %>
+    <div class="botton2">
+      <td>
         <%= link_to "休み設定", index_holidays_phone_reservations_path , class: "btn btn-lg btn-primary" %>
-      <% end %>
-    </td>
-  </div>
+      </td>
+    </div>
+  <% end %>
 </div>
 
 <!--モーダルウインドウ表示-->
