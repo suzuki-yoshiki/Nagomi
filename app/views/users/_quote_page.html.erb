@@ -1,0 +1,168 @@
+<div class="modal-dialog modal-lg modal-dialog-center">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h1 class="modal-title">作業見積もり計算表</h1>
+    </div>
+    <div class="modal-body">
+     <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+       <div id="app">
+    <table class='table'>
+     <thead>
+      <tr>
+        <th></th>
+        <th>価格</th>
+        <th>数量</th>
+      </tr>
+     </thead>
+     <tbody>
+      <tr>
+        <td>ー部屋掃除８畳以上</td>
+        <td>{{a}}</td>
+        <td>
+          <input class='form-control' type='number' v-model='b'>
+        </td>
+      </tr>
+      <tr>
+        <td>ー部屋掃除6畳以上</td>
+        <td>{{c}}</td>
+        <td>
+          <input class='form-control' type='number' v-model='d'>
+        </td>
+      </tr>
+      <tr>
+        <td>キッチンクリーニング</td>
+        <td>{{e}}</td>
+        <td>
+          <input class='form-control' type='number' v-model='f'>
+        </td>
+      </tr>
+      <tr>
+        <td>レンジフードクリーニング</td>
+        <td>{{g}}</td>
+        <td>
+          <input class='form-control' type='number' v-model='h'>
+        </td>
+      </tr>
+      <tr>
+        <td>浴室クリーニング</td>
+        <td>{{i}}</td>
+        <td>
+          <input class='form-control' type='number' v-model='j'>
+        </td>
+      </tr>
+      <tr>
+        <td>窓ガラスクリーニング（内側のみ）</td>
+        <td>{{k}}</td>
+        <td>
+          <input class='form-control' type='number' v-model='l'>
+        </td>
+      </tr>
+      <tr>
+        <td>エアコンクリーニング</td>
+        <td>{{m}}</td>
+        <td>
+          <input class='form-control' type='number' v-model='n'>
+        </td>
+      </tr>
+      <tr>
+        <td>冷蔵庫クリーニング</td>
+        <td>{{o}}</td>
+        <td>
+          <input class='form-control' type='number' v-model='p'>
+        </td>
+      </tr>
+      <tr>
+        <td>電子レンジクリーニング</td>
+        <td>{{q}}</td>
+        <td>
+          <input class='form-control' type='number' v-model='r'>
+        </td>
+      </tr>
+      <tr>
+        <td>トイレクリーニング</td>
+        <td>{{s}}</td>
+        <td>
+          <input class='form-control' type='number' v-model='t'>
+        </td>
+      </tr>
+      <tr>
+        <td>洗面所クリーニング</td>
+        <td>{{u}}</td>
+        <td>
+          <input class='form-control' type='number' v-model='v'>
+        </td>
+      </tr>
+      <tr>
+        <td>洗濯機クリーニング</td>
+        <td>{{w}}</td>
+        <td>
+          <input class='form-control' type='number' v-model='x'>
+        </td>
+      </tr>
+      <tr>
+        <td>棚づくり</td>
+        <td>{{y}}</td>
+        <td>
+          <input class='form-control' type='number' v-model='z'>
+        </td>
+      </tr>
+      <tr>
+        <td>玄関清掃</td>
+        <td>{{aa}}</td>
+        <td>
+          <input class='form-control' type='number' v-model='bb'>
+        </td>
+      </tr>
+      <tr>
+        <td>外まわり清掃</td>
+        <td>{{cc}}</td>
+        <td>
+          <input class='form-control' type='number' v-model='dd'>
+        </td>
+      </tr>
+     </tbody>
+   </table>
+   <div class='text-right'>
+    <p align="center">小計￥ {{sum}}</p>
+    <p align="center">消費税￥ {{tax}}</p>
+    <p align="center">合計￥ {{sum + tax}}</p>
+   </div>
+      </div>
+     </div>
+    </div>
+   </div>
+ </div>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+<script>
+new Vue({
+    el: "#app",
+    data: { a: 15000, b: 0, c: 12000, d: 0, e: 15000, f: 0, g: 12000, h: 0, i: 17000, j: 0, k: 5000, l: 0, m: 8000, n: 0, o: 5000, p: 0, q: 3000, r: 0, s: 10000, t: 0, u: 10000, v: 0, w: 5000, x: 0, y: 10000, z: 0, aa: 10000, bb: 0, cc: 12000, dd: 0},
+    computed: {
+      sum: function() { return this.a * this.b + this.c * this.d + this.e * this.f + this.g * this.h + this.i * this.j + this.k * this.l + this.m * this.n + this.o * this.p + this.q * this.r + this.s * this.t + this.u * this.v + this.w * this.x + this.y * this.z + this.aa * this.bb + this.cc * this.dd},
+      tax: function() { return Math.ceil(this.sum * 0.1) },
+    },
+    watch: {
+      b: function(v) { if (v < 0) { this.b = 0 } },
+      d: function(v) { if (v < 0) { this.d = 0 } },
+      f: function(v) { if (v < 0) { this.f = 0 } },
+      h: function(v) { if (v < 0) { this.h = 0 } },
+      j: function(v) { if (v < 0) { this.j = 0 } },
+      l: function(v) { if (v < 0) { this.l = 0 } },
+      n: function(v) { if (v < 0) { this.n = 0 } },
+      p: function(v) { if (v < 0) { this.p = 0 } },
+      r: function(v) { if (v < 0) { this.r = 0 } },
+      t: function(v) { if (v < 0) { this.t = 0 } },
+      v: function(v) { if (v < 0) { this.v = 0 } },
+      x: function(v) { if (v < 0) { this.x = 0 } },
+      z: function(v) { if (v < 0) { this.z = 0 } },
+      bb: function(v) { if (v < 0) { this.bb = 0 } },
+      dd: function(v) { if (v < 0) { this.dd = 0 } },
+    },
+  })
+  </script>

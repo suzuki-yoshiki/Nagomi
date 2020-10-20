@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_18_041502) do
+ActiveRecord::Schema.define(version: 2020_10_20_053152) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "cart_id"
@@ -182,6 +182,7 @@ ActiveRecord::Schema.define(version: 2020_10_18_041502) do
     t.string "main_menu"
     t.string "option_menu"
     t.time "start_times"
+    t.string "price"
     t.index ["user_id"], name: "index_work_reservations_on_user_id"
   end
 
