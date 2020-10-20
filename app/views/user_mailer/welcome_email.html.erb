@@ -16,6 +16,7 @@
       <p>作業内容「<%= @work_reservation.reservation_work %>」</p>
       <p>お伺いする日付「<%= @work_reservation.worked_on.to_s(:date) %>」</p>
       <p>お伺いする時間「<%= @work_reservation.start_times.to_s(:hour) %>時<%= @work_reservation.start_times.to_s(:min) %>分」</p>
+      <p>作業合計金額「<%= @work_reservation.price %>円」</p>
       <p>でございます。</p>
       <p>このサイトにログインするには、<%= @url %>をクリックしてください。</p>
       <p>なにかご不明な点はLine@ <%= @line %>で対応させていただきます。</p>

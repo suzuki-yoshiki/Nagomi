@@ -44,6 +44,7 @@
                  <tr><th colspan="2">作業内容</th><td colspan="2"><%= work_reservation.reservation_work %></td></tr>
                  <tr><th colspan="2">訪問日</th><td colspan="2"><%= work_reservation.worked_on.to_s(:date) %></td></tr>
                  <tr><th colspan="2">作業開始時間</th><td colspan="2"><%= work_reservation.start_times.to_s(:hour) %>時<%= work_reservation.start_times.to_s(:min) %>分</td></tr>
+                 <tr><th colspan="2">作業合計金額</th><td colspan="2"><%= work_reservation.price %>円</td></tr>
                  <tr><th colspan="2"></th><td colspan="2">
                       <%= link_to "編集", edit_work_reservation_path(work_reservation), class: "btn btn-warning" %>
                       <%= link_to "送るメールの内容を確認する", reservation_confirmed_user_path(id: work_reservation.id), class: "btn btn-info" %>
