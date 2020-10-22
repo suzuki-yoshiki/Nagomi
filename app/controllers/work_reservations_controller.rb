@@ -2,6 +2,11 @@ class WorkReservationsController < ApplicationController
   def index
     @phone_reservation_number = PhoneReservation.where(line_booked: true).where(line_end: false).size  #電話予約が確定してないので仮の0
     @work_reservations = WorkReservation.where.not(worked_on: nil)
+    if
+      @users = User.paginate(page: params[:page], per_page: 10)
+    else
+      User.all
+    end
   end
 
   def new
@@ -54,10 +59,10 @@ class WorkReservationsController < ApplicationController
   private
 
    def work_reservation_params
-     params.require(:work_reservation).permit({main_menu: []}, {option_menu: []}, :reservation_work, :worked_on, :start_times, :user_id)
+     params.require(:work_reservation).permit({main_menu: []}, {option_menu: []}, :reservation_work, :worked_on, :start_times, :price, :user_id)
    end
 
    def update_work_reservation_params
-     params.require(:work_reservation).permit({main_menu: []}, {option_menu: []}, :reservation_work, :worked_on, :start_times)
+     params.require(:work_reservation).permit({main_menu: []}, {option_menu: []}, :reservation_work, :worked_on, :start_times, :price)
   end
 end

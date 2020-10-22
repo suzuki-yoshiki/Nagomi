@@ -183,6 +183,7 @@ ActiveRecord::Schema.define(version: 2020_10_21_054756) do
     t.string "main_menu"
     t.string "option_menu"
     t.time "start_times"
+    t.string "price"
     t.index ["user_id"], name: "index_work_reservations_on_user_id"
   end
 

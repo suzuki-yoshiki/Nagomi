@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get 'show_account'
       get 'reservation_confirmed' #メール内容確認ページ行き
       patch 'reservation_confirmed_mail' #メール送信処理
+      get 'quote_page' # 作業予約から見積もりページへ移動
     end
   end
   resources :staffs do
@@ -54,7 +55,7 @@ Rails.application.routes.draw do
   resources :tools
   resources :reviews
   resources :maps
-  resources :carts, only: [:show] 
+  resources :carts, only: [:show]
   resources :cart_items
   resources :items do
       post '/add_item' => 'carts#add_item'

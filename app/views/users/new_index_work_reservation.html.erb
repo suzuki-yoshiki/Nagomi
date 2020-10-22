@@ -38,8 +38,15 @@
       <%= f.label :作業開始時間, class: "label-#{yield(:class_text)}" %>
       <%= f.time_field :start_times, ignore_data:true, class: "form-control" %></br>
 
+      <%= f.label :作業合計金額, class: "label-#{yield(:class_text)}" %>
+      <%= f.number_field :price, :placeholder => "￥", class: "form-control" %></br>
+
+      <%= link_to "作業見積もり計算表", quote_page_user_path, remote: true, class: "btn btn-success" %></br></br>
+
       <%= f.submit "予約を作成する", class: "btn btn-primary" %>
 
     <% end %>
   </div>
 </div>
+
+<div id="quote-page" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>

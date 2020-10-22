@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
 
   def index
-    if 
+    if
       @users = User.paginate(page: params[:page], per_page: 10)
     else
       User.all
@@ -47,7 +47,6 @@ class UsersController < ApplicationController
   #メール内容確認ページ
   def reservation_confirmed
     @work_reservation = WorkReservation.find(params[:id])
-
   end
 
   def reservation_confirmed_mail
@@ -65,6 +64,7 @@ class UsersController < ApplicationController
           main_menu: @work_reservation.main_menu,
           option_menu: @work_reservation.option_menu,
           start_times: @work_reservation.start_times,
+          price: @work_reservation.price,
           user_id: @work_reservation.user_id,
         )
       else
