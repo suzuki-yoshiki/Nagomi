@@ -1,0 +1,27 @@
+  <div class="container-fluid jumbotron-position">
+    <h1 class="quantity-title"><i class="fas fa-calculator"></i>&nbsp;作業お見積り</h1>
+      <div class="cart-menu-container">
+        <div class="quantity-index"><%= link_to "カートの中身を確認する", cart_path(@cart), class: "btn-gradient-radius" %></div>
+          <div class="col-md-10 col-md-offset-1">
+            <table class="s-table", border="2" style="border-collapse: collapse; border-color: black">
+              <tr class="quantity-item-title">
+                <th class=col-md-3>作業メニュー</th>
+                <th class=col-md-2>価格&nbsp;<span style="font-size:0.8em;">(税抜き)</span></th>
+                <th class=col-md-2></th>
+              </tr>
+              <tbody>
+                <% @items.each do |item| %>
+                  <tr class="quantity-item">   
+                    <td class="item-name"><%= item.name %></td>
+                    <td class="item-price"><%= item.price.to_s(:delimited) %>&nbsp;円</td>
+                    <td><%= button_to item_add_item_path(item), method: :post do %>
+                      <i class="fas fa-cart-plus"></i> カートに入れる
+                    <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+      </div>    
+  </div>

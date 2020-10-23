@@ -1,0 +1,41 @@
+<% provide(:title, "Line電話完了済み") %>
+
+<div>
+  <h1>Line電話完了済み</h1>
+  <div class="col-md-10 col-md-offset-1">
+    <table class="table table-condensed table-hover" id="table-users">
+      <thead>
+        <tr>
+          <th>予約ID</th>
+          <th>日付</th>
+          <th>時間</th>
+          <th>ユーザーID</th>
+          <th>ユーザー名</th>
+          <th>LINE ID</th>
+        </tr>
+      </thead>
+      <% @phone_reservations.each do |phone_reservation| %>
+        <% user = User.find(phone_reservation.user_id) %>
+        <tr>
+          <td><%= phone_reservation.id %></td>
+          <td><%= phone_reservation.worked_on %></td>
+          <td><%= phone_reservation.line_time %></td>
+          <td><%= user.id %></td>
+          <td><%= user.name %></td>
+          <td>
+            <% if user.line_id.present? %>
+              <%= user.line_id %>
+            <% else %>
+              なし
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <div class="botton2">
+      <td>
+        <%= link_to "Line電話予約申し込み者一覧", index_users_phone_reservations_path, class: "btn btn-lg btn-primary" %>
+      </td>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 
 
   def index
-    @users = User.all
+    if
+      @users = User.paginate(page: params[:page], per_page: 10)
+    else
+      User.all
+    end
   end
 
   def show
@@ -36,35 +40,56 @@ class UsersController < ApplicationController
 
   def edit_reservation_status
     @day = Date.parse.strftime(params[:day])
-    @work_reservations = WorkReservation.where.not(worked_on: nil).where(worked_on: @day)
+    @work_reservations = WorkReservation.where.not(worked_on: nil).where(worked_on: @day).order("start_times ASC")
     @users = User.where(admin: false)
     @staffs = Staff.all
   end
   #メール内容確認ページ
   def reservation_confirmed
     @work_reservation = WorkReservation.find(params[:id])
-
   end
-  #メール送信する処理ですが未だ途中10/3
+
   def reservation_confirmed_mail
     @work_reservation = WorkReservation.find(params[:id])
      respond_to do |format|
-      if @work_reservation.present?
-        UserMailer.with(work: @work_reservation).welcome_email.deliver_later
+      if @work_reservation.update_attributes(finished_mail_params)
+        UserMailer.welcome_email(@work_reservation).deliver
         format.html { redirect_to(@work_reservation, notice: 'お客様に予約内容を送信しました。') }
-        format.json { render json: @work_reservation, status: :created, location: @work_reservation }
+        format.text { redirect_to(@work_reservation, notice: 'お客様に予約内容を送信しました。') }
+        flash[:success] = "お客様に予約内容を送信しました。"
+
+        WorkHistory.create(
+          worked_on: @work_reservation.worked_on,
+          reservation_work: @work_reservation.reservation_work,
+          main_menu: @work_reservation.main_menu,
+          option_menu: @work_reservation.option_menu,
+          start_times: @work_reservation.start_times,
+          price: @work_reservation.price,
+          user_id: @work_reservation.user_id,
+        )
       else
         format.html { render action: 'new' }
-        format.json { render json: @work_reservation.errors, status: :unprocessable_entity }
       end
      end
   end
 
   def new_work_reservation
-    @user = User.find(params[:id])
+    @users = 
+    if params[:search]
+      User.paginate(page: params[:page], per_page: 10).search(params[:search])
+    else
+      User.all.paginate(page: params[:page], per_page: 10)
+    end
     @work_reservation = WorkReservation.find_by(params[:id])
     @main_menus = %w(ー部屋掃除8畳以上 ー部屋掃除6畳以下 レンジフードクリーニング キッチンクリーニング 風呂場 )
     @option_menus = %w(窓ガラス内側のみクリーニング エアコンはフィルターまで行います 洗濯機は洗剤を入れて６０分 電化製品 棚づくり 玄関 トイレ 洗面所 庭 )
+  end
+
+  def new_index_work_reservation
+    @user = User.find(params[:id])
+    @work_reservation = WorkReservation.find_by(params[:id])
+    @main_menus = %w(ー部屋掃除8畳以上 ー部屋掃除6畳以下 レンジフードクリーニング キッチンクリーニング 風呂場 )
+    @option_menus = %w(窓ガラス内側のみクリーニング エアコンはフィルターまで行います 洗濯機は洗剤を入れて６０分 電化製品 冷蔵庫クリーニング 電子レンジクリーニング 棚づくり 玄関 トイレ 洗面所 庭 )
   end
 
   def show_account
@@ -78,7 +103,7 @@ class UsersController < ApplicationController
       end
 
       def finished_mail_params
-        params.require(:work_reservation).permit({main_menu: []}, {option_menu: []}, :reservation_work, :worked_on, :start_times, :user_id)
+        params.require(:work_reservation).permit(:reservation_mark)
       end
 
 end

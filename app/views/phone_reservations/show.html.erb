@@ -3,6 +3,7 @@
 <div>
   <h1>Line電話予約申し込み者一覧</h1>
   <div class="col-md-10 col-md-offset-1">
+   <%= will_paginate(@users) %>
     <table class="table table-condensed table-hover" id="table-users">
       <thead>
         <tr>
@@ -12,23 +13,26 @@
           <th>性別</th>
           <th>アドレス</th>
           <th>電話番号</th>
+          <th>電話する日付</th>
+          <th>電話する時間</th>
         </tr>
       </thead>
 
-      <% @users.each do |user| %>
+      <% @phone_reservations.each do |phone_reservation, user| %>
         <tr>
-          <td><%= user.id %></td>
-          <td><%= link_to user.name ,user_path(user) %></td>
-          <td><%= user.kana %></td>
-          <td><%= user.sex %></td>
-          <td><%= user.email %></td>
-          <td><%= user.phone_number %></td>
+          <td><%= phone_reservation.user_id %></td>  
+          <td><%= link_to phone_reservation.user.name ,user_path(phone_reservation.user_id) %></td>  
+          <td><%= phone_reservation.user.kana %></td>
+          <td><%= phone_reservation.user.sex %></td>
+          <td><%= phone_reservation.user.email %></td>
+          <td><%= phone_reservation.user.phone_number %></td>
+          <td><%= phone_reservation.worked_on %></td>
+          <td><%= phone_reservation.line_time %></td>
           <td>
-          </td>
+          </td>  
           <td>
-            <% if current_staff.present? %>
-              <%= link_to "電話済み", edit_user_path(user), class: "btn btn-danger" %>
-              <%= link_to "過去の電話履歴確認", edit_user_path(user), class: "btn btn-primary" %>
+            <%= form_with(model: @phone_reservation, url: "#", local: true, method: :patch) do |f| %>
+              <%= f.submit "電話が終わったらこのボタンを押す", data: { confirm: "メールを送信してもよろしいですか？" }, class: "btn btn-danger" %>
             <% end %>
           </td>
         </tr>

@@ -1,0 +1,45 @@
+// Place all the styles related to the items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.quantity-title {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  letter-spacing: 0.5ex;
+  color: #364e96;/*文字色*/
+  padding: 0.5em 0;/*上下の余白*/
+  border-top: solid 3px #364e96;/*上線*/
+  border-bottom: solid 3px #364e96;/*下線*/
+}
+.quantity-item-title {
+  height: 40px;
+  background-color: #eaffd0;
+}
+.quantity-item {
+  height: 50px;
+}
+.item {
+  font-weight: bold;
+  font-size: 18px;
+  color: #222831;
+}
+.item-name {
+  font-weight: bold;
+  font-size: 19px;
+  letter-spacing: 0.1ex; 
+  color: #2b2e4a;
+}
+.item-price {
+  font-weight: bold;
+  font-size: 18px;
+  color: #d01257;
+}
+.col-md-3 {
+  font-weight: bold;
+  font-size: 20px;
+  background-color: #eaffd0;
+}
+.col-md-1 {
+  background-color: #eaffd0;
+}
