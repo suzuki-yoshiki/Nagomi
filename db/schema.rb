@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_20_053152) do
+ActiveRecord::Schema.define(version: 2020_10_22_081453) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "cart_id"
@@ -139,6 +139,7 @@ ActiveRecord::Schema.define(version: 2020_10_20_053152) do
     t.boolean "admin"
     t.integer "work_id"
     t.integer "reservation_id"
+    t.string "search"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -164,6 +165,7 @@ ActiveRecord::Schema.define(version: 2020_10_20_053152) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "price"
     t.index ["user_id"], name: "index_work_histories_on_user_id"
   end
 

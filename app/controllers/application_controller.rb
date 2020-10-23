@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
       if current_user.present?
         phone_reservations_path(resource) #Userの場合Line電話予約受付ページへ
       else
-        flash[:damger] = "ログインしてください"
+        flash[:danger] = "ログインしてください"
         root_path(resource) #その他ユーザーは最初のページへ
       end
     end

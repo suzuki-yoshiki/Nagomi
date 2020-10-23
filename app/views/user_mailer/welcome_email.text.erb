@@ -5,11 +5,23 @@ Nagomiへのご予約内容が確定いたしました。
 予約内容は
 「<%= @work_reservation.user.name %>」様
 
-メイン項目「<%= @work_reservation.main_menu.delete(",[]") %>」
+メイン項目「<% if @work_reservation.main_menu.present? %>
+            <%= @work_reservation.main_menu.delete("(""""[])") %>
+          <% else %>
+            なし
+          <% end %>」
 
-オプション「<%= @work_reservation.option_menu.delete("(""""[])") %>」
+オプション「<% if @work_reservation.option_menu.present? %>
+            <%= @work_reservation.option_menu.delete("(""""[])") %>
+          <% else %>
+            なし
+          <% end %>」
 
-作業内容「<%= @work_reservation.reservation_work %>」
+作業内容「<% if @work_reservation.reservation_work.present? %>
+          <%= @work_reservation.reservation_work %>
+        <% else %>
+          なし
+        <% end %>」
 
 お伺いする日付「<%= @work_reservation.worked_on.to_s(:date) %>」
 
@@ -21,8 +33,10 @@ Nagomiへのご予約内容が確定いたしました。
 
 このサイトにログインするには、<%= @url %> をクリックしてください。
 
-なにかご不明な点はLine@で対応させていただきます。
+なにかご不明な点はLine@ <%= @line %>　で対応させていただきます。
 
 気軽にお申し付けくださいませ。
+
+こちらのメールは領収書として扱われます。メール削除せずにお客様のお手元に厳重に管理下さい。
 
 Nagomiを今後ともよろしくお願いいたします。

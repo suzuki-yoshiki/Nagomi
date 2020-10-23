@@ -12,9 +12,27 @@
        電話番号：<%= @work_reservation.user.phone_number %></br>
        住所：<%= @work_reservation.user.address %></br>
        Line ID：<%= @work_reservation.user.line_id %></br>
-       メインメニュー：<%= @work_reservation.main_menu.delete(",[]") %></br>
-       オプションメニュー：<%= @work_reservation.option_menu.delete("(""""[])") %></br>
-       作業内容：<%= @work_reservation.reservation_work %></br>
+       メインメニュー：
+                 <% if @work_reservation.main_menu.present? %>
+                  <%= @work_reservation.main_menu.delete(",[]") %>
+                 <% else %>
+                 なし
+                 <% end %>
+                  </td></tr></br>
+       オプションメニュー：
+                 <% if @work_reservation.option_menu.present? %>
+                  <%= @work_reservation.option_menu.delete(",[]") %>
+                 <% else %>
+                 なし
+                 <% end %>
+                 </td></tr></br>
+       作業内容：
+                 <% if @work_reservation.reservation_work.present? %>
+                  <%= @work_reservation.reservation_work %>
+                 <% else %>
+                 なし
+                 <% end %>
+                 </td></tr></br>
        訪問日：<%= @work_reservation.worked_on.to_s(:date) %></br>
        作業開始時間：<%= @work_reservation.start_times.to_s(:hour) %>時<%= @work_reservation.start_times.to_s(:min) %>分</br>
        作業合計金額：<%= @work_reservation.price %>円</br>

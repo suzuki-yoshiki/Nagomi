@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     else
       User.all
     end
-end
+  end
 
   def show
     @user = User.find(params[:id])
@@ -74,10 +74,11 @@ end
   end
 
   def new_work_reservation
-    if
-      @users = User.paginate(page: params[:page], per_page: 10)
+    @users = 
+    if params[:search]
+      User.paginate(page: params[:page], per_page: 10).search(params[:search])
     else
-      User.all
+      User.all.paginate(page: params[:page], per_page: 10)
     end
     @work_reservation = WorkReservation.find_by(params[:id])
     @main_menus = %w(ー部屋掃除8畳以上 ー部屋掃除6畳以下 レンジフードクリーニング キッチンクリーニング 風呂場 )
