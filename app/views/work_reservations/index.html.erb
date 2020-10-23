@@ -20,7 +20,8 @@
   <% end %>
     <p align="right"><%= link_to "新規作業予約を登録する", new_work_reservation_user_path(current_staff), class: "btn btn-success" %></p>
     <p align="right"><%= link_to "作業履歴を確認する", work_histories_path, class: "btn btn-info" %></p>
-    <p align="center"><%= "【作業予約#{@work_reservations.count}件】" %></p>
+    <p align="center"><%= link_to "作業予約件数", work_reservation_number_user_path(@work_reservations), remote: true, class: "btn btn-warning" %></p>
+
   <div class= 'calender'>
     <% array = [] %>
       <%= month_calendar events: @work_reservations do |date, work_reservations| %>
@@ -33,4 +34,5 @@
           <% end %>
       <% end %>
   </div>
+  <div id="work-reservation-number" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
   <div id="edit-reservation-status" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
