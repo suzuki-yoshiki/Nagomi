@@ -45,7 +45,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_update_path_for(resource)
-    show_account_user_path(@user.id)
+    show_account_user_url(@user.id)
   end
 
   # If you have extra params to permit, append them to the sanitizer.

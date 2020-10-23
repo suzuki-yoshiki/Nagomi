@@ -5,6 +5,8 @@ ja:
       staff: スタッフ
       work: 作業内容
       tool: 道具
+      map: 地図
+      video: 動画
     attributes:
         user:
           id: ID
@@ -46,5 +48,15 @@ ja:
           content_price: 単価
           created_at: 作成日
           updated_at: 購入日
+        map:
+          address: 住所
+          latitude: 緯度
+          longitude: 軽度
+          distance: 距離
+        video:
+          title: タイトル
+          youtube_url: YoutubeのURL
+
+
 
 

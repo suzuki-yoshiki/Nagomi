@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_05_125059) do
+ActiveRecord::Schema.define(version: 2020_10_22_081453) do
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "cart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "item_id"
+    t.integer "quantity", default: 1
+    t.integer "order_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "profile_image_id"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "quantity"
+  end
 
   create_table "maps", force: :cascade do |t|
     t.text "address"
@@ -26,27 +49,33 @@ ActiveRecord::Schema.define(version: 2020_10_05_125059) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "email"
+    t.string "phone_number"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "phone_reservations", force: :cascade do |t|
     t.date "worked_on"
     t.string "reservation_line_flag"
     t.text "reservation_work"
-    t.boolean "reservation_mark", default: false
     t.string "client_name_flag"
     t.integer "user_id"
     t.integer "staff_id"
     t.integer "line_time"
-    t.string "line_time_11"
-    t.string "line_time_12"
-    t.string "line_time_13"
-    t.string "line_time_14"
-    t.string "line_time_15"
-    t.string "line_time_16"
-    t.string "line_time_17"
+    t.boolean "reservation_mark", default: false
+    t.boolean "line_end", default: false
+    t.boolean "holiday", default: false
     t.boolean "line_booked", default: false
     t.text "time_work"
     t.string "time_line_flag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_phone_reservations_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -109,7 +138,8 @@ ActiveRecord::Schema.define(version: 2020_10_05_125059) do
     t.string "phone_number"
     t.boolean "admin"
     t.integer "work_id"
-    t.integer "work_reservation_id"
+    t.integer "reservation_id"
+    t.string "search"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -120,6 +150,23 @@ ActiveRecord::Schema.define(version: 2020_10_05_125059) do
     t.string "youtube_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "work_histories", force: :cascade do |t|
+    t.date "worked_on"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.text "reservation_work"
+    t.string "reservation_mark"
+    t.string "client_name_flag"
+    t.string "main_menu"
+    t.string "option_menu"
+    t.time "start_times"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "price"
+    t.index ["user_id"], name: "index_work_histories_on_user_id"
   end
 
   create_table "work_reservations", force: :cascade do |t|
@@ -137,6 +184,7 @@ ActiveRecord::Schema.define(version: 2020_10_05_125059) do
     t.string "main_menu"
     t.string "option_menu"
     t.time "start_times"
+    t.string "price"
     t.index ["user_id"], name: "index_work_reservations_on_user_id"
   end
 

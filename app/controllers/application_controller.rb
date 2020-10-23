@@ -15,16 +15,16 @@ class ApplicationController < ActionController::Base
     case resource
     when Staff
       if current_staff.present?
-        work_reservation_path(resource)        #社員がログインしたら作業予約状況ページへ
+        work_reservations_path(resource)        #社員がログインしたら作業予約状況ページへ
       else
-        flash[:damger] = "ログインしてください"
+        flash[:danger] = "ログインしてください"
         root_path(resource)                     #ログインしてなかったらトップページへ戻る
       end
     when User
       if current_user.present?
         phone_reservations_path(resource) #Userの場合Line電話予約受付ページへ
       else
-        flash[:damger] = "ログインしてください"
+        flash[:danger] = "ログインしてください"
         root_path(resource) #その他ユーザーは最初のページへ
       end
     end
@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   def set_two_weeks
     if params[:date].nil? # 前の週、次の週に対応
       require 'date'
-      @first_day = Date.today
+      @first_day = Date.tomorrow
       @last_day = (@first_day+13.day)
     else
       @first_day = params[:date].to_date
@@ -70,5 +70,26 @@ class ApplicationController < ActionController::Base
     id14 = id13+ 7
     @ids = [id1,id2,id3,id4,id5,id6,id7,id8,id9,id10,id11,id12,id13,id14] # idの配列を作成
     @count = (@first_day.end_of_month - @first_day).to_i + 1
+  end
+
+  protect_from_forgery with: :exception #セッション情報を元に、現在のカートを呼び出すことができるようになる
+
+  helper_method :current_cart
+
+  def current_cart
+    if session[:cart_id]
+      # セッションから取得したcart_idを元にCartテーブルからCart情報を取得
+      @cart = Cart.find_by(id: session[:cart_id])
+    else
+      # Cart情報が存在しない場合、@cartを作成
+      @cart = Cart.create
+      # 取得したCart情報よりIDを取得し、セッションに設定
+      session[:cart_id] = @cart.id
+    end
+     @cart = Cart.find(session[:cart_id])
+     rescue ActiveRecord::RecordNotFound
+     @cart = Cart.create
+     session[:cart_id] = @cart.id
+     @cart
   end
 end

@@ -17,14 +17,34 @@
               </thead>
 
               <tbody>
+                 <% if work_reservation.reservation_mark.present?%>
+                   <tr><th colspan="2">送信確認</th><td colspan="2">お客様に予約メールを送信済み</td></tr>
+                 <% else %>
+                   <tr><th colspan="2">送信確認</th><td colspan="2">お客様に予約メールを未送信</td></tr>
+                 <%end%>
+
                  <tr><th colspan="2">名前</th><td colspan="2"><%= work_reservation.user.name %></td></tr>
                  <tr><th colspan="2">TEL</th><td colspan="2"><%= work_reservation.user.phone_number %></td></tr>
+                 <tr><th colspan="2">メールアドレス</th><td colspan="2"><%= work_reservation.user.email %></td></tr>
                  <tr><th colspan="2">住所</th><td colspan="2"><%= work_reservation.user.address %></td></tr>
-                 <tr><th colspan="2">メイン予約項目</th><td colspan="2"><%= work_reservation.main_menu.delete(",[]") %></td></tr>
-                 <tr><th colspan="2">オプション予約項目</th><td colspan="2"><%= work_reservation.option_menu.delete("(""""[])") %></td></tr>
+                 <tr><th colspan="2">メイン予約項目</th><td colspan="2">
+                 <% if work_reservation.main_menu.present? %>
+                  <%= work_reservation.main_menu.delete(",[]") %>
+                 <% else %>
+                 なし
+                 <% end %>
+                 </td></tr>
+                 <tr><th colspan="2">オプション予約項目</th><td colspan="2">
+                 <% if work_reservation.option_menu.present? %>
+                  <%= work_reservation.option_menu.delete(",[]") %>
+                 <% else %>
+                 なし
+                 <% end %>
+                 </td></tr>
                  <tr><th colspan="2">作業内容</th><td colspan="2"><%= work_reservation.reservation_work %></td></tr>
                  <tr><th colspan="2">訪問日</th><td colspan="2"><%= work_reservation.worked_on.to_s(:date) %></td></tr>
                  <tr><th colspan="2">作業開始時間</th><td colspan="2"><%= work_reservation.start_times.to_s(:hour) %>時<%= work_reservation.start_times.to_s(:min) %>分</td></tr>
+                 <tr><th colspan="2">作業合計金額</th><td colspan="2"><%= work_reservation.price %>円</td></tr>
                  <tr><th colspan="2"></th><td colspan="2">
                       <%= link_to "編集", edit_work_reservation_path(work_reservation), class: "btn btn-warning" %>
                       <%= link_to "送るメールの内容を確認する", reservation_confirmed_user_path(id: work_reservation.id), class: "btn btn-info" %>
