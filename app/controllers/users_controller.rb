@@ -80,9 +80,6 @@ class UsersController < ApplicationController
     else
       User.all.paginate(page: params[:page], per_page: 10)
     end
-    @work_reservation = WorkReservation.find_by(params[:id])
-    @main_menus = %w(ー部屋掃除8畳以上 ー部屋掃除6畳以下 レンジフードクリーニング キッチンクリーニング 風呂場 )
-    @option_menus = %w(窓ガラス内側のみクリーニング エアコンはフィルターまで行います 洗濯機は洗剤を入れて６０分 電化製品 棚づくり 玄関 トイレ 洗面所 庭 )
   end
 
   def new_index_work_reservation
