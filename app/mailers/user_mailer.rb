@@ -5,6 +5,6 @@ class UserMailer < ApplicationMailer
     @url  = 'https://nagomi-system.herokuapp.com/users/sign_in'
     @line = "https://lin.ee/ZnnCWE4"
     @work_reservation = work_reservation
-    mail(to: @work_reservation.user.email, subject: "予約確定のお知らせ")
+    mail(to: @work_reservation.user.email, subject: "予約確定のお知らせ兼、領収書のご案内")
   end
 end
