@@ -4,9 +4,9 @@ class WorkReservation < ApplicationRecord
   validates :main_menu, presence: true, allow_blank: true
   validates :option_menu, presence: true, allow_blank: true
   validates :reservation_work, length: { maximum: 1000 }
-  validates :worked_on, presence: true
-  validates :start_times, presence: true
-  validates :price, presence: true
+  # validates :worked_on, presence: true
+  # validates :start_times, presence: true
+  # validates :price, presence: true
 
   def start_time  #simple calendarで必要なメソッド
     self.worked_on
