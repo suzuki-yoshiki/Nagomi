@@ -5,7 +5,7 @@
           <div class="col-md-10 col-md-offset-1">
             <table class="s-table", border="2" style="border-collapse: collapse; border-color: black">
               <tr class="quantity-item-title">
-                <th class=col-md-3>作業メニュー</th>
+                <th class="col-md-3 cart-menu">作業メニュー</th>
                 <th class=col-md-2>価格&nbsp;<span style="font-size:0.8em;">(税抜き)</span></th>
                 <th class=col-md-2></th>
               </tr>
@@ -14,7 +14,7 @@
                   <tr class="quantity-item">   
                     <td class="item-name"><%= item.name %></td>
                     <td class="item-price"><%= item.price.to_s(:delimited) %>&nbsp;円</td>
-                    <td><%= button_to item_add_item_path(item), method: :post do %>
+                    <td class="item-cart"><%= button_to item_add_item_path(item), method: :post do %>
                       <i class="fas fa-cart-plus"></i> カートに入れる
                     <% end %>
                     </td>

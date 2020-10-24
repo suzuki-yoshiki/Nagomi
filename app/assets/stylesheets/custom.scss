@@ -164,6 +164,10 @@ ul {
   color: #000;
 }
 .alert {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   margin: 0px;
   padding: 10px;
   background-color: rgba(152, 251, 152, 0.3);
@@ -193,13 +197,22 @@ ul {
    color: #fff;
 }
 
-// 仮の取り込み画像（後にrefileで表示予定)
+// 取り込み画像
 
 .image {
-  background: url(no_image.png) no-repeat center center;
-   width: 200px;
-   height: 198px;
+   width: 296px;
    float: left;
+   margin-right: 20px;
+}
+.image-youtube {
+  width: 296px;
+  // height: 250px;
+  float: left;
+   margin-right: 20px;
+}
+.image-tell {
+  width: 292px;
+  float: left;
    margin-right: 20px;
 }
 

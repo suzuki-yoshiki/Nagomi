@@ -8,7 +8,7 @@
         <div class="col-md-10 col-md-offset-1">
           <table border="2" style="border-collapse: collapse; border-color: black">
             <tr class="quantity-item-title">
-              <th class=col-md-3>商品名</th>
+              <th class="col-md-3 cart-menu">商品名</th>
               <th class=col-md-2>価格&nbsp;<span style="font-size:0.8em;">(税抜き)</span></th>
               <th class=col-md-1>数量</th>
               <th class=col-md-2>合計&nbsp;<span style="font-size:0.8em;">(税抜き)</span></th>
@@ -17,10 +17,10 @@
           <% @cart_items.each do |item| %>
             <tr class="quantity-item">
               <td class="item-name"><%= item.item.name %></td>
-              <td class="item"><%= (item.item.price).to_s(:delimited) %>円</td>
-              <td class="item"><%= item.quantity %></td>
+              <td class="item-price"><%= (item.item.price).to_s(:delimited) %>円</td>
+              <td class="item-name"><%= item.quantity %></td>
               <td class="item-price"><%= (item.total_price).to_s(:delimited) %>円</td>
-              <td><%= button_to '削除する', item, method: :delete, data: {confirm: 'カートから削除してよろしいですか？'}, class: 'fbtn' %></td>
+              <td class="item-cart"><%= button_to '削除する', item, method: :delete, data: {confirm: 'カートから削除してよろしいですか？'}, class: 'fbtn' %></td>
             </tr>
           <% end %>
             <tr>

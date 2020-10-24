@@ -40,10 +40,11 @@
 
 // タイトル
 .index-title-post {
-  margin-top: 100px;
-  margin-bottom: 30px;
+  margin-top: 60px;
+  margin-bottom: 50px;
   width: 320px;
   margin-left: 400px;
+  letter-spacing: 0.2em;
   font-family: 'Sawarabi Gothic', sans-serif;
   background: linear-gradient(transparent 70%, #ff99ab 70%);
 }
@@ -54,9 +55,11 @@
 }
 
 // アイテム名の高さ位置調整
-.tool--item {
+.tool-item {
+  font-weight: bold;
   margin-top: 50px;
   padding-left: 0px;
+  background-color: #fff;
 }
 
 // 新規登録ボタン
@@ -70,12 +73,6 @@
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
   border-bottom: solid 3px #32CD32;
 }
-.btn-gradient-3d-green:active {
-  -webkit-transform: translateY(4px);
-  transform: translateY(4px);
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
-  border-bottom: none;
-}
 
 // 編集ボタン
 .btn-gradient-3d-simple {
@@ -87,12 +84,6 @@
   background-image: linear-gradient(#6795fd 0%, #67ceff 100%);
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
   border-bottom: solid 3px #5e7fca;
-}
-.btn-gradient-3d-simple:active {
-  -webkit-transform: translateY(4px);
-  transform: translateY(4px);
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
-  border-bottom: none;
 }
 
 // 削除ボタン
@@ -106,16 +97,11 @@
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
   border-bottom: solid 3px #c58668;
 }
-.btn-gradient-3d-orange:active {
-  -webkit-transform: translateY(4px);
-  transform: translateY(4px);
-  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
-  border-bottom: none;
-}
-.btn--del {
+.btn-del {
   text-align: left;
   padding-left: 0px;
   margin-top: 50px;
+  background-color: #ffff;
 }
 
 // 水切りライン
@@ -133,14 +119,6 @@
   border: 1px solid #808080;
   box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
 }
-.index-photo {
-	display: block;
-	transition-duration: 0.5s;	/*変化に掛かる時間*/
-}
-.index-photo:hover {
-	transform: scale(1.2);	/*画像の拡大率*/
-	transition-duration: 0.5s;	/*変化に掛かる時間*/
-}
 
 // 新規作成ボタン
 .new-btn {
@@ -150,6 +128,8 @@
 // 新規登録タイトル
 .new-title {
   margin-top: 50px; 
+  margin-bottom: 30px;
+  letter-spacing: 0.1em;
   font-family: 'Sawarabi Gothic', sans-serif;
 }
 // 必須
