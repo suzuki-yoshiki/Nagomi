@@ -1,6 +1,6 @@
 class WorkReservationsController < ApplicationController
   def index
-    #@phone_reservation_number = PhoneReservation.where(line_booked: true).where(line_end: false).size  #電話予約が確定してないので仮の0
+    @phone_reservation_number = PhoneReservation.where(line_booked: true).where(line_end: false).size  #電話予約が確定してないので仮の0
     @work_reservations = WorkReservation.where.not(worked_on: nil)
     if
       @users = User.paginate(page: params[:page], per_page: 10)
@@ -15,15 +15,9 @@ class WorkReservationsController < ApplicationController
     @option_menus = %w(窓ガラス内側のみクリーニング エアコンはフィルターまで行います 洗濯機は洗剤を入れて６０分 電化製品 冷蔵庫クリーニング 電子レンジクリーニング 棚づくり 玄関 トイレ 洗面所 庭 )#オプションメニュー
   end
 
-  def show
-    @phone_reservation_number = PhoneReservation.where(line_booked: true).where(line_end: false).size  #電話予約が確定してないので仮の0
-    @work_reservations = WorkReservation.where.not(worked_on: nil)
-    @phone_reservation = PhoneReservation.find(params[:id])
-  end
-
   def create
    @work_reservation = WorkReservation.new(work_reservation_params)
-   if @work_reservation.save!
+   if @work_reservation.save
        flash[:success] = "予約の新規作成に成功しました。"
       redirect_to work_reservations_url
    else
