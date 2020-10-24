@@ -8,9 +8,9 @@ Staff.create!(name: "管理者Sample User",
 
 #サンプルスタッフ            
 Staff.create!(name: "Sample Staff",
-              email: "sample-staff@email.com",
-              password: "password",
-              password_confirmation: "password")
+   email: "sample-staff@email.com",
+   password: "password",
+   password_confirmation: "password")
 
 40.times do |n|
   name  = Faker::Name.name
@@ -101,18 +101,18 @@ puts "Item Created"
 
 # WorkReservation.create!(main_menu: "キッチンクリーニング",
 #                         option_menu: "電化製品")
-  
+
 # WorkReservation.create!(main_menu: "風呂場",
 #                         option_menu: "棚づくり")
-  
+
 # WorkReservation.create!(option_menu: "玄関")
 
 # WorkReservation.create!(option_menu: "トイレ")
-    
+
 # WorkReservation.create!(option_menu: "洗面所")
-    
+
 # WorkReservation.create!(option_menu: "庭")
-  
+
 
 # puts "WorkReservation Created"
 
@@ -120,4 +120,3 @@ puts "Item Created"
 Map.create!(address: "静岡駅")
 
 puts "Map Created"
-
