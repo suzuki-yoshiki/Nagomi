@@ -6,12 +6,8 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
 
-    <%= form_with(model: WorkReservation.new, url: work_reservations_path(@work_reservation), local: true, method: :post) do |f| %>
-      <%
-=begin%>
- <%= render 'share/error_messages' , object: @work_reservation %> 
-<%
-=end%>
+    <%= form_with(model: WorkReservation.new, url: work_reservations_path, local: true, method: :post) do |f| %>
+
       <%= f.hidden_field :user_id, :value => @user.id %>
 
       <%= f.label :メイン予約項目, class: "label-#{yield(:class_text)}" %></br>
