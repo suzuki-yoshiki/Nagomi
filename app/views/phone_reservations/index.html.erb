@@ -1,10 +1,19 @@
-<% provide(:title, "Line予約受付表") %>
+<script>
+  $(function() {
+    setTimeout("$('.alert').fadeOut('slow')", 2500);
+  });
+</script>
 
-<h1>Line電話の予約受付表です</h1>
+<% provide(:title, "Line予約受付表") %>
+<h1 class="line-tell-free"><i class="fas fa-mobile-alt"></i>&nbsp;Line電話予約の空き状況</h1>
 <div class = "center">
-<h1>予約の前に友達追加をしてください</h1>
-<i class="fas fa-hand-point-down fa-lg fa-fw faa-vertical animated"></i></br>
-  <a href="https://lin.ee/ZnnCWE4"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0"></a>
+<h1 class="line-reservation">予約の前に友達追加をしてください!</h1>
+<i class="fas fa-hand-point-down fa-lg fa-fw faa-vertical animated"></i>クリック</br>
+  <a href="https://lin.ee/ZnnCWE4"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0", class= "line-icon" ></a>
+</div>
+<div class="phone-reservation-notice">
+  <p><i class="fas fa-info-circle"></i>&nbsp;作業日や作業内容の予約は<span style="color: #2eb872;">"Line電話"</span>にて承っておりますので、下記カレンダーにてご都合の良い日時をお決め下さい。</p>
+  <span style="color: #f67280;"><p>（&nbsp;作業日時を決定するものではありませんのでご注意下さい。）</p></span>
 </div>
 <div class="calendar">
   <div class="container">
@@ -26,7 +35,13 @@
         </tr>
         <% @two_weeks.each do |day| %> 
           <th style="width: 6%" class="day-cell">
-            <%= l day ,format: :long2 %><br>
+            <% if day.wday == 6 %>
+            <font color="#3f72af"><%= l day ,format: :long2 %></font>
+            <% elsif day.wday == 0 %>
+            <font color="#fc5185"><%= l day ,format: :long2 %></font>
+            <% else %>
+            <font color="#000"><%= l day ,format: :long2 %></font>
+            <% end %>
           </th>
         <% end %>
       </table>

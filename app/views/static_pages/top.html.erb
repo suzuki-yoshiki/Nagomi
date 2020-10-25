@@ -1,17 +1,11 @@
-<script> 
+ <script> 
   $(function() {
     setTimeout("$('.alert').fadeOut('slow')", 2500);
   });
-</script> 
-
+</script>  
 <% provide(:title, "Top") %>
 <div class="container" >
   <div class="fluid-box"> <!-- 画面いっぱいに表示する背景用 -->
-   <div class="container fluid-box-inner">
-      <% flash.each do |message_type, msg| %>
-        <div class="alert alert-<%= message_type %>"><%= msg %></div>
-      <% end %>
-   </div>
   </div>
 </div>
 <div class="center-band">Nagomi Systemへ, ようこそ!</div>
@@ -21,7 +15,7 @@
         <div class="service">
           <li>
             <dl>
-              <dt><div class="image"></div></dt>    
+              <dt><div class="image"><%= image_tag "top-index.jpeg" %></div></dt>    
               <dd>
                 <p>説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。
                 </p>
@@ -39,7 +33,7 @@
         <div class="service">
           <li>
             <dl>
-              <dt><div class="image"></div></dt>    
+              <dt><div class="image-youtube"><%= image_tag "top-youtube.jpeg" %></div></dt>    
               <dd>
                 <p>説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。
                 </p>
@@ -49,7 +43,7 @@
         </div>
       </ul>
     <div class="subject-right">
-    <%= link_to "作業風景覧詳細へ", "#", class: "btn-gradient-3d-simple"%>
+    <%= link_to "作業風景覧詳細へ", videos_path, class: "btn-gradient-3d-simple"%>
     </div>
     <hr class="bar">
     <h3><i class="fab fa-line fa-lg line-green"></i> 電話予約</h3>
@@ -57,7 +51,7 @@
         <div class="service">
           <li>
             <dl>
-              <dt><div class="image"></div></dt>    
+              <dt><div class="image-tell"><%= image_tag "top-tell.jpg" %></div></dt>    
               <dd>
                 <p>説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。説明本文がここに入ります。
                 </p>
@@ -67,7 +61,7 @@
         </div>
       </ul>
     <div class="subject-right">
-    <%= link_to "電話予約状況へ", "#", class: "btn-gradient-3d-simple"%>
+    <%= link_to "電話予約状況へ", phone_reservations_path, class: "btn-gradient-3d-simple"%>
     </div>
   </div>
 <div class="footer">

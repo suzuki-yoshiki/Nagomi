@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .calendar {
-  padding-top: 100px;
+  padding-top: 20px;
 }
 
 .botton2{
@@ -18,59 +18,52 @@
 }
 
 .hyou th{
-  width: 8%;
+  width: 7.9%;
 }
 
 .zikan {
-  width: 8%;
+  width: 8.1%;
   float: left;
   font-size: 1.8rem;
-  background-color: white;
 }
 
 .zikann {
   width: 84%;
   float: left;
   font-size: 1.8rem;
-  background-color: white;
 }
 
-td {
+.zikann td {
   text-align: center;
   vertical-align: middle;
+  background-color: #FFF;
+}
+.zikann td:hover {
+  background-color: #ffe2e2;
 }
 
-table tr th {
+.hyou tr th {
   text-align: center;
   vertical-align: middle;
   width: 50px;
-  background-color: white;
+  background-color: #fff;
 }
 
 .mark {
   padding: 0;
-  background-color: white;
+  background-color: rgba(0,0,0,0);
   font-size: 1.8rem;
   color: red;
 }
 .mark:hover {
   color: red;
   text-decoration: none;
-  background-color: #ffe4e1;
-  transition: background-color .4s;
+  background-color: #ffe2e2;
 }
 
-tr td:first-child {
-  background-color: white;
-}
-
-tr td:last-child {
-  background-color: white;
-}
-
-tr td:not(:first-child):not(:last-child):hover{
-  background-color: white;
-  transition: background-color .4s;
+.zikan tr td {
+  text-align: center;
+  background-color: #f4f3f3;
 }
 
 .week {
@@ -135,4 +128,38 @@ tr td:not(:first-child):not(:last-child):hover{
 
 .btn-secondary {
   border: 1px solid #C0C0C0
+}
+
+.phone-reservation-notice {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  color: #364f6b;
+  margin-top: 20px;
+}
+
+.center {
+  border: solid 1px;
+  border-radius: 8px;
+  letter-spacing: 0.1em;
+  background-color: #E1E6EC;
+  background-image: -webkit-linear-gradient(top, #E1E6EC 2%, #F0F4F7 96%), -webkit-radial-gradient(at 50% 100%, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.5) 200%);
+  background-image: linear-gradient(-180deg, #E1E6EC 2%, #F0F4F7 96%), radial-gradient(at 50% 100%, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.5) 200%);
+  background-blend-mode: normal, color-burn;
+}
+
+.line-icon {
+  margin-bottom: 20px;
+}
+.line-reservation {
+  letter-spacing: 0.1em;
+}
+
+.line-tell-free {
+  letter-spacing: 0.1em;
+  color: #f9f7f7;
+  padding-top: 10px;
+  margin-top: 30px;
+  height: 56px;
+  background-color: #f67280;
 }
