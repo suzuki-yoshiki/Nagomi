@@ -54,8 +54,8 @@ class UsersController < ApplicationController
      respond_to do |format|
       if @work_reservation.update_attributes(finished_mail_params)
         UserMailer.welcome_email(@work_reservation).deliver
-        format.html { redirect_to(@work_reservation, notice: 'お客様に予約内容を送信しました。') }
-        format.text { redirect_to(@work_reservation, notice: 'お客様に予約内容を送信しました。') }
+        format.html { redirect_to "/work_reservations", notice: 'お客様に予約内容を送信しました。' }
+        format.text { redirect_to "/work_reservations", notice: 'お客様に予約内容を送信しました。' }
         flash[:success] = "お客様に予約内容を送信しました。"
 
         WorkHistory.create(
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
   end
 
   def new_work_reservation
-    @users = 
+    @users =
     if params[:search]
       User.paginate(page: params[:page], per_page: 10).search(params[:search])
     else
