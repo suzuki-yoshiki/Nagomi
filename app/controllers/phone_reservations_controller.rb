@@ -37,6 +37,10 @@ class PhoneReservationsController < ApplicationController
     @phone_reservation = PhoneReservation.find(params[:id])
   end
 
+  def show
+    @phone_reservations = PhoneReservation.where(line_booked: true).where(line_end: false).where(user_id: current_user)
+  end
+
   def update
     @phone_reservation = PhoneReservation.find(params[:id])
     if current_user.nil? && current_staff.nil?

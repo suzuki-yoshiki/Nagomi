@@ -1,42 +1,36 @@
-<% provide(:title, "Line電話の予約") %>
+<% provide(:title, "Line電話の予約申込一覧") %>
 
 <div>
-  <h1>Line電話予約申し込み者一覧</h1>
+  <h1>Line電話履歴</h1>
   <div class="col-md-10 col-md-offset-1">
-   <%= will_paginate(@users) %>
     <table class="table table-condensed table-hover" id="table-users">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>名前</th>
-          <th>かな</th>
-          <th>性別</th>
-          <th>アドレス</th>
-          <th>電話番号</th>
-          <th>電話する日付</th>
-          <th>電話する時間</th>
+          <th>予約ID</th>
+          <th>日付</th>
+          <th>時間</th>
+          <th>ユーザーID</th>
+          <th>ユーザー名</th>
+          <th>LINE ID</th>
         </tr>
       </thead>
 
-      <% @phone_reservations.each do |phone_reservation, user| %>
+      <% @phone_reservations.each do |phone_reservation| %>
+        <% user = User.find(phone_reservation.user_id) %>
         <tr>
-          <td><%= phone_reservation.user_id %></td>  
-          <td><%= link_to phone_reservation.user.name ,user_path(phone_reservation.user_id) %></td>  
-          <td><%= phone_reservation.user.kana %></td>
-          <td><%= phone_reservation.user.sex %></td>
-          <td><%= phone_reservation.user.email %></td>
-          <td><%= phone_reservation.user.phone_number %></td>
+          <td><%= phone_reservation.id %></td>
           <td><%= phone_reservation.worked_on %></td>
           <td><%= phone_reservation.line_time %></td>
+          <td><%= user.id %></td>
+          <td><%= user.name %></td>
           <td>
-          </td>  
-          <td>
-            <%= form_with(model: @phone_reservation, url: "#", local: true, method: :patch) do |f| %>
-              <%= f.submit "電話が終わったらこのボタンを押す", data: { confirm: "メールを送信してもよろしいですか？" }, class: "btn btn-danger" %>
+            <% if user.line_id.present? %>
+              <%= user.line_id %>
+            <% else %>
+              なし
             <% end %>
           </td>
         </tr>
       <% end %>
     </table>
-  </div>
 </div>
