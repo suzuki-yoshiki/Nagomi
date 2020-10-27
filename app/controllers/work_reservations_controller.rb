@@ -1,6 +1,6 @@
 class WorkReservationsController < ApplicationController
   def index
-    #@phone_reservation_number = PhoneReservation.where(line_booked: true).where(line_end: false).size  #電話予約が確定してないので仮の0
+    @phone_reservation_number = PhoneReservation.where(line_booked: true).where(line_end: false).size  #電話予約が確定してないので仮の0
     @work_reservations = WorkReservation.where.not(worked_on: nil)
     if
       @users = User.paginate(page: params[:page], per_page: 10)
