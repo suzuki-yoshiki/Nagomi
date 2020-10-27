@@ -3,3 +3,4 @@ class Map < ApplicationRecord
   after_validation :geocode, if: :address_changed?
   validates :address, presence: true
 end
+
