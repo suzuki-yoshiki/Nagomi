@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
+  include ApplicationHelper
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   $days_of_the_week = %w{日 月 火 水 木 金 土}
@@ -91,5 +91,30 @@ class ApplicationController < ActionController::Base
      @cart = Cart.create
      session[:cart_id] = @cart.id
      @cart
+  end
+
+  # 現在ログインしているユーザーを許可します。(マイアカウントで使用)
+  def admin_or_correct_user
+    @user = User.find(params[:id]) if @user.blank?
+    unless current_user?(@user)
+      flash[:danger] = "他のお客様のアカウントページには移動できません。"
+      redirect_to show_account_user_url(current_user)
+    end  
+  end
+  # 管理権限者、または現在ログインしているスタッフを許可します。(マイアカウントで使用)
+  def admin_or_correct_staff
+    @staff = Staff.find(params[:id]) if @staff.blank?
+    unless current_staff.admin? || current_staff?(@staff)
+      flash[:danger] = "他のスタッフのアカウントページには移動できません。"
+      redirect_to show_account_staff_url(current_staff)
+    end  
+  end
+
+#ログインしているユーザーは見ることができない
+  def no_current_user
+    if current_user.present?
+      flash[:danger] = "スタッフのみ見ることができるページです。"
+      redirect_to phone_reservations_url(current_user)
+    end
   end
 end
