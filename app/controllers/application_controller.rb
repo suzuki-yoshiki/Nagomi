@@ -92,4 +92,26 @@ class ApplicationController < ActionController::Base
      session[:cart_id] = @cart.id
      @cart
   end
+
+  def correct_user
+    @user = User.find(params[:id]) 
+    if current_user.present? && !current_user.blank?
+      flash[:danger] = "権限がありません。"
+      redirect_to(root_url)
+    end  
+  end
+
+  def set_current_user
+    if current_user.present?
+      flash[:danger] = "権限がありません"
+      redirect_to phone_reservations_url(current_user)
+    end
+  end
+
+  def set_current_staff
+    if !current_staff.admin?
+      flash[:danger] = "権限がありません"
+      redirect_to work_reservations_url(current_staff)
+    end
+  end
 end

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :set_current_user, only: [:index]
+  before_action :correct_user, only: [:show_account]
   protect_from_forgery except: :new_work_reservation
 
 
