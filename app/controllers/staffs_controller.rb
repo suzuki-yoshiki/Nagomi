@@ -1,4 +1,5 @@
 class StaffsController < ApplicationController
+  before_action :admin_or_correct_staff, only: [:show_account]
 
   def index
     if 
