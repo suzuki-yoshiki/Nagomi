@@ -1,4 +1,5 @@
 class WorkReservationsController < ApplicationController
+  before_action :no_current_user, only: [:index, :new, :create, :edit, :destroy, :update]
   def index
     @phone_reservation_number = PhoneReservation.where(line_booked: true).where(line_end: false).size  #電話予約が確定してないので仮の0
     @work_reservations = WorkReservation.where.not(worked_on: nil)
