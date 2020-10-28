@@ -110,8 +110,8 @@ class ApplicationController < ActionController::Base
     end  
   end
 
-#
-  def set_current_user
+#ログインしているユーザーは見ることができない
+  def no_current_user
     if current_user.present?
       flash[:danger] = "スタッフのみ見ることができるページです。"
       redirect_to phone_reservations_url(current_user)
