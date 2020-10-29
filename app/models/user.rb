@@ -13,6 +13,7 @@ class User < ApplicationRecord
   validates :line_id, length: { maximum: 1000 }
   validates :address, length: { maximum: 1000 }
   validates :phone_number, length: { maximum: 1000 }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

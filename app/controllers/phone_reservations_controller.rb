@@ -6,7 +6,7 @@ class PhoneReservationsController < ApplicationController
   end
 
   def index_holidays #Line電話予約の休みの一覧
-    @phone_reservations = PhoneReservation.where(holiday: true) 
+    @phone_reservations = PhoneReservation.where(holiday: true)
   end
 
   def update_holidays #Line電話予約の休みの更新
