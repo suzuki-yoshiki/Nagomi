@@ -7,7 +7,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with(model: @staff, url: staffs_path, local: true, method: :post) do |f| %>
-
+      <%= render 'share/error_messages', object: @staff %> 
   <div class="field">
     <%= f.label :社員番号 %> <span class="must">必須</span><br />
     <%= f.text_field :staff_number, class: 'form-control' %>
@@ -15,7 +15,7 @@
 
   <div class="field">
     <%= f.label :名前 %> <span class="must">必須</span><br />
-    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.text_field :name,  :required => true, class: 'form-control' %>
   </div>
 
   <div class="field">

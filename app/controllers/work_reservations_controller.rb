@@ -1,4 +1,5 @@
 class WorkReservationsController < ApplicationController
+  
   def index
     @phone_reservation_number = PhoneReservation.where(line_booked: true).where(line_end: false).size  #電話予約件数
     @phone_reservations = PhoneReservation.where(line_booked: true).where(line_end: true) #電話の履歴
