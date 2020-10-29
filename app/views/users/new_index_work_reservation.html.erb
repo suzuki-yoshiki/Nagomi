@@ -30,16 +30,16 @@
       </div></br>
 
       <%= f.label :作業内容, class: "label-#{yield(:class_text)}" %>
-      <%= f.text_area :reservation_work, class: "form-control" %></br>
+      <%= f.text_area :reservation_work, required: true, class: "form-control" %></br>
 
       <%= f.label :訪問日, class: "label-#{yield(:class_text)}" %>
-      <%= f.date_field :worked_on, class: "form-control" %></br>
+      <%= f.date_field :worked_on, required: true, class: "form-control" %></br>
 
       <%= f.label :作業開始時間, class: "label-#{yield(:class_text)}" %>
-      <%= f.time_field :start_times, ignore_data:true, class: "form-control" %></br>
+      <%= f.time_field :start_times, ignore_data:true, required: true, class: "form-control" %></br>
 
       <%= f.label :作業合計金額, class: "label-#{yield(:class_text)}" %>
-      <%= f.number_field :price, :placeholder => "￥", class: "form-control" %></br>
+      <%= f.number_field :price, :placeholder => "￥", required: true, class: "form-control" %></br>
 
       <%= link_to "作業見積もり計算表", quote_page_user_path, remote: true, class: "btn btn-success" %></br></br>
 
