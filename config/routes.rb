@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       get 'reservation_confirmed' #メール内容確認ページ行き
       patch 'reservation_confirmed_mail' #メール送信処理
       get 'quote_page' # 作業予約から見積もりページへ移動
-      get 'work_reservation_number' #予約件数表示
+      # get 'work_reservation_number' #予約件数表示
     end
   end
   resources :staffs do
@@ -42,7 +42,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :work_reservations
+  resources :work_reservations do
+    collection do
+      get 'work_reservation_number'
+    end   
+  end
+
   resources :videos
   resources :works do
     collection do
@@ -53,6 +58,7 @@ Rails.application.routes.draw do
       get 'user_show_outside'
     end
   end
+
   resources :tools
   resources :reviews
   resources :maps
