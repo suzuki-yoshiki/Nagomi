@@ -26,7 +26,7 @@
   <% end %>
     <p align="right"><%= link_to "新規作業予約を登録する", new_work_reservation_user_path(current_staff), class: "btn btn-success" %></p>
     <p align="right"><%= link_to "作業履歴を確認する", work_histories_path, class: "btn btn-info" %></p>
-    <p align="center"><%= link_to "作業予約件数", work_reservation_number_user_path(@work_reservations), remote: true, class: "btn btn-warning" %></p>
+    <p align="center"><%= link_to "作業予約件数", work_reservation_number_work_reservations_path , remote: true, class: "btn btn-warning" %></p>
 
   <div class= 'calender'>
     <% array = [] %>

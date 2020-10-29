@@ -1,0 +1,32 @@
+<div class="modal-dialog modal-md modal-dialog-center">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h1 class="modal-title">作業予約件数</h1>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <table class="table table-bordered table-condensed">
+            <thead>
+              <tr>
+                <th>月</th>
+                <th>予約数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @reservation_month.zip(@reservation_num).each do |reservation_month, reservation_num| %>
+                <tr>
+                  <td><%= reservation_month %></td>
+                  <td><%= reservation_num %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
