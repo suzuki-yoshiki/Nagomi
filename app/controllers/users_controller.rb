@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :set_current_user, only: [:index]
   before_action :admin_or_correct_user, only: [:show_account]
   protect_from_forgery except: :new_work_reservation
 
@@ -58,7 +57,6 @@ class UsersController < ApplicationController
         UserMailer.welcome_email(@work_reservation).deliver
         format.html { redirect_to "/work_reservations", notice: 'お客様に予約内容を送信しました。' }
         format.text { redirect_to "/work_reservations", notice: 'お客様に予約内容を送信しました。' }
-        flash[:success] = "お客様に予約内容を送信しました。"
 
         WorkHistory.create(
           worked_on: @work_reservation.worked_on,
