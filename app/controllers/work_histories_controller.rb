@@ -13,6 +13,6 @@ class WorkHistoriesController < ApplicationController
     work_history = WorkHistory.find(params[:id])
     work_history.destroy
     flash[:success] = "削除しました。"
-    redirect_to work_reservation_path
+    redirect_to work_reservations_path
   end
 end

@@ -1,6 +1,8 @@
 class WorkReservationsController < ApplicationController
+  
   def index
-    @phone_reservation_number = PhoneReservation.where(line_booked: true).where(line_end: false).size  #電話予約が確定してないので仮の0
+    @phone_reservation_number = PhoneReservation.where(line_booked: true).where(line_end: false).size  #電話予約件数
+    @phone_reservations = PhoneReservation.where(line_booked: true).where(line_end: true) #電話の履歴
     @work_reservations = WorkReservation.where.not(worked_on: nil)
     if
       @users = User.paginate(page: params[:page], per_page: 10)
@@ -21,8 +23,8 @@ class WorkReservationsController < ApplicationController
        flash[:success] = "予約の新規作成に成功しました。"
       redirect_to work_reservations_url
    else
-       flash[:danger] = "不正な入力がありました、再入力してください。"
-       render :new
+       flash[:danger] = "未入力の箇所があります。"
+       redirect_back(fallback_location: work_reservations_url)
    end
   end
 
@@ -48,6 +50,33 @@ class WorkReservationsController < ApplicationController
     work_reservation.destroy
     flash[:success] = "削除しました。"
     redirect_to work_reservations_url
+  end
+
+  def work_reservation_number
+    @work_reservations = WorkReservation.where.not(worked_on: nil)
+
+    array = []
+    work_reservations = WorkReservation.all
+    work_reservations.each do |work_reservation|
+       array.push(work_reservation.worked_on)
+    end
+
+    hash = array.group_by(&:beginning_of_month)
+    @sample = hash.values
+
+    reservation_num = []
+    @sample.each do |num|
+      reservation_num.push(num.count)
+    end
+    @reservation_num = reservation_num
+
+    reservation_month = []
+    @work_reservations.each do |work_reservation|
+      work_reservation.worked_on.to_s(:year_month)
+      reservation_month.push(work_reservation.worked_on.to_s(:year_month))
+    end
+
+    @reservation_month = reservation_month.uniq
   end
 
   private

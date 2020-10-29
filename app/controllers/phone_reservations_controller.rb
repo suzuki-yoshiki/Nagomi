@@ -6,7 +6,7 @@ class PhoneReservationsController < ApplicationController
   end
 
   def index_holidays #Line電話予約の休みの一覧
-    @phone_reservations = PhoneReservation.where(holiday: true) 
+    @phone_reservations = PhoneReservation.where(holiday: true)
   end
 
   def update_holidays #Line電話予約の休みの更新
@@ -23,8 +23,10 @@ class PhoneReservationsController < ApplicationController
     @phone_reservation = PhoneReservation.find(params[:id])
     if params[:commit] == "完了"
       @phone_reservation.update_attributes(line_end: true)
+      flash[:success] = "#{l @phone_reservation.worked_on} #{@phone_reservation.line_time}のLine電話を完了しました！お疲れ様です！"
     else params[:commit] == "削除"
       @phone_reservation.update_attributes(line_booked: false)
+      flash[:danger] = "#{l @phone_reservation.worked_on} #{@phone_reservation.line_time}のLine電話を削除しました！"
     end
       redirect_to work_reservations_url
   end
@@ -35,6 +37,10 @@ class PhoneReservationsController < ApplicationController
   
   def edit #モーダル画面
     @phone_reservation = PhoneReservation.find(params[:id])
+  end
+
+  def show
+    @phone_reservations = PhoneReservation.where(line_booked: true).where(line_end: false).where(user_id: current_user)
   end
 
   def update
