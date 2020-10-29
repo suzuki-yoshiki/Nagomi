@@ -23,8 +23,10 @@ class PhoneReservationsController < ApplicationController
     @phone_reservation = PhoneReservation.find(params[:id])
     if params[:commit] == "完了"
       @phone_reservation.update_attributes(line_end: true)
+      flash[:success] = "#{l @phone_reservation.worked_on} #{@phone_reservation.line_time}のLine電話を完了しました！お疲れ様です！"
     else params[:commit] == "削除"
       @phone_reservation.update_attributes(line_booked: false)
+      flash[:danger] = "#{l @phone_reservation.worked_on} #{@phone_reservation.line_time}のLine電話を削除しました！"
     end
       redirect_to work_reservations_url
   end
