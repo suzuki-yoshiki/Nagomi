@@ -5,7 +5,7 @@ class Staff < ApplicationRecord
   validates :name, presence: true,length: { maximum: 50 }
   validates :kana,length: { maximum: 50 }
   validates :sex, length: { maximum: 10 }
-  validates :email, length: { maximum: 100 }
+  validates :email, presence: true, length: { maximum: 100 }
   validates :line_id, length: { maximum: 1000 }
   validates :address, length: { maximum: 1000 }
   validates :phone_number, length: { maximum: 1000 }
