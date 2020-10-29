@@ -5,11 +5,6 @@
     setTimeout("$('.alert').fadeOut('slow')", 2500);
   });
 </script>
-<div class="container fluid-box-work">
-  <% flash.each do |message_type, msg| %>
-    <div class="alert alert-<%= message_type %>"><%= msg %></div>
-  <% end %>
-</div>
   <h1>作業予約状況</h1>
   <% if @phone_reservation_number == 0 %>
     <p align="center">【電話予約なし】</p>
