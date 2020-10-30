@@ -4,11 +4,18 @@
 }
 
 .map-2 {
- margin: 0 auto;
+ margin: 20px auto;
+ border: 1px solid;  
+}
+.map-title {
+  letter-spacing: 0.1em;
 }
 
 .hensyu {
   text-align: center;
   margin-top: 5px;
-  margin-bottom: 5px
+  margin-bottom: 5px;
+}
+.container-map {
+  background-color: #e8f1f5;
 }
