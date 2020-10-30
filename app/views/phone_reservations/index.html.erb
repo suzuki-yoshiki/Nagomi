@@ -14,11 +14,13 @@
 <div class="phone-reservation-notice">
   <p><i class="fas fa-info-circle"></i>&nbsp;作業日や作業内容の予約は<span style="color: #2eb872;">"Line電話"</span>にて承っておりますので、下記カレンダーにてご都合の良い日時をお決め下さい。</p>
   <span style="color: #f67280;"><p>（&nbsp;作業日時を決定するものではありませんのでご注意下さい。）</p></span>
+  <span style="color: #f67280;"><p>（&nbsp;こちらパソコン専用のWebサイトとなりますのでご注意下さい。）</p></span>
 </div>
 <div class="calendar">
   <div class="container">
     <div class="row">
       <table class="table table-bordered hyou">
+      <thead>
         <tr>
           <% if Date.tomorrow == @first_day %>
             <th rowspan="2"><p class="week">前の2週間</p></th>
@@ -44,10 +46,12 @@
             <% end %>
           </th>
         <% end %>
+        
       </table>
     </div>
     <div class="row">
       <table class="table table-bordered zikan">
+      <tbody>
         <tr>
           <td>11:00</td>
         </tr>
@@ -105,6 +109,7 @@
         <tr>
           <td>17:00</td>
         </tr>
+      <tbody>
       </table>
     </div>
   </div>
