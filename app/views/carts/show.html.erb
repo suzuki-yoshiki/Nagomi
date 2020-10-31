@@ -2,6 +2,9 @@
   <h1 class="quantity-title"><i class="fas fa-shopping-cart"></i>&nbsp;お見積りカート</h1>
     <% if @cart_items.blank? %>
       <div class="cart-empty">カートの中にメニューはございません</div>
+      <div class="btn-work-user">
+        <span style="color: #f67280;"><p>（&nbsp;こちらパソコン専用のWebサイトとなりますのでご注意下さい。）</p></span>
+      </div>
       <div class="quantity-index"><%= link_to "メニューを探す", items_path, class: "btn-gradient-radius" %></div>
     <% else %>
       <div class="quantity-index"><%= link_to "続けて他のメニューを探す", items_path, class: "btn-gradient-radius" %></div>
@@ -27,6 +30,9 @@
               <td class="quantity-total", colspan="5"><font size="6">総計：<%= (@cart.total_price).to_s(:delimited) %>円<span style="font-size:0.7em;">（税抜き）</span></font></td>
             </tr>
           </table>
+            <div class="btn-work-user">
+              <span style="color: #f67280;"><p>（&nbsp;こちらパソコン専用のWebサイトとなりますのでご注意下さい。）</p></span>
+            </div>
             <div class="cart-delete">
               <%= button_to item_delete_item_path(@item), method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'} do %><i class="fas fa-shopping-cart"></i>&nbsp;カートを空にする
               <% end %>
