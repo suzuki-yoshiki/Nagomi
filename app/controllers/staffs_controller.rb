@@ -20,7 +20,7 @@ class StaffsController < ApplicationController
   def create
     @staff = Staff.new(staff_params)
     if @staff.save
-      redirect_to staffs_url
+      redirect_to work_reservations_url
       flash[:success] = "新規登録に成功しました。"
     else
       render :new

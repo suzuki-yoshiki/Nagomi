@@ -12,7 +12,8 @@ ja:
           id: ID
           name: 名前
           kana: カナ
-          email: メールアドレス
+          sex: 性別
+          email: Gメールアドレス
           phone_number: 電話番号
           line_id: LineID
           address: 住所
@@ -25,7 +26,8 @@ ja:
           staff_number: 社員番号
           name: 名前
           kana: カナ
-          email: メールアドレス
+          sex: 性別
+          email: Gメールアドレス
           phone_number: 電話番号
           line_id: LineID
           address: 住所
