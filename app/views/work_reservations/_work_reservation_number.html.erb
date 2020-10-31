@@ -17,10 +17,10 @@
               </tr>
             </thead>
             <tbody>
-              <% @reservation_month.zip(@reservation_num).each do |reservation_month, reservation_num| %>
+              <% @month_requests_counts.each do |k, v| %>
                 <tr>
-                  <td><%= reservation_month %></td>
-                  <td><%= reservation_num %></td>
+                  <td><%= l(k, format: :middle2) %></td>
+                  <td><%= v %>件</td>
                 </tr>
               <% end %>
             </tbody>

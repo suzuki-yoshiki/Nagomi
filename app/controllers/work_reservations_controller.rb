@@ -19,6 +19,7 @@ class WorkReservationsController < ApplicationController
 
   def create
    @work_reservation = WorkReservation.new(work_reservation_params)
+   @work_reservation.update(beginning_month: params[:work_reservation][:worked_on].to_date.beginning_of_month)
    if @work_reservation.save
        flash[:success] = "予約の新規作成に成功しました。"
       redirect_to work_reservations_url
@@ -37,8 +38,9 @@ class WorkReservationsController < ApplicationController
   def update
     @work_reservation = WorkReservation.find(params[:id])
       if @work_reservation.update_attributes(update_work_reservation_params)
-       flash[:success] = "編集しました。"
-       redirect_to work_reservations_url
+        @work_reservation.update(beginning_month: params[:work_reservation][:worked_on].to_date.beginning_of_month)
+        flash[:success] = "編集しました。"
+        redirect_to work_reservations_url
       else
         flash[:danger] = "不正な入力がありました、再入力してください。"
         render :edit
@@ -53,30 +55,31 @@ class WorkReservationsController < ApplicationController
   end
 
   def work_reservation_number
-    @work_reservations = WorkReservation.where.not(worked_on: nil)
+    @month_requests_counts = WorkReservation.where.not(worked_on: nil).group(:beginning_month).count
+    # debugger
+    # array = []
+    # work_reservations = WorkReservation.all
+    # work_reservations.each do |work_reservation|
+    #    array.push(work_reservation.worked_on)
+    # end
+    # debugger
+    # hash = array.group_by(&:beginning_of_month)
+    # @sample = hash.values
 
-    array = []
-    work_reservations = WorkReservation.all
-    work_reservations.each do |work_reservation|
-       array.push(work_reservation.worked_on)
-    end
 
-    hash = array.group_by(&:beginning_of_month)
-    @sample = hash.values
+    # reservation_num = []
+    # @sample.each do |num|
+    #   reservation_num.push(num.count)
+    # end
+    # @reservation_num = reservation_num
+    # debugger
+    # reservation_month = []
+    # @work_reservations.each do |work_reservation|
+    #   work_reservation.worked_on.to_s(:year_month)
+    #   reservation_month.push(work_reservation.worked_on.to_s(:year_month))
+    # end
 
-    reservation_num = []
-    @sample.each do |num|
-      reservation_num.push(num.count)
-    end
-    @reservation_num = reservation_num
-
-    reservation_month = []
-    @work_reservations.each do |work_reservation|
-      work_reservation.worked_on.to_s(:year_month)
-      reservation_month.push(work_reservation.worked_on.to_s(:year_month))
-    end
-
-    @reservation_month = reservation_month.uniq
+    # @reservation_month = reservation_month.uniq
   end
 
   private
