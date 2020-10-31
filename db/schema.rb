@@ -178,6 +178,7 @@ ActiveRecord::Schema.define(version: 2020_10_22_081453) do
     t.string "client_name_flag"
     t.integer "staff_id"
     t.integer "work_id"
+    t.date "beginning_month"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"

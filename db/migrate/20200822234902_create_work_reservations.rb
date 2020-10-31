@@ -10,6 +10,7 @@ class CreateWorkReservations < ActiveRecord::Migration[5.2]
       t.integer :user_id
       t.integer :staff_id
       t.integer :work_id
+      t.date :beginning_month
 
       t.timestamps
     end
